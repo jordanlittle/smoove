@@ -87,21 +87,27 @@
 
 %button {
     display:inline-block;
-    border-bottom:1px solid;
-    padding:.2em 1.1em .29em;
-    margin:.125em 0;
     vertical-align:middle;
+    border-bottom:1px solid;
+    padding:5px 17px 7px;
+    margin:.125em 0;
     font-weight:bold;
     @include transition(.2s ease-in-out background-color);
     background-color: $color-light-gray;
     border-bottom-color: $color-input-border;
-    color:$color-text;
-    text-shadow:0 1px 0 rgba(255,255,255,1);
+    @include color_with_contrast_check( $color-brand-dark );
     cursor:pointer;
     font-size:16px;
+    text-align:center;
+    line-height:1em;
 
     &:hover {
         border-bottom-width:1px;
+    }
+
+    i {
+        position:relative;
+        top:1px;
     }
 }
 .button,
@@ -129,8 +135,7 @@
     @extend %button;
     background-color: $color-brand;
     border-color: $color-brand-dark;
-    color:#fff;
-    text-shadow:0 1px rgba(0,0,0,.2);
+    @include color_with_contrast_check( $color-brand );
 
     &:hover {
         background-color: $color-brand-dark;
@@ -140,8 +145,7 @@
     @extend %button;
     background-color: $color-brand-secondary;
     border-color: $color-brand-secondary-dark;
-    color:#fff;
-    text-shadow:0 1px rgba(0,0,0,.2);
+    @include color_with_contrast_check( $color-brand-dark );
 
     &:hover {
         background-color: $color-brand-secondary-dark;
@@ -172,17 +176,16 @@
 .button--large {
     @extend %button;
     font-size:1.5em;
-    padding:.5em 1.2em .55em;
+    padding:10px 22px 12px;
 }
 .button--small {
     @extend %button;
-    font-size:.70em;
-    padding:.1em .75em .12em;
+    font-size:.75em;
+    padding:2px 8px 3px;
 }
 
 .button--block {
     display:block;
-    text-align:center;
 }
 
 
