@@ -1,0 +1,38 @@
+﻿// Google Fonts Import (must be placed before all other rules in the document)
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
+
+@import "config.scss";                  /* Site branding and variables */
+@import "helpers.scss";                 /* SASS mixins, browser normalizations, utils */
+@import "reset.scss";                   /* A clean slate */
+@import "elements.scss";                /* Base HTML elements and typography */
+@import "grid.scss";                    /* The grid system */
+@import "objects.scss";                 /* Generic CSS objects and abstractions */
+@import "components.scss";              /* Specific components and modules */
+
+
+
+
+/*
+
+    CONTENTS
+    ========
+
+    Site-Specific Overrides
+    
+*/
+
+
+
+
+/* ---------------------------------------- *\
+
+
+    Site-Specific Overrides
+
+
+\* ---------------------------------------- */
+
+body {
+    color: $color-text;
+    font-family: $font-sans;
+}

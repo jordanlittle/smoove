@@ -1,0 +1,420 @@
+﻿@import "config.scss";
+
+/*      
+    
+    CONTENTS
+    ========
+    Mixins
+    Silent Mixins
+    Debug
+
+*/
+
+
+
+
+/* ---------------------------------------- *\
+
+
+    Mixins
+
+
+\* ---------------------------------------- */
+
+@mixin context( $bp ) {
+    @if $bp == hand-only {
+        @media (max-width: $bp-hand-wide )
+        { @content }
+    }
+
+    @else if $bp == hand-wide {
+        @media (min-width: $bp-hand-wide )
+        { @content }
+    }
+    @else if $bp == hand-wide-only {
+        @media (min-width: $bp-hand-wide) and (max-width: $bp-tablet)
+        { @content }
+    }
+
+    @else if $bp == small-screens-only {
+        @media (max-width: $bp-tablet)
+        { @content }
+    }
+
+    @else if $bp == tablet {
+        @media (min-width: $bp-tablet )
+        { @content }
+    }
+    @else if $bp == tablet-only {
+        @media (min-width: $bp-tablet) and (max-width: $bp-monitor)
+        { @content }
+    }
+
+    @else if $bp == monitor {
+        @media (min-width: $bp-monitor)
+        { @content; }
+    }
+    @else if $bp == monitor-only {
+        @media (min-width: $bp-monitor) and (max-width: $bp-monitor-large)
+        { @content }
+    }
+
+    @else if $bp == monitor-large {
+        @media (min-width: $bp-monitor-large )
+        { @content; }
+    }
+
+    @else if $bp == tv {
+        @media (min-width: $bp-tv )
+        {@content; }
+    }
+
+    @else if $bp == hidpi {
+        @media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+               only screen and (-o-min-device-pixel-ratio: 5/4),
+               only screen and (min-resolution: 120dpi) { @content }
+    }
+}
+
+@mixin box-shadow($args) {
+    -webkit-box-shadow: $args;
+       -moz-box-shadow: $args;
+            box-shadow: $args;
+}
+ 
+
+@mixin transition($args) {
+    -webkit-transition: $args;
+       -moz-transition: $args;
+        -ms-transition: $args;
+         -o-transition: $args;
+            transition: $args;
+}
+
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model;
+       -moz-box-sizing: $box-model;
+            box-sizing: $box-model;
+}
+
+@mixin border-radius($radius) {
+    background-clip: padding-box; // stops the background from showing outside of the border radius
+    -webkit-border-radius: $radius;
+       -moz-border-radius: $radius;
+            border-radius: $radius;
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes $animation-name {
+        @content;
+    }
+    @-moz-keyframes $animation-name {
+        @content;
+    }  
+    @-ms-keyframes $animation-name {
+        @content;
+    }
+    @-o-keyframes $animation-name {
+        @content;
+    }  
+    @keyframes $animation-name {
+        @content;
+    }
+}
+
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+       -moz-animation: #{$str};
+        -ms-animation: #{$str};
+         -o-animation: #{$str};
+            animation: #{$str};
+}
+
+@mixin shape_square($arg) {
+    width: $arg;
+    height: $arg;
+}
+
+
+
+
+/* ---------------------------------------- *\
+
+
+    Silent Mixins
+
+    Also known as placeholders or extensions, these rules don't get
+    rendered to the CSS file unless they are extended in a prop later down
+    the stylesheet. Use like this:
+
+    .test {
+        @extend %clearfix;
+        // all of %clearfix's styles will be applied to .test
+    }
+
+
+\* ---------------------------------------- */
+
+%clearfix {
+    zoom:1;
+
+    &:after{
+        content:"";
+        display:table;
+        clear:both;
+    }
+}
+
+%no-layout {
+    margin:0;
+    padding:0;
+}
+
+%hidden {
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+}
+
+@if $global-rounded == true {
+    %rounded {
+        @include border-radius( $border-radius );
+    }
+}
+
+%center-block {
+    // element must have explicit width
+    display:block;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+%display-inline {
+    display:inline;
+}
+
+%display-block {
+    display:block;
+}
+
+%display-inline-block {
+    display:inline-block;
+}
+
+%unstyled {
+    list-style:none;
+    margin-left:0;
+}
+
+%debug-outline {
+    outline: 5px solid yellow;
+    position:relative;
+}
+
+%overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+%debug-tooltip {
+    position:absolute;
+    top:100%;
+    left:0;
+    background:rgba(0,0,0,.7);
+    padding:2px 5px;
+    color:#fff;
+    font-size:11px;
+    font-weight:bold;
+    width:100px;
+    text-align:center;
+}
+
+
+
+
+/* ---------------------------------------- *\
+
+
+    Debug
+
+
+\* ---------------------------------------- */
+
+.breakpoint-test {
+    @if $debug-breakpoints == false {
+        display:none;
+    }
+    position:fixed;
+    bottom:0;
+    left:0;
+    z-index:99;
+    width:100%;
+
+    li {
+        display: none;
+        background:rgba(0,0,0,.7);
+        color:#fff;
+        font-weight:bold;
+        @extend %no-layout;
+        padding:5px;
+        outline:none;
+    }
+    .bp-hand-only {
+        @include context(hand-only) {
+            display: block;
+        }
+    }
+    .bp-hand-wide {
+        @include context(hand-wide) {
+            display:block;
+        }
+    }
+    .bp-hand-wide-only {
+        @include context(hand-wide-only) {
+            display:block;
+        }
+    }
+    .bp-tablet {
+        @include context(tablet) {
+            display:block;
+        }
+    }
+    .bp-tablet-only {
+        @include context(tablet-only) {
+            display:block;
+        }
+    }
+    .bp-monitor {
+        @include context(monitor) {
+            display:block;
+        }
+    }
+    .bp-monitor-only {
+        @include context(monitor-only) {
+            display:block;
+        }
+    }
+    .bp-tv {
+        @include context(tv) {
+            display:block;
+        }
+    }
+
+    @include context(hand-wide) {
+        width:30%;
+        max-width:120px;
+        top:0;
+        right:0;
+        left:auto;
+        bottom:auto;
+    }
+}
+
+@if $debug-outlines == true {
+    *,
+    *:before,
+    *:after {
+        outline:1px solid #333;
+    }
+}
+
+@if $debug-no-shadows == true {
+    *,
+    *:before,
+    *:after {
+        @include box-shadow(none !important);
+    }
+}
+
+@if $debug-show-grid == true {
+    .g {
+        & > [class^="unit-"] {
+            background-color:rgba(255,0,0,.25);
+
+            & > [class^="unit-"] {
+                background-color:rgba(255,0,0,.25);
+            }
+        }
+    }
+}
+
+@if $debug-link-titles == true {
+    a {
+        @extend %debug-outline;
+
+        &:after {
+            content: "Missing title attr";
+            @extend %debug-tooltip;
+        }
+    }
+    a[title] {
+        outline:none;
+
+        &:after {
+            display:none;
+        }
+    }
+    a[title=""] {
+        @extend %debug-outline;
+        position:relative;
+
+        &:after {
+            content: "Empty title attr";
+            display:block;
+            @extend %debug-tooltip;
+        }
+    }
+}
+
+@if $debug-empty-hrefs == true {
+    [href="#"],
+    [href=""],
+    [href*="javascript"] {
+        @extend %debug-outline;
+
+        &:after {
+            content: "Check HREF";
+            @extend %debug-tooltip;
+        }
+    }
+}
+
+@if $debug-empty-els == true {
+    :empty {
+        @extend %debug-outline;
+
+        &:after {
+            content: "Empty element";
+            @extend %debug-tooltip;
+        }
+    }
+}
+
+@if $debug-img-no-alt == true {
+    img[alt] {
+        outline:none;
+    }
+    img[alt=""] {
+        @extend %debug-outline;
+    }
+}
+
+@if $debug-form-actions == true {
+    form[action^="#"],
+    form[action=""] {
+        @extend %debug-outline;
+    }
+}
+
+@if $debug-baseline == true {
+    body {
+        background-image:url(baseline.png);
+        background-repeat: repeat;
+    }
+}

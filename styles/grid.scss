@@ -1,0 +1,107 @@
+﻿@import "helpers.scss";
+
+@if $grid-fixed == true {
+    .g {
+        max-width: $grid-fixed-width;
+        @extend %center-block; 
+    }
+}
+
+.cf { @extend %clearfix; }
+.cf--mobile {
+    @extend %clearfix;
+
+    @include context(tablet) {
+        display:none;
+    }
+}
+
+.g {
+    @extend %clearfix;
+
+    @include context(small-screens-only) {
+        
+        [class*="unit-mobile"] {
+            float:left;
+            min-height:1px;
+            @extend %clearfix;
+        }
+        .unit-mobile-three-fourths { width: percentage(3/4); }
+        .unit-mobile-two-thirds { width: percentage(2/3); }
+        .unit-mobile-half   { width: percentage(1/2); }
+        .unit-mobile-third  { width: percentage(1/3); }
+        .unit-mobile-fourth { width: percentage(1/4); }
+    }
+    
+    @include context(tablet) {
+
+        [class*="unit-"] {
+            float:left;
+            min-height:1px;
+            @extend %clearfix;
+        }
+
+        .unit-whole         { width: percentage(1/1); }
+        .unit-half          { width: percentage(1/2); }
+        .unit-third         { width: percentage(1/3); }
+        .unit-fourth        { width: percentage(1/4); }
+        .unit-fifth         { width: percentage(1/5); }
+        .unit-sixth         { width: percentage(1/6); }
+        .unit-seventh       { width: percentage(1/7); }
+        .unit-eighth        { width: percentage(1/8); }
+        .unit-ninth         { width: percentage(1/9); }
+        .unit-tenth         { width: percentage(1/10); }
+        .unit-eleventh      { width: percentage(1/11); }
+        .unit-twelfth       { width: percentage(1/12); }
+
+        .unit-four-fifths   { width: percentage(4/5); }
+        .unit-three-fourths { width: percentage(3/4); }
+        .unit-two-thirds    { width: percentage(2/3); }
+
+        .offset-half        { margin-left: percentage(1/2); }
+        .offset-third       { margin-left: percentage(1/3); }
+        .offset-fourth      { margin-left: percentage(1/4); }
+        .offset-fifth       { margin-left: percentage(1/5); }
+        .offset-sixth       { margin-left: percentage(1/6); }
+        .offset-seventh     { margin-left: percentage(1/7); }
+        .offset-eighth      { margin-left: percentage(1/8); }
+        .offset-ninth       { margin-left: percentage(1/9); }
+        .offset-tenth       { margin-left: percentage(1/10); }
+        .offset-eleventh    { margin-left: percentage(1/11); }
+        .offset-twelfth     { margin-left: percentage(1/12); }
+    } // @include context()
+
+    .unit-centered {
+        @extend %center-block;
+        float:none;
+    }
+}
+.g--guttered {
+    @include context(tablet){
+        margin-left: -$grid-gutter-size;
+        
+        [class*="unit-"] {
+            padding-left: $grid-gutter-size;
+        }
+    }
+}
+
+.sidebar {
+    background-color: $color-sidebar-bg;
+
+    @include context(tablet) {
+        position:fixed;
+        top:0;
+        height:100%;
+    }
+}
+.sidebar--left {
+    @include context(tablet) {
+        left:0;
+    }
+}
+.sidebar--right {
+    @include context(tablet) {
+        right:0;
+    }
+}

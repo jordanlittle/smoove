@@ -1,0 +1,546 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie6 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+
+    <title>Smoove - Yet another CSS framework</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
+
+    <link rel="stylesheet" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" media="all" href="styles/site.css" />
+</head>
+<body>
+
+    <style>
+    .grid-test .content {
+        margin-bottom: 10px;
+        padding:5px 0;
+        text-align: center;
+        background: #eee;
+        border-radius: 20px;
+    }
+</style>
+
+<div class="g">
+    <div class="unit-four-fifths offset-fifth pad-sides">
+
+        <h1 id="grid">Grid <a href="#" class="button"><i class="fa fa-caret-down"></i></a></h1>
+        <hr />
+
+        <div class="collapse grid-test">
+            <div class="g">
+                <div class="unit-whole"><div class="content">.unit-whole</div></div>
+            </div>
+            <div class="g">
+                <div class="unit-three-fourths"><div class="content">.unit-three-fourths</div></div>
+                <div class="unit-fourth"><div class="content">.unit-fourth</div></div>
+            </div>
+            <div class="g">
+                <div class="unit-fourth"><div class="content">.unit-fourth</div></div>
+                <div class="unit-fourth offset-half"><div class="content">.unit-fourth.offset-half</div></div>
+            </div>
+            <div class="g">
+                <div class="unit-fourth"><div class="content">.unit-fourth</div></div>
+                <div class="unit-three-fourths"><div class="content">.unit-three-fourths</div></div>
+            </div>
+            <div class="g">
+                <div class="unit-fifth"><div class="content">.unit-fifth</div></div>
+            </div>
+            <div class="g">
+                <div class="unit-fourth"><div class="content">.unit-fourth</div></div>
+                <div class="unit-fourth offset-half"><div class="content">.unit-fourth</div></div>
+            </div>
+            <pre>
+&lt;!-- the basic grid --&gt;
+&lt;div class="g"&gt;
+    &lt;div class="unit-three-fourths"&gt; ... &lt;/div&gt;
+    &lt;div class="unit-fourth"&gt; ... &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+            <p class="text-center">Use offsets for moving grid units.</p>
+            <div class="g">
+                <div class="unit-three-fourths offset-fourth"><div class="content">.unit-three-fourths.offset-fourth</div></div>
+            </div>
+            <pre>
+&lt;!-- using offsets --&gt;
+&lt;div class="g"&gt;
+    &lt;div class="unit-three-fourths offset-fourth"&gt; ... &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+            <p class="text-center">Guttered grids using ".g--guttered"</p>
+            <div class="g g--guttered">
+                <div class="unit-fourth"><div class="content">.unit-fourth</div></div>
+                <div class="unit-fourth"><div class="content">.unit-fourth</div></div>
+                <div class="unit-fourth"><div class="content">.unit-fourth</div></div>
+                <div class="unit-fourth"><div class="content">.unit-fourth</div></div>
+            </div>
+            <pre>
+&lt;!-- using the "g--guttered" class --&gt;
+&lt;div class="g g--guttered"&gt;
+    &lt;div class="unit-fourth"&gt; ... &lt;/div&gt;
+    &lt;div class="unit-fourth"&gt; ... &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+            <p>Mobile grid units use the syntax "unit-mobile-X" with X being fourth, third, half, two-thirds, three-fourths. The normal unit-X class applies on larger screens, but display full-width and with no floats on smaller screens. On those smaller screens, the unit-mobile classes will apply. <strong>If you plan on using "unit-" classes after a set of "unit-mobile-" classes, use  &lt;div class="cf--mobile"&gt;&lt;/div&gt; to clear the floats.</strong></p>
+            <div class="g">
+                <div class="unit-fourth unit-mobile-half"><div class="content">.unit-fourth.unit-mobile-half</div></div>
+                <div class="unit-fourth unit-mobile-half"><div class="content">.unit-fourth.unit-mobile-half</div></div>
+                <div class="cf--mobile"></div>
+                <div class="unit-whole"><div class="content">.unit-whole</div></div>
+            </div>
+            <pre>
+&lt;!-- using the "unit-mobile" classes --&gt;
+&lt;div class="g"&gt;
+    &lt;div class="unit-fourth unit-mobile-half"&gt; ... &lt;/div&gt;
+    &lt;div class="unit-fourth unit-mobile-half"&gt; ... &lt;/div&gt;
+    &lt;div class="cf--mobile"&gt;&lt;/div&gt;
+    &lt;div class="unit-whole"&gt; ... &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+        </div>
+
+
+
+
+        <h1 id="typography">Typography</h1>
+        <hr />
+        <div class="collapse">
+
+            <h1>Let sleeping dogs lie (h1)</h1>
+            <h2>They're quite <a href="">dishonest</a> (h2)</h2>
+            <h3>They'll continue sleeping (h3)</h3>
+            <h4>So they may rest (h4)</h4>
+
+            <div class="hgroup">
+                <h2>This is the first line in a div.hgroup</h2>
+                <h3>This is the second line in a div.hgroup</h3>
+            </div>
+<pre>
+&lt;!-- wrap two headings in a "hgroup" div and get subheadings --&gt;
+&lt;div class="hgroup"&gt;
+    &lt;h2&gt;...&lt;/h2&gt;
+    &lt;h3&gt;...&lt;/h3&gt;
+&lt;/div&gt;
+</pre>
+
+            <h2>Always going to the store <small>For crackers</small></h2>
+            <pre>
+&lt;!-- place a "small" tag inside of a heading for a inline subheading --&gt;
+&lt;h2&gt;Heading text &lt;small&gt;Small text&lt;/small&gt;&lt;/h2&gt;
+</pre>
+
+            <h3>Paragraph and Inline Styles</h3>
+
+            <p class="lead">
+                Furnished ticking hills for likewise, a us, managers, in her, the though, are page are into had I or and aged the receive place in strenuous to for get but sad. Carpeting out in decelerate out what the a going of this how sublime knowing of box thoughts.
+            </p>
+<pre>
+&lt;!-- add a class of "lead" for a large intro paragraph --&gt;
+&lt;p class="lead"&gt;
+    ...
+&lt;/p&gt;
+</pre>
+            <p>
+                One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a <em> emphasized little he could see his brown belly</em>, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover <strong>strong</strong> it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, <a href="http://google.com">link</a> waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.
+            </p>
+
+            <h3>Lists</h3>
+            <ol>
+                <li>Remove the screws</li>
+                <li>Tighten lug nuts</li>
+                <li>Do this next</li>
+                <li>And finally do this thing</li>
+            </ol>
+
+            <ul>
+                <li>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing
+                    elit. Aenean commodo ligula eget dolor. Aenean
+                    massa.
+                </li>
+                <li>
+                    Cum sociis natoque penatibus et magnis dis
+                    parturient montes, nascetur ridiculus mus. Donec quam
+                    felis, ultricies nec, pellentesque eu, pretium quis,
+                    sem.
+                </li>
+                <li>
+                    Nulla consequat massa quis enim. Donec pede justo,
+                    fringilla vel, aliquet nec, vulputate eget, arcu.
+                </li>
+                <li>
+                    In enim justo, rhoncus ut, imperdiet a, venenatis
+                    vitae, justo. Nullam dictum felis eu pede mollis
+                    pretium. Integer tincidunt.
+                </li>
+            </ul>
+
+            <ul class="unstyled">
+                <li>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing
+                    elit. Aenean commodo ligula eget dolor. Aenean
+                    massa.
+                </li>
+                <li>
+                    Cum sociis natoque penatibus et magnis dis
+                    parturient montes, nascetur ridiculus mus. Donec quam
+                    felis, ultricies nec, pellentesque eu, pretium quis,
+                    sem.
+                </li>
+                <li>
+                    Nulla consequat massa quis enim. Donec pede justo,
+                    fringilla vel, aliquet nec, vulputate eget, arcu.
+                </li>
+                <li>
+                    In enim justo, rhoncus ut, imperdiet a, venenatis
+                    vitae, justo. Nullam dictum felis eu pede mollis
+                    pretium. Integer tincidunt.
+                </li>
+            </ul>
+<pre>
+&lt;!-- add a class of "unstyled" to get rid of layout and bullets --&gt;
+&lt;ul class="unstyled"&gt;
+    &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+            <ul class="fancy-bullets">
+                <li>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing
+                    elit. Aenean commodo ligula eget dolor. Aenean
+                    massa.
+                </li>
+                <li>
+                    Cum sociis natoque penatibus et magnis dis
+                    parturient montes, nascetur ridiculus mus. Donec quam
+                    felis, ultricies nec, pellentesque eu, pretium quis,
+                    sem.
+                </li>
+                <li>
+                    Nulla consequat massa quis enim. Donec pede justo,
+                    fringilla vel, aliquet nec, vulputate eget, arcu.
+                </li>
+                <li>
+                    In enim justo, rhoncus ut, imperdiet a, venenatis
+                    vitae, justo. Nullam dictum felis eu pede mollis
+                    pretium. Integer tincidunt.
+                </li>
+            </ul>
+<pre>
+&lt;!-- add a class of "fancy-bullets" to get branded arrow bullets --&gt;
+&lt;ul class="fancy-bullets"&gt;
+    &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+            <h3>Blockquote</h3>
+            <blockquote>
+                <p>Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad. "How about if I sleep a little bit longer and forget all this nonsense", he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.</p>
+                <cite>Jordan Little</cite>
+            </blockquote>
+<pre>
+&lt;blockquote&gt;
+    &lt;p&gt;...&lt;/p&gt;
+    &lt;cite&gt;source&lt;/cite&gt;
+&lt;/blockquote&gt;
+</pre>
+        </div>
+        <h1 id="forms">Forms</h1>
+        <hr />
+        <div class="collapse g g--guttered">
+
+            <div class="unit-third">
+                <form action="#" method="post">
+                    <fieldset>
+                        <label for="name">Name</label>
+                        <input class="input--fit" type="text" id="name" placeholder="Enter your full name" />
+                    </fieldset>
+                    <fieldset>
+                        <label for="message">Message</label>
+                        <textarea class="input--fit" id="message" placeholder="What's on your mind?"></textarea>
+                    </fieldset>
+                    <fieldset>
+                        <label for="select">Select</label>
+                        <select name="" id="select" class="input--fit">
+                            <option selected>Select an option...</option>
+                            <option>Second option</option>
+                            <option>Third option</</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <button class="button--main" type="submit">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="unit-two-thirds">
+                <pre>
+&lt;!-- basic form markup --&gt;
+&lt;form method="post" action="/"&gt;
+    &lt;fieldset&gt;
+        &lt;label for="name"&gt;Name&lt;/label&gt;
+        &lt;input type="text" id="name" placeholder="Enter your full name" /&gt;
+    &lt;/fieldset&gt;
+    &lt;fieldset&gt;
+        &lt;button class="button--main" type="submit"&gt;Submit&lt;button/&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+            </div>
+
+        </div>
+        <h1 id="tables">Tables</h1>
+        <hr />
+        <div class="collapse">
+            <table class="text-left">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Jordan</td>
+                        <td>March 1, 2013</td>
+                        <td>Dev</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Brent</td>
+                        <td>April 2, 2013</td>
+                        <td>Dev</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Brad</td>
+                        <td>May 30, 2014</td>
+                        <td>Dev</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table--zebra  table--borderless  text-left">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jordan</td>
+                        <td>test@test.com</td>
+                        <td>June 2, 2013</td>
+                    </tr>
+                    <tr>
+                        <td>Jordan</td>
+                        <td>test@test.com</td>
+                        <td>June 2, 2013</td>
+                    </tr>
+                    <tr>
+                        <td>Jordan</td>
+                        <td>test@test.com</td>
+                        <td>June 2, 2013</td>
+                    </tr>
+                </tbody>
+            </table>
+            <pre>
+&lt;!-- add a class of "table--zebra" to get zebra striping --&gt;
+&lt;table class="table--zebra"&gt;
+    &lt;tr&gt;...&lt;/tr&gt;
+&lt;/table&gt;
+&lt;!-- add a class of "table--borderless" to get a clean, border-free table --&gt;
+&lt;table class="table--zebra"&gt;
+    &lt;tr&gt;...&lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+        </div>
+
+        <h1 id="buttons">Buttons</h1>
+        <hr />
+        <div class="collapse">
+            <p>
+                <a href="http://google.com" class="button">.button</a>
+                <a href="http://google.com" class="button rounded">.button.rounded</a>
+            </p>
+            <pre>
+&lt;!-- add a class of "button" to links, buttons, or inputs --&gt;
+&lt;a class="button"&gt; ... &lt;/a&gt;
+</pre>
+            <p>
+                <a href="http://google.com" class="button--small">button--small</a>
+                <a href="http://google.com" class="button">button</a>
+                <a href="http://google.com" class="button--large">button--large</a>
+            </p>
+            <pre>
+&lt;!-- add a class of "button--small" or "button--large" for different sizes --&gt;
+&lt;a class="button--large"&gt; ... &lt;/a&gt;
+</pre>
+
+            <p>
+                <a href="http://google.com" class="button">button</a>
+                <a href="http://google.com" class="button--link">button--link</a>
+                <a href="http://google.com" class="button--main">button--main</a>
+                <a href="http://google.com" class="button--secondary">button--secondary</a>
+                <a href="http://google.com" class="button--warning">button--warning</a>
+                <a href="http://google.com" class="button--serious">button--serious</a>
+            </p>
+            <pre>
+&lt;!-- add various modifier classes for colors and effects --&gt;
+&lt;a class="button--serious"&gt; ... &lt;/a&gt;
+</pre>
+            <p>
+                <a href="http://google.com" class="button">button</a>
+                <a href="http://google.com" class="button--main button--block">button--block</a>
+            </p>
+            <pre>
+&lt;!-- add a class of "button--block" to get block-level, full-width buttons --&gt;
+&lt;a class="button--large"&gt; ... &lt;/a&gt;
+</pre>
+            <div class="g">
+                <a href="http://google.com" class="button--secondary button--block unit-third">Clicky</a>
+                <a href="http://google.com" class="button--main button--block unit-third offset-third">Big Ol' Button</a>
+            </div>
+            <pre>
+&lt;!-- you can also use the grid classes to control block-level buttons --&gt;
+&lt;div class="g"&gt;
+    &lt;a class="button--main button--block unit-fourth offset-fourth"&gt; ... &lt;/a&gt;
+&lt;/div&gt;
+</pre>
+        </div>
+        <h1 id="icons">Icons</h1>
+        <hr />
+        <div class="collapse">
+
+            <p>
+                Use the &lt;i&nbsp;/&gt; tag with <a href="http://fortawesome.github.io/Font-Awesome/icons/">FontAwesome classes</a> for icons.<br />
+                <small>Note: use a space between the &lt;i/&gt; tag and the text</small>
+                <br />
+                <br />
+                <a href="http://google.com" class="button"><i class="fa fa-bookmark"></i> Favorite</a>
+                <a href="http://google.com" class="button button--main"><i class="fa fa-plus-circle"></i> New</a>
+            </p>
+            <pre>
+&lt;a class="button"&gt;
+    &lt;i class="fa fa-bookmark"&gt;&lt;/i&gt; Favorite
+&lt;/a&gt;
+</pre>
+        </div>
+        <h1 id="navigation">Navigation</h1>
+        <hr />
+        <div class="collapse">
+            <nav class="nav">
+                <a href="http://google.com">Home</a>
+                <a href="http://google.com">About</a>
+                <a href="http://google.com">Contact</a>
+                <a href="http://google.com">Services</a>
+            </nav>
+            <pre>
+&lt;!-- markup for basic horizontal nav --&gt;
+&lt;nav class="nav"&gt;
+    &lt;a href="#"&gt;...&lt;a&gt;
+&lt;/nav&gt;
+</pre>
+            <nav class="nav--vertical">
+                <a href="http://google.com">Home</a>
+                <a href="http://google.com">About</a>
+                <a href="http://google.com">Contact</a>
+                <a href="http://google.com">Services</a>
+            </nav>
+            <pre>
+&lt;!-- add a class of "nav--vertical" for a vertical list --&gt;
+&lt;nav class="nav--vertical"&gt;
+    &lt;a href="#"&gt;...&lt;a&gt;
+&lt;/nav&gt;
+</pre>
+            <nav class="nav--bordered">
+                <a href="http://google.com">Home</a>
+                <a href="http://google.com">About</a>
+                <a href="http://google.com">Contact</a>
+                <a href="http://google.com">Services</a>
+            </nav>
+            <pre>
+&lt;!-- add a class of "nav--bordered" for a bordered list --&gt;
+&lt;nav class="nav--bordered"&gt;
+    &lt;a href="#"&gt;...&lt;a&gt;
+&lt;/nav&gt;
+</pre>
+            <nav class="nav--bordered  nav--vertical">
+                <a href="http://google.com">Home</a>
+                <a href="http://google.com">About</a>
+                <a href="http://google.com">Contact</a>
+                <a href="http://google.com">Services</a>
+            </nav>
+            <pre>
+&lt;!-- "nav--bordered" works with "nav--vertical" too --&gt;
+&lt;nav class="nav--bordered  nav--vertical"&gt;
+    &lt;a href="#"&gt;...&lt;a&gt;
+&lt;/nav&gt;
+</pre>
+            <nav class="nav--pagination">
+                <a href="#"><i class="fa fa-chevron-left"></i></a>
+                <a href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">...</a>
+                <a href="#"><i class="fa fa-chevron-right"></i></a>
+            </nav>
+            <pre>
+&lt;!-- use ".nav--pagination" for pagination --&gt;
+&lt;nav class="nav--pagination""&gt;
+    &lt;a href="#"&gt;...&lt;a&gt;
+&lt;/nav&gt;
+</pre>
+        </div>
+    </div>
+
+
+    <div class="unit-fifth pad-sides sidebar sidebar--left">
+        <nav class="nav nav--vertical">
+            <a href="#grid">Grid</a>
+            <a href="#typography">Typography</a>
+            <a href="#forms">Forms</a>
+            <a href="#tables">Tables</a>
+            <a href="#buttons">Buttons</a>
+            <a href="#icons">Icons</a>
+            <a href="#navigation">Navigation</a>
+        </nav>
+    </div>
+
+</div>
+
+
+    <ul class="breakpoint-test  unstyled">
+        <li class="bp-hand-only">Hand Only</li>
+        <li class="bp-hand-wide">Hand Wide</li>
+        <li class="bp-hand-wide-only">Hand Wide Only</li>
+        <li class="bp-tablet">Tablet</li>
+        <li class="bp-tablet-only">Tablet Only</li>
+        <li class="bp-monitor">Monitor</li>
+        <li class="bp-monitor-only">Monitor Only</li>
+        <li class="bp-monitor-large">Monitor Large</li>
+        <li class="bp-tv">TV</li>
+        <li class="bp-hidpi">HiDPI</li>
+    </ul>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            
+
+        });
+    </script>
+</body>
+</html>
