@@ -145,7 +145,7 @@
     @extend %button;
     background-color: $color-brand-secondary;
     border-color: $color-brand-secondary-dark;
-    @include color_with_contrast_check( $color-brand-dark );
+    @include color_with_contrast_check( $color-brand-secondary );
 
     &:hover {
         background-color: $color-brand-secondary-dark;
@@ -155,7 +155,7 @@
     @extend %button;
     background-color: $color-warning;
     border-color: darken($color-warning, 15%);
-    text-shadow:0 1px rgba(255,255,255,.25);
+    @include color_with_contrast_check( $color-warning );
     
     &:hover {
         background-color: darken($color-warning, 15%);
@@ -186,6 +186,21 @@
 
 .button--block {
     display:block;
+}
+
+.lt-ie9 {
+    [class*="button"] {
+        padding-top:6px;
+        padding-bottom:6px;
+    }
+    .button--large {
+        padding-top:11px;
+        padding-bottom:11px;
+    }
+    .button--small {
+        padding-top:2px;
+        padding-bottom:2px;
+    }
 }
 
 
@@ -312,6 +327,7 @@
     a {
         display:inline-block;
         padding:.35em 1em .45em;
+        @include word-wrap();
 
         &:hover {
             background: $color-light-gray;

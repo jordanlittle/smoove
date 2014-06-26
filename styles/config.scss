@@ -9,10 +9,10 @@ $font-sans:             'PT Sans Narrow', sans-serif;
 $font-serif:            georgia,serif;
 
 // colors
-$color-brand:           #3c7a8f;
+$color-brand:           #7bd64e;
     $color-brand-dark:  darken($color-brand, 10%);
     $color-brand-light: lighten($color-brand, 10%);
-$color-brand-secondary: #d1a66d;
+$color-brand-secondary: #68818b;
     $color-brand-secondary-dark: darken($color-brand-secondary, 10%);
     $color-brand-secondary-light:lighten($color-brand-secondary, 10%);
 $color-text:            #444;
@@ -23,7 +23,7 @@ $color-light-gray:      #ededed;
 $color-error:           #d03737;
 $color-warning:         #f5cc4e;
 $color-success:         #6bbb61;
-$color-sidebar-bg:      #111;
+$color-sidebar-bg:      #f5f5f5;
 
 // font sizes, style vars, and typography basics
 $base-font-size:    16px;

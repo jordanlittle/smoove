@@ -130,6 +130,15 @@
             animation: #{$str};
 }
 
+@mixin word-wrap() {
+    -ms-word-break: break-all;
+        word-break: break-all;
+        word-break: break-word;
+    -webkit-hyphens: auto;
+       -moz-hyphens: auto;
+    hyphens: auto;
+}
+
 @mixin shape_square($arg) {
     width: $arg;
     height: $arg;
@@ -142,7 +151,7 @@
 }
 
 @mixin color_with_contrast_check( $bg-color ) {
-    @if lightness( $bg-color ) > lightness( #555 ) {
+    @if lightness( $bg-color ) > lightness( rgba( 140,140,140,1) ) {
         color: #fff;
         text-shadow: 0 1px 0 rgba(0,0,0,.25);
     } @else {
