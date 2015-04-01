@@ -1,29 +1,20 @@
-﻿@import "helpers.scss";
-/*      
-    
-    CONTENTS
-    ========
-    Base Classes
-    Nudge & Pad Classes
-    Buttons
-    Lists
-    Typography Helpers
-    Form Helpers
-    Tables
-    Navigation
-
-*/
+﻿//    CONTENTS
+//    ========
+//    Base Classes
+//    Nudge & Pad Classes
+//    Buttons
+//    Lists
+//    Typography Helpers
+//    Form Helpers
+//    Tables
+//    Navigation
 
 
 
 
-/* ---------------------------------------- *\
-
-
-    Base Classes
-
-
-\* ---------------------------------------- */
+// ----------------------------------------
+// Base Classes
+// ----------------------------------------
 
 .no-layout      { @extend %no-layout; }
 .hidden         { @extend %hidden; }
@@ -43,25 +34,25 @@
 
 
 
-/* ---------------------------------------- *\
-
-
-    Nudge & Pad Classes
-
-
-\* ---------------------------------------- */
+// ----------------------------------------
+// Nudge & Pad Classes
+// ----------------------------------------
 
 [class^="nudge-"]   { position:relative; }
+
 @for $nudge-amount from 1 through 10 {
     .nudge-up-#{$nudge-amount} {
         bottom: 0px + $nudge-amount;
     }
+
     .nudge-down-#{$nudge-amount} {
         top: 0px + $nudge-amount;
     }
+
     .nudge-left-#{$nudge-amount} {
         left: 0px + $nudge-amount;
     }
+
     .nudge-right-#{$nudge-amount} {
         right: 0px + $nudge-amount;
     }
@@ -77,13 +68,9 @@
 
 
 
-/* ---------------------------------------- *\
-
-
-    Buttons
-
-
-\* ---------------------------------------- */
+// ----------------------------------------
+// Buttons
+// ----------------------------------------
 
 %button {
     display:inline-block;
@@ -92,14 +79,15 @@
     padding:5px 17px 7px;
     margin:.125em 0;
     font-weight:bold;
-    @include transition(.2s ease-in-out background-color);
     background-color: $color-light-gray;
     border-bottom-color: $color-input-border;
-    @include color_with_contrast_check( $color-brand-dark );
     cursor:pointer;
     font-size:16px;
     text-align:center;
     line-height:1em;
+
+    @include color-with-contrast-checker($color-brand-dark);
+    @include transition(.2s ease-in-out background-color);
 
     &:hover {
         border-bottom-width:1px;
@@ -110,6 +98,7 @@
         top:1px;
     }
 }
+
 .button,
 .button--large,
 .button--small {
@@ -120,6 +109,7 @@
         border-bottom-width:1px;
     }
 }
+
 .button--link {
     @extend %button;
     background-color: transparent;
@@ -131,42 +121,49 @@
         text-decoration:underline;
     }
 }
+
 .button--main {
     @extend %button;
     background-color: $color-brand;
     border-color: $color-brand-dark;
-    @include color_with_contrast_check( $color-brand );
+
+    @include color-with-contrast-checker($color-brand);
 
     &:hover {
         background-color: $color-brand-dark;
     }
 }
+
 .button--secondary {
     @extend %button;
     background-color: $color-brand-secondary;
     border-color: $color-brand-secondary-dark;
-    @include color_with_contrast_check( $color-brand-secondary );
+
+    @include color-with-contrast-checker($color-brand-secondary);
 
     &:hover {
         background-color: $color-brand-secondary-dark;
     }
 }
+
 .button--warning {
     @extend %button;
     background-color: $color-warning;
     border-color: darken($color-warning, 15%);
-    @include color_with_contrast_check( $color-warning );
+
+    @include color-with-contrast-checker($color-warning);
     
     &:hover {
         background-color: darken($color-warning, 15%);
     }
 }
+
 .button--serious {
     @extend %button;
     background-color: $color-error;
     border-color: darken($color-error, 15%);
     color:#fff;
-    text-shadow:0 1px rgba(0,0,0,.2);
+    text-shadow:0 1px rgba(0, 0, 0, .2);
         
     &:hover {
         background-color: darken($color-error, 15%);
@@ -178,6 +175,7 @@
     font-size:1.5em;
     padding:10px 22px 12px;
 }
+
 .button--small {
     @extend %button;
     font-size:.75em;
@@ -193,10 +191,12 @@
         padding-top:6px;
         padding-bottom:6px;
     }
+
     .button--large {
         padding-top:11px;
         padding-bottom:11px;
     }
+
     .button--small {
         padding-top:2px;
         padding-bottom:2px;
@@ -206,16 +206,12 @@
 
 
 
-/* ---------------------------------------- *\
-
-
-    Lists
-
-
-\* ---------------------------------------- */
+// ----------------------------------------
+// Lists
+// ----------------------------------------
 
 // kills list styles
-.unstyled       { @extend %unstyled; }
+.unstyled { @extend %unstyled; }
 
 // used on UL's for brand-colored bullets
 .fancy-bullets {
@@ -241,13 +237,9 @@
 
 
 
-/* ---------------------------------------- *\
-
-
-    Typography Helpers
-
-
-\* ---------------------------------------- */
+// ----------------------------------------
+// Typography Helpers
+// ----------------------------------------
 
 // use on a div with two headings inside
 .hgroup {
@@ -255,6 +247,7 @@
         margin-bottom: .125em;
         line-height:1em;
     }
+
     :last-child {
         color:$color-text-light;
         font-weight:normal;
@@ -273,26 +266,18 @@
 
 
 
-/* ---------------------------------------- *\
-
-
-    Form Helpers
-
-
-\* ---------------------------------------- */
+// ----------------------------------------
+// Form Helpers
+// ----------------------------------------
 
 .input--fit { @extend %display-block; width:100%; }
 
 
 
 
-/* ---------------------------------------- *\
-
-
-    Tables
-
-
-\* ---------------------------------------- */
+// ----------------------------------------
+// Tables
+// ----------------------------------------
 
 .table--zebra {
     tr:nth-child(even) {
@@ -307,6 +292,7 @@
 .table--borderless td {
     border:none;
 }
+
 .table--borderless tr:last-child td {
     border-bottom:1px solid $color-light-gray;
 }
@@ -314,19 +300,17 @@
 
 
 
-/* ---------------------------------------- *\
-
-
-    Navigation
-
-
-\* ---------------------------------------- */
+// ----------------------------------------
+// Navigation
+// ----------------------------------------
 
 %nav {
     @extend %unstyled;
+
     a {
         display:inline-block;
         padding:.35em 1em .45em;
+
         @include word-wrap();
 
         &:hover {
@@ -335,9 +319,11 @@
         }
     }
 }
+
 .nav {
     @extend %nav;
 }
+
 .nav--vertical {
     @extend %nav;
 
@@ -346,6 +332,7 @@
         padding:.45em .35em .55em;
     }
 }
+
 .nav--bordered {
     @extend %nav;
 
@@ -362,6 +349,7 @@
         }
     }
 }
+
 .nav--bordered.nav--vertical {
     a {
         float:none;
@@ -373,6 +361,7 @@
         }
     }
 }
+
 .nav--pagination {
     @extend %nav;
     text-align:center;

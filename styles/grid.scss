@@ -1,6 +1,4 @@
-﻿@import "helpers.scss";
-
-@if $grid-fixed == true {
+﻿@if $grid-fixed == true {
     .g {
         max-width: $grid-fixed-width;
         @extend %center-block; 
@@ -24,8 +22,8 @@
         [class*="unit-mobile"] {
             float:left;
             min-height:1px;
-            @extend %clearfix;
         }
+
         .unit-mobile-three-fourths { width: percentage(3/4); }
         .unit-mobile-two-thirds { width: percentage(2/3); }
         .unit-mobile-half   { width: percentage(1/2); }
@@ -38,7 +36,6 @@
         [class*="unit-"] {
             float:left;
             min-height:1px;
-            @extend %clearfix;
         }
 
         @for $g from 1 through 12 {
@@ -62,6 +59,7 @@
         float:none;
     }
 }
+
 .g--guttered {
     @include context(tablet){
         margin-left: -$grid-gutter-size;
@@ -81,12 +79,15 @@
         min-height:1px;
         @extend %clearfix;
     }
+
     @for $g from 1 through 12 {
         .unit-#{$g}     { width: percentage($g/12); }
         .offset-#{$g}   { margin-left: percentage($g/12); }
     }
+
     .g--guttered {
         margin-left: -$grid-gutter-size;
+
         [class*="unit-"] {
             padding-left:$grid-gutter-size;
         }

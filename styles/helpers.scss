@@ -1,34 +1,24 @@
-﻿@import "config.scss";
-
-/*      
-    
-    CONTENTS
-    ========
-    Mixins
-    Silent Mixins
-    Debug
-
-*/
+﻿//    CONTENTS
+//    ========
+//    Mixins
+//    Silent Mixins
+//    Debug
 
 
+// scss-lint:disable all
 
+// ----------------------------------------
+// Mixins
+// ----------------------------------------
 
-/* ---------------------------------------- *\
-
-
-    Mixins
-
-
-\* ---------------------------------------- */
-
-@mixin context( $bp ) {
+@mixin context($bp) {
     @if $bp == hand-only {
-        @media (max-width: $bp-hand-wide )
+        @media (max-width: $bp-hand-wide)
         { @content }
     }
 
     @else if $bp == hand-wide {
-        @media (min-width: $bp-hand-wide )
+        @media (min-width: $bp-hand-wide)
         { @content }
     }
     @else if $bp == hand-wide-only {
@@ -42,7 +32,7 @@
     }
 
     @else if $bp == tablet {
-        @media (min-width: $bp-tablet )
+        @media (min-width: $bp-tablet)
         { @content }
     }
     @else if $bp == tablet-only {
@@ -60,12 +50,12 @@
     }
 
     @else if $bp == monitor-large {
-        @media (min-width: $bp-monitor-large )
+        @media (min-width: $bp-monitor-large)
         { @content; }
     }
 
     @else if $bp == tv {
-        @media (min-width: $bp-tv )
+        @media (min-width: $bp-tv)
         {@content; }
     }
 
@@ -150,12 +140,12 @@
     @include border-radius(100%);
 }
 
-@mixin color_with_contrast_check( $bg-color ) {
-    @if lightness( $bg-color ) > lightness( rgba( 140,140,140,1) ) {
+@mixin color-with-contrast-checker($bg-color) {
+    @if lightness($bg-color) > lightness(rgba(140,140,140,1)) {
         color: #fff;
         text-shadow: 0 1px 0 rgba(0,0,0,.25);
     } @else {
-        color: darken( $bg-color, 50%);
+        color: darken($bg-color, 50%);
         text-shadow: 0 1px 0 rgba(255,255,255,.25);
     }
 }
@@ -163,22 +153,9 @@
 
 
 
-/* ---------------------------------------- *\
-
-
-    Silent Mixins
-
-    Also known as placeholders or extensions, these rules don't get
-    rendered to the CSS file unless they are extended in a prop later down
-    the stylesheet. Use like this:
-
-    .test {
-        @extend %clearfix;
-        // all of %clearfix's styles will be applied to .test
-    }
-
-
-\* ---------------------------------------- */
+// ----------------------------------------
+// Silent Mixins
+// ----------------------------------------
 
 %clearfix {
     zoom:1;
@@ -208,7 +185,7 @@
 
 @if $global-rounded == true {
     %rounded {
-        @include border-radius( $border-radius );
+        @include border-radius($border-radius);
     }
 }
 
@@ -263,18 +240,15 @@
 
 
 
-/* ---------------------------------------- *\
-
-
-    Debug
-
-
-\* ---------------------------------------- */
+// ----------------------------------------
+// Debug
+// ----------------------------------------
 
 .breakpoint-test {
     @if $debug-breakpoints == false {
         display:none;
     }
+
     position:fixed;
     bottom:0;
     left:0;
@@ -290,41 +264,49 @@
         padding:5px;
         outline:none;
     }
+
     .bp-hand-only {
         @include context(hand-only) {
             display: block;
         }
     }
+
     .bp-hand-wide {
         @include context(hand-wide) {
             display:block;
         }
     }
+
     .bp-hand-wide-only {
         @include context(hand-wide-only) {
             display:block;
         }
     }
+
     .bp-tablet {
         @include context(tablet) {
             display:block;
         }
     }
+
     .bp-tablet-only {
         @include context(tablet-only) {
             display:block;
         }
     }
+
     .bp-monitor {
         @include context(monitor) {
             display:block;
         }
     }
+
     .bp-monitor-only {
         @include context(monitor-only) {
             display:block;
         }
     }
+
     .bp-tv {
         @include context(tv) {
             display:block;
@@ -425,6 +407,7 @@
     img[alt] {
         outline:none;
     }
+
     img[alt=""] {
         @extend %debug-outline;
     }
@@ -443,3 +426,5 @@
         background-repeat: repeat;
     }
 }
+
+// scss-lint:enable all
