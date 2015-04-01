@@ -1,6 +1,8 @@
 .css
 .map
 .sass-cache
+.sass-report.xml
+.log
 
 node_modules
 
