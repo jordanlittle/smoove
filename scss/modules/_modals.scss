@@ -18,18 +18,16 @@ body.smoove-modal--viewing {
 	bottom:0;
 	background-color: rgba(0,0,0,.85);
 	z-index: $z-stack-top;
-	overflow-y: scroll;
+	overflow-x:hidden;
+	overflow-y: auto;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
 	-webkit-overflow-scrolling: touch;
-
-	visibility:hidden;
-	opacity:0;
+	display:none;
 
 	transition: $default-transition;
 
 		&.is-visible {
-			visibility: visible;
-			opacity:1;
+			display:block;
 		}
 }
 
@@ -81,7 +79,7 @@ body.smoove-modal--viewing {
 			top:8px;
 			right:-3px;
 			@include shape_circle(48px);
-			line-height: 43px;
+			line-height: 41px;
 			transition: $default-transition;
 
 			&:hover {

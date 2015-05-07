@@ -16,7 +16,6 @@
 
 	[class*="u-"] {
 		@extend %clearfix;
-		@extend %transition;
 		min-height: 1px;
 	}
 

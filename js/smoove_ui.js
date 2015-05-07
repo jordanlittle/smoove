@@ -14,9 +14,9 @@ $(function(){
 
     // Watching document for clicks to clear 
     // http://stackoverflow.com/a/7385673
-	$(document, '[data-sb-reset]').on('mouseup', function (e) {
-	    var ui_panels = $('[data-sb-ui-panel]');
-	    // if the target of the click isn't a sb-ui-panel...
+	$(document, '[data-smoove-reset]').on('mouseup', function (e) {
+	    var ui_panels = $('[data-smoove-ui-panel]');
+	    // if the target of the click isn't a smoove-ui-panel...
 	    // ... nor a descendant
 	    if (!ui_panels.is(e.target) && ui_panels.has(e.target).length === 0) 
 	    {
@@ -24,13 +24,6 @@ $(function(){
 	    }
 	});
 
-	// Window Resizing Timeout
-	// Avoids having to poll browser hundreds of times when resizing
-	var resize_event_lag_timer;
-	$(window).resize(function() {
-	    clearTimeout(resize_event_lag_timer);
-	    resize_event_lag_timer = setTimeout(resize_event_lag);
-	});
 
 	// function to reset all modals, dropdowns, etc.
 	function smooveReset() {
@@ -106,9 +99,11 @@ $(function(){
 	//
 	function resetModals() {
 		$('body').removeClass('smoove-modal--viewing');
+		$('.smoove-modal').removeClass(is_visible_class);
 	}
+	
 	if( $('.smoove-modal').length ) {
-		//$('[class*="sb-modal--container').hide();
+		//$('[class*="smoove-modal--container').hide();
 
 		$('[data-modal-id]').on('click', function(e){
 
@@ -120,12 +115,10 @@ $(function(){
 			var sb_overlay = $( '#' + clicked.data('modal-id') );
 
 			// add no scroll class to body
-			$('body').addClass('sb-modal--viewing');
-
-			sb_overlay.show();
+			$('body').addClass('smoove-modal--viewing');
 
 			// add visible class to the overlay
-			sb_overlay.addClass('is-visible');
+			sb_overlay.addClass(is_visible_class);
 			
 		});
 	}

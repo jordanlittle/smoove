@@ -91,7 +91,7 @@
                                         <fieldset class="u-md-8">
                                             <label for="test_email">Email</label>
                                             <input class="input-fit input-has-icon" type="email" id="test_email" />
-                                            <i class="input-icon icon--md ion-email"></i>
+                                            <i class="input-icon fa-fw fa-envelope-o"></i>
                                         </fieldset>
                                         <fieldset class="u-md-4  pad-left no-pad-left-sm">
                                             <label for="test_select">Model?</label>
@@ -131,9 +131,7 @@
             <div class="header-inner g">
                 <div class="u-sm-6 u-md-6">
                     <span class="header-page-info">
-                        <span class="header-page-title">
-                            <span class="">Smoove</span>
-                        </span>
+                        <span class="header-page-title">Smoove</span>
                     </span>
                 </div>
             </div>
@@ -151,7 +149,7 @@
                 </nav>
             </div>
 
-            <div class="u-md-7 offset-md-4  pad-right no-pad-right-sm">
+            <div class="u-md-7 offset-md-4">
 
                 <h1>Smoove</h1>
                 <hr />
@@ -225,7 +223,7 @@
                                         <fieldset class="u-md-8">
                                             <label for="test_email">Email</label>
                                             <input class="input-fit input-has-icon" type="email" id="test_email" />
-                                            <i class="input-icon icon--md ion-email"></i>
+                                            <i class="input-icon icon--md fa fa-envelope-o"></i>
                                         </fieldset>
                                         <fieldset class="u-md-4  pad-left no-pad-left-sm">
                                             <label for="test_select">Model?</label>
@@ -314,11 +312,9 @@
                     <p>Use <code class="language-markup">colspan-[1-12]</code> classes to format table cells in a 12 column grid.</p>
 <pre class="push-down"><code class="language-markup">
 &lt;div class="table-scroll"&gt;
-	&lt;table class="table" title="Sunday"&gt;
-		&lt;input name="day[]" type="checkbox" id="sun" class="day-picker-input" /&gt;
-    	&lt;label for="sun" class="day-picker-label"&gt;Su&lt;/label&gt;
-	&lt;/div&gt;
-	&lt;div class="day-picker-cell" title="Monday"&gt;...&lt;/div&gt;
+	&lt;table class="table"&gt;
+		&lt;!-- content --&gt;
+	&lt;/table&gt;
 &lt;/div&gt;</code></pre>
                     <div class="table-scroll">
 	                    <table class="table">
@@ -367,7 +363,7 @@
                     </div>
 
                     <h3>Icons</h3>
-                    <p>Smoove uses Fontawesome icons [<a href="http://fontawesome.com/">Site</a>]. Use the <code class="language-markup">va-[top,mid,bot]</code> classes to align the icons vertically. You can also use the <code class="language-markup">icon--sm, icon--md, icon--lg</code> classes to control the size of the icon.</p>
+                    <p>Smoove uses Fontawesome icons [<a href="http://fortawesome.github.io/Font-Awesome/icons/">Documentation</a>]. Use the <code class="language-markup">va-[top,mid,bot]</code> classes to align the icons vertically. You can also use the <code class="language-markup">icon--sm, icon--md, icon--lg</code> classes to control the size of the icon.</p>
 <pre class="push-down"><code class="language-markup">
 &lt;i class="icon fa fa-search"&gt;&lt;i&gt;
 &lt;i class="icon--lg fa fa-search"&gt;&lt;i&gt;
@@ -457,10 +453,10 @@
                         <a href="#" class="button--main">Button Main</a>
                         <a href="#" class="button--secondary">Button Secondary</a>
                         <a href="#" class="button--link">Button Link</a>
-                        <a href="#" class="button--success"><i class="icon ion-ios-checkmark-outline"></i> Button Success</a>
+                        <a href="#" class="button--success"><i class="icon fa fa-thumbs-o-up"></i> Button Success</a>
                         <button class="button" disabled>Button Disabled</button>
-                        <a href="#" class="button--warning"><i class="icon ion-alert-circled"></i> Button Warning</a>
-                        <a href="#" class="button--serious"><i class="icon ion-android-alert"></i> Button Error</a>
+                        <a href="#" class="button--warning"><i class="icon fa fa-exclamation-triangle"></i> Button Warning</a>
+                        <a href="#" class="button--serious"><i class="icon fa fa-exclamation-circle"></i> Button Error</a>
                     </div>
                     <p>Buttons can be in three sizes.</p>
                     <pre><code class="language-markup">
@@ -471,13 +467,42 @@
                         <a href="#" class="button">Button</a>
                         <a href="#" class="button--lg">Button Large</a>
                     </div>
+                    
+                    
+                    
+                    <h3>Smoove Cards & Card Padding</h3>
+					<p>A very generic class meant to be used for highlighting a certain section with a white background and a subtle box-shadow. Adding a class of <code class="language-markup">card</code> applies the background and shadows. Include a class of <code class="language-markup">card-pad-[size]</code> (using the sizes lg, md, and sm) to add padding of various sizes.</p><p>Avoid mixing the grid classes with these card classes. Use the grid to create a scaffold around cards. </p><p>Card-pad sizes are used on cards to keep a separate scope from the global <code class="language-markup">pad-[direction]</code> classes.</p>
+					<pre><code class="language-markup">
+&lt;div class="u-md-6 u-sm-6"&gt;						
+	&lt;div class="card  card-pad-md"&gt;
+		&lt;!-- ... --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+					<div class="g">
+						<div class="u-md-4  u-sm-3">
+							<div class="card  card-pad-md">
+								<p class="text-center no-layout">I'm a card</p>
+							</div>
+						</div>
+						<div class="u-md-7  offset-md-1  u-sm-8 offset-sm-1">
+							<div class="card  card-pad-sm  push-bottom">
+								<p class="text-center no-layout">I'm a card</p>
+							</div>
+							<div class="g">
+								<div class="u-md-3 u-sm-5">
+									<div class="card card-pad-md  text-center">
+										<i class="icon--lg ion-android-alarm-clock"></i>
+									</div>
+								</div>
+								<div class="u-md-6  offset-md-3  u-sm-5 offset-sm-2">
+									<div class="card card-pad-md  text-center">
+										<i class="icon--lg ion-help-circled"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
-
-                    <h3>Banners</h3>
-                    <pre><code class="language-markup">
-&lt;a class="button"&gt;Button&lt;/a&gt;
-&lt;a class="button--secondary"&gt;Button Secondary&lt;/a&gt;
-&lt;a class="button--success"&gt;Button Success&lt;/a&gt;</code></pre>
 
 
                     <h3>Navs</h3>
@@ -505,11 +530,11 @@
 	&lt;a href="#" class="button--link"&gt;2&lt;/a&gt;
 &lt;/nav&gt;</code></pre>
 				<nav class="nav--pagination">
-                    	<a href="#" class="button--link"><i class="icon ion-chevron-left"></i></a>
+                    	<a href="#" class="button--link"><i class="icon fa fa-chevron-left"></i></a>
                     	<a href="#" class="button--link  current">1</a>
                     	<a href="#" class="button--link">2</a>
                     	<a href="#" class="button--link">3</a>
-                    	<a href="#" class="button--link"><i class="icon ion-chevron-right"></i></a>
+                    	<a href="#" class="button--link"><i class="icon fa fa-chevron-right"></i></a>
                     </nav>
 
                     <h3>UI Messages</h3>
@@ -522,7 +547,7 @@
 &lt;/div&gt;</code></pre>
                     <div class="ui-message-container--info">
                     	<div class="ui-message-body">
-                    		<i class="icon ion-information-circled ui-message-icon"></i>
+                    		<i class="icon fa-fw fa-info-circle ui-message-icon"></i>
                     		<span class="ui-message-text">
                     			Search using names or emails.
                     		</span>
@@ -531,7 +556,7 @@
 
                     <div class="ui-message-container--warning">
                     	<div class="ui-message-body">
-                    		<i class="icon ion-help-circled ui-message-icon"></i>
+                    		<i class="icon fa-fw fa-exclamation-triangle ui-message-icon"></i>
                     		<span class="ui-message-text">
                     			Don't forget to add your email.
                     		</span>
@@ -540,7 +565,7 @@
 
                     <div class="ui-message-container--error">
                     	<div class="ui-message-body">
-                    		<i class="icon ion-alert-circled ui-message-icon"></i>
+                    		<i class="icon fa-fw fa-exclamation-circle ui-message-icon"></i>
                     		<span class="ui-message-text">
                     			Missing a form field.
                     		</span>
@@ -701,42 +726,7 @@ The gutters are fixed and are set in _build.scss ($grid-gutter-size).
 	                        </div>
 	                    </div>
 	                </div>
-                    
-                    
-                    
-                    <h3>Smoove Cards & Card Padding</h3>
-					<p>Smoove features the idea of "cards." A very generic class meant to be used for highlighting a certain section with a white background and a subtle box-shadow. Adding a class of <code class="language-markup">card</code> applies the background and shadows. Include a class of <code class="language-markup">card-pad-[size]</code> (using the sizes lg, md, and sm) to add padding of various sizes.</p><p>Avoid mixing the grid classes with these card classes. Use the grid to create a scaffold around cards. </p><p>Card-pad sizes are used on cards to keep a separate scope from the global <code class="language-markup">pad-[direction]</code> classes.</p>
-					<pre><code class="language-markup">
-&lt;div class="u-md-6 u-sm-6"&gt;						
-	&lt;div class="card  card-pad-md"&gt;
-		&lt;!-- ... --&gt;
-	&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-					<div class="g">
-						<div class="u-md-4  u-sm-3">
-							<div class="card  card-pad-md">
-								<p class="text-center no-layout">I'm a card</p>
-							</div>
-						</div>
-						<div class="u-md-7  offset-md-1  u-sm-8 offset-sm-1">
-							<div class="card  card-pad-sm  push-bottom">
-								<p class="text-center no-layout">I'm a card</p>
-							</div>
-							<div class="g">
-								<div class="u-md-3 u-sm-5">
-									<div class="card card-pad-md  text-center">
-										<i class="icon--lg ion-android-alarm-clock"></i>
-									</div>
-								</div>
-								<div class="u-md-6  offset-md-3  u-sm-5 offset-sm-2">
-									<div class="card card-pad-md  text-center">
-										<i class="icon--lg ion-help-circled"></i>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-                    
+                                      
                     
                     
                     <h3>Smoove Tabs</h3>
@@ -831,6 +821,93 @@ The gutters are fixed and are set in _build.scss ($grid-gutter-size).
                     
                     
                 </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                <div id="layouts">
+                	<h2 class="section-heading">Layouts</h2>
+                	<hr />
+                    
+                    <div class="g">
+                        <div class="u-md-4 pad-right no-pad-right-sm">
+                            <h3>App Frame</h3>
+                            <p>Fixed header, fixed left sidebar, scrolling main section.</p>  
+                        </div>
+                        <div class="u-md-8">
+<pre><code class="language-markup">
+&lt;body&gt;
+    &lt;header class="header  header--app"&gt;
+        &lt;div class="header-inner g"&gt;
+            &lt;span class="header-page-info"&gt;
+                &lt;span class="header-page-title"&gt;My App&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div class="page page--app  g"&gt;
+        &lt;div class="u-md-3  sidebar  sidebar--app"&gt;
+            &lt;nav&gt;
+                &lt;a href="" class="button--link text-left"&gt;&lt;i class="icon fa-fw fa-cube"&gt;&lt/i&gt; My App Nav&lt;/a&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+        &lt;div class="u-md-7 offset-md-4"&gt;
+            &lt;h1&gt;My App Name&lt/h1&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="g">
+                        <div class="u-md-4 pad-right no-pad-right-sm">
+                            <h3>Centered Website</h3>
+                            <p>Static header, two-column layout.</p>  
+                        </div>
+                        <div class="u-md-8">
+<pre><code class="language-markup">
+&lt;body&gt;
+    &lt;header class="header"&gt;
+        &lt;div class="header-inner header-inner--wrap g"&gt;
+            &lt;span class="header-page-info"&gt;
+                &lt;span class="header-page-title"&gt;My Site&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div class="page page--wrap  g"&gt;
+        &lt;div class="u-md-2"&gt;
+            &lt;nav class="nav--bordered nav--vertical"&gt;
+                &lt;a href="" class="button--link text-left"&gt;About&lt;/a&gt;
+                &lt;a href="" class="button--link text-left"&gt;Contact&lt;/a&gt;
+                &lt;a href="" class="button--link text-left"&gt;Information&lt;/a&gt;
+                &lt;a href="" class="button--link text-left"&gt;Cheap Taxidermy&lt;/a&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+        &lt;div class="u-md-9 offset-md-1"&gt;
+            &lt;h1>My Site&lt;/h1&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+                        </div>
+                    </div>   
+                    
+                                	
+                </div>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
 
 
 

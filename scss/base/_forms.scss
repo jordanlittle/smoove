@@ -146,6 +146,7 @@ select {
     color: $color-text-light;
     margin:0;
     padding:0 0 0 .45em;
+	border-radius: $border-radius;
 
     @media (max-height:720px) {
     	font-size: .95em;

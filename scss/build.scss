@@ -7,7 +7,7 @@ $font-serif:            georgia,serif;
 $font-icon: 			'Fontawesome';
 
 // colors
-$color-brand:           #c93a3a;
+$color-brand:           #ff6666;
     $color-brand-dark:  darken($color-brand, 10%);
     $color-brand-light: lighten($color-brand, 10%);
 $color-brand-secondary: #5b9bb3;
@@ -79,7 +79,7 @@ $bp-tv:             100em;
 
 // grid settings 
 $grid-gutter-size:  1.25em;
-$grid-max-width: 	800em;
+$grid-max-width: 	80em;
 $header-height: 	60px;
 
 // debug mode settings
@@ -104,31 +104,31 @@ $debug-form-actions:false !default;
 
 \* ---------------------------------------- */
 
-@import "_helpers";
+@import "helpers";
 
-@import "base/_reset";
-@import "base/_typography";
-@import "base/_links";
-@import "base/_lists";
-@import "base/_tables";
-@import "base/_forms";
-@import "base/_media";
-@import "base/_icons";
+@import "base/reset";
+@import "base/typography";
+@import "base/links";
+@import "base/lists";
+@import "base/tables";
+@import "base/forms";
+@import "base/media";
+@import "base/icons";
 
-@import "objects/_utilities";
-@import "objects/_ui_messages";
-@import "objects/_buttons";
-@import "objects/_dropdowns";
-@import "objects/_navs";
-@import "objects/_stats";
-@import "objects/_cards";
+@import "objects/utilities";
+@import "objects/ui_messages";
+@import "objects/buttons";
+@import "objects/dropdowns";
+@import "objects/navs";
+@import "objects/stats";
+@import "objects/cards";
 
-@import "modules/_modals";
-@import "modules/_tabs";
-@import "modules/_headers";
-@import "modules/_sidebars";
-@import "modules/_grid";
-@import "modules/_pages";
+@import "modules/modals";
+@import "modules/tabs";
+@import "modules/headers";
+@import "modules/sidebars";
+@import "modules/grid";
+@import "modules/pages";
 
 
 
