@@ -1,0 +1,87 @@
+/* ---------------------------------------- *\
+    
+
+    Tables
+
+
+\* ---------------------------------------- */
+
+.table-scroll {
+	@extend %vertical-rhythm;
+	
+	@include context(small-screens-only) {
+		overflow-y:hidden;
+		overflow-x:scroll;
+		-ms-overflow-style: -ms-autohiding-scrollbar;
+		-webkit-overflow-scrolling: touch;
+		width:100%;
+		max-width:100%;
+		border: 1px solid $color-light-gray;
+		padding:3px;
+		box-shadow: inset -1px 0 3px rgba(0,0,0,.15);
+		border-radius: $border-radius;
+	}
+
+	& > table {
+		height: calc(100% + 1px); //
+		@extend %no-layout;
+		transform: translateZ(0);
+	}
+}
+
+%table {
+  border-collapse: collapse;
+  display:table;
+  border-spacing: 0;
+  width:100%;
+
+  th, td {
+      font-size:13px;
+      text-align:left;
+      vertical-align: middle;
+  }
+
+  th {
+      background: $color-light-gray;
+      border-left: 2px solid #fff;
+      padding:.5em .85em;
+
+      &:first-child {
+      	border-left:none;
+      }
+  }
+
+  td {
+      padding:.75em 1em;
+      border-bottom: 1px solid $color-light-gray;
+
+      & > * {
+      	@extend %no-layout; // kill all box level formatting on anything inside a td
+      }
+  }
+
+	@for $cell-units from 1 through 12 {
+		.colspan-#{$cell-units} {
+			width: percentage($cell-units/12);
+		}
+	}
+
+  tr:last-child td {
+  	border-bottom:none;
+  }
+
+  @include context(hand-wide) {
+      overflow-x: auto;
+      overflow-y: auto;
+  }
+}
+
+.table {
+  @extend %table;
+}
+
+.table--zebra {
+	tr:nth-child(odd) td {
+		background-color: #fafafa;
+	}
+}

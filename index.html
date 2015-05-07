@@ -1,549 +1,855 @@
-﻿<!DOCTYPE html>
-<!--[if lt IE 7]> <html class="ie6 lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>    <html class="ie7 lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>    <html class="ie8 lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en" class="">
-<!--<![endif]-->
-<head>
-    <meta charset="utf-8" />
-    <title>Smoove - Yet another CSS framework</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0" />
-    <link rel="stylesheet" media="all" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" media="all" href="styles/site.css" />
-    <!--[if lt IE 9]>
-        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        
+        <title>Smoove - Yet another CSS framework.</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+        
+        <!-- Google Font -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,300,700" rel="stylesheet" type="text/css" />
+        
+        <!-- Fontawesome -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        
+        <!-- Prism Syntax Highlighter -->
+        <link rel="stylesheet" media="all" href="js/prism_syntax_highlighter/prism.css" />
+        
+        <!-- Smoove CSS -->
+        <link rel="stylesheet" media="all" href="smoove.min.css" />
+        
+        <style>
+            .test-grid {
+	            background-color: rgba(0,0,0,.085);
+	            font-size: 10px;
+	            padding: 20px;
+	            line-height: 12px;
+	            margin-bottom: 2px;
+	            text-align: center;
+	            overflow: hidden;
+            }
+            .test-grid .test-grid {
+            	padding:14px;
+            }
+            .test-grid.cf {
+            	padding: 5px;
+            }
+            #grids [class*="u-"] + [class*="u-"] {
+            	outline:2px solid #fff;
+            }
+            #grids [class*="u-"] [class*="u-"] {
+            	outline:none;
+            	border-left:2px solid #fff;
+            }
+            #grids [class*="u-"] [class*="u-"]:first-child {
+            	outline:none;
+            	border-left:none;
+            }
+            #grids [class*="u-"] [class*="u-"] .test-grid {
+            	border-bottom: none;
+            }
+            #basestyles h1,
+            #basestyles h2,
+            #basestyles h3,
+            #basestyles h4 {
+            	position: relative;
+            }
+            .heading-test {
+	            position:absolute;
+	            top:0;
+	            left:-1.6em;
+	            font-size: 10px;
+	            line-height: 2em;
+	            color: #999;
+	            font-weight: normal;
+	            letter-spacing:0;
+            }
+            .section-heading {
+            	margin-top: 140px;
+            }
+        </style>
+        
+    </head>
+    <body>
 
-</head>
-<body>
+		<div class="smoove-modal-overlay" id="test_modal">
+			<div class="smoove-modal-container">
+				<header class="smoove-modal-header">
+					<span class="smoove-modal-title">Modal Demo</span>
+					<del class="smoove-modal-close" data-sb-reset><i class="icon--md fa fa-times"></i></del>
+				</header>
+				<div class="smoove-modal" data-sb-ui-panel>
+					<div class="smoove-modal-guts">
+						<form action="#" class="card card-pad-md">
+                                <fieldset>
+                                    <label for="test_name">Name</label>
+                                    <input class="input-fit" type="text" id="test_name" />
+                                </fieldset>
+                                <fieldset>
+                                    <div class="g">
+                                        <fieldset class="u-md-8">
+                                            <label for="test_email">Email</label>
+                                            <input class="input-fit input-has-icon" type="email" id="test_email" />
+                                            <i class="input-icon icon--md ion-email"></i>
+                                        </fieldset>
+                                        <fieldset class="u-md-4  pad-left no-pad-left-sm">
+                                            <label for="test_select">Model?</label>
+                                            <select class="input-fit" name="" id="test_select">
+                                                <option value="">Accord</option>
+                                                <option value="">Civic</option>
+                                            </select>
+                                        </fieldset>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <label for="test_select2">Select something</label>
+                                    <select class="input-fit" name="" id="test_select2">
+                                        <option value="">Select an option&hellip;</option>
+                                        <option value="">Another option</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset>
+                                    <label for="test_checkbox" class="toggler input-fit">
+                                    	<input checked type="checkbox" class="toggler-input" id="test_checkbox" />
+                                    	<span class="toggler-label">Need something?</span>
+                                    </label>
+                                </fieldset>
+                                <fieldset>
+                                    <button type="submit" class="button--block">Submit</button>
+                                </fieldset>
+                            </form>
+					</div>
+					<footer class="smoove-modal-footer">
+						
+					</footer>
+				</div>
+			</div>
+		</div>
 
-    <style>
-        .grid-test .content {
-            margin-bottom: 10px;
-            padding: 5px 0;
-            text-align: center;
-            background: #eee;
-            border-radius: 30px;
-        }
-    </style>
-
-    <header class="page-header pad-sides">
-        <h1 class="main-heading pull-left">Alot Styleguide</h1>
-        <nav class="nav pull-right">
-            <a href="#grid">Grid</a>
-            <a href="#typography">Typography</a>
-            <a href="#forms">Forms</a>
-            <a href="#tables">Tables</a>
-            <a href="#buttons">Buttons</a>
-            <a href="#icons">Icons</a>
-            <a href="#navigation">Navigation</a>
-        </nav>
-    </header>
-
-    <div class="g">
-        <div class="unit-whole pad-sides">
-
-            <h1 id="grid">Grid</h1>
-            <hr />
-
-            <div class="collapse grid-test">
-                <p>Smoove uses a simple, 12 column grid. Start a new row with <kbd>&lt;div class="g"&gt;&lt;/div&gt;</kbd> and include units inside to add up to 12.</p>
-                <div class="g">
-                    <div class="unit-whole"><div class="content">.unit-whole</div></div>
+        <header class="header  header--app">
+            <div class="header-inner g">
+                <div class="u-sm-6 u-md-6">
+                    <span class="header-page-info">
+                        <span class="header-page-title">
+                            <span class="">Smoove</span>
+                        </span>
+                    </span>
                 </div>
-                <div class="g">
-                    <div class="unit-9"><div class="content">.unit-9</div></div>
-                    <div class="unit-3"><div class="content">.unit-3</div></div>
-                </div>
-                <div class="g">
-                    <div class="unit-3"><div class="content">.unit-3</div></div>
-                    <div class="unit-3 offset-6"><div class="content">.unit-3.offset-6</div></div>
-                </div>
-                <div class="g">
-                    <div class="unit-3"><div class="content">.unit-3</div></div>
-                    <div class="unit-9"><div class="content">.unit-9</div></div>
-                </div>
-                <div class="g">
-                    <div class="unit-4"><div class="content">.unit-4</div></div>
-                </div>
-                <div class="g">
-                    <div class="unit-3"><div class="content">.unit-3</div></div>
-                    <div class="unit-3 offset-3"><div class="content">.unit-3.offset-3</div></div>
-                </div>
-                <pre>
-&lt;!-- the basic grid --&gt;
-&lt;div class="g"&gt;
-    &lt;div class="unit-9"&gt; ... &lt;/div&gt;
-    &lt;div class="unit-3"&gt; ... &lt;/div&gt;
-&lt;/div&gt;
-</pre>
-                <p class="text-center">Use offsets for moving grid units.</p>
-                <div class="g">
-                    <div class="unit-9 offset-3"><div class="content">.unit-9.offset-3</div></div>
-                </div>
-                <pre>
-&lt;!-- using offsets --&gt;
-&lt;div class="g"&gt;
-    &lt;div class="unit-9 offset-3"&gt; ... &lt;/div&gt;
-&lt;/div&gt;
-</pre>
-
-                <p class="text-center">Guttered grids using ".g--guttered"</p>
-                <div class="g g--guttered">
-                    <div class="unit-3"><div class="content">.unit-3</div></div>
-                    <div class="unit-3"><div class="content">.unit-3</div></div>
-                    <div class="unit-3"><div class="content">.unit-3</div></div>
-                    <div class="unit-3"><div class="content">.unit-3</div></div>
-                </div>
-                <pre>
-&lt;!-- using the "g--guttered" class --&gt;
-&lt;div class="g g--guttered"&gt;
-    &lt;div class="unit-3"&gt; ... &lt;/div&gt;
-    &lt;div class="unit-3"&gt; ... &lt;/div&gt;
-&lt;/div&gt;
-</pre>
-
-                <p>Mobile grid units use the syntax "unit-mobile-X" with X being "fourth", "third", "half", "two-thirds", "three-fourths". The normal unit-X class applies on larger screens, but display full-width and with no floats on smaller screens. On those smaller screens, the unit-mobile classes will apply. <strong>If you plan on using "unit-" classes after a set of "unit-mobile-" classes, use  &lt;div class="cf--mobile"&gt;&lt;/div&gt; to clear the floats.</strong></p>
-                <div class="g">
-                    <div class="unit-3 unit-mobile-half"><div class="content">.unit-3.unit-mobile-half</div></div>
-                    <div class="unit-3 unit-mobile-half"><div class="content">.unit-3.unit-mobile-half</div></div>
-                    <div class="cf--mobile"></div>
-                    <div class="unit-whole"><div class="content">.unit-whole</div></div>
-                </div>
-                <pre>
-&lt;!-- using the "unit-mobile" classes --&gt;
-&lt;div class="g"&gt;
-    &lt;div class="unit-3 unit-mobile-half"&gt; ... &lt;/div&gt;
-    &lt;div class="unit-3 unit-mobile-half"&gt; ... &lt;/div&gt;
-    &lt;div class="cf--mobile"&gt;&lt;/div&gt;
-    &lt;div class="unit-whole"&gt; ... &lt;/div&gt;
-&lt;/div&gt;
-</pre>
             </div>
+        </header>
+        
+        
+        <div class="page page--app  g">
 
-
-
-
-            <h1 id="typography">Typography</h1>
-            <hr />
-            <div class="collapse">
-
-                <h1>Let sleeping dogs lie (h1)</h1>
-                <h2>They're quite <a href="">dishonest</a> (h2)</h2>
-                <h3>They'll continue sleeping (h3)</h3>
-                <h4>So they may rest (h4)</h4>
-
-                <div class="hgroup">
-                    <h2>This is the first line in a div.hgroup</h2>
-                    <h3>This is the second line in a div.hgroup</h3>
-                </div>
-<pre>
-&lt;!-- wrap two headings in a "hgroup" div and get subheadings --&gt;
-&lt;div class="hgroup"&gt;
-    &lt;h2&gt;...&lt;/h2&gt;
-    &lt;h3&gt;...&lt;/h3&gt;
-&lt;/div&gt;
-</pre>
-
-                <h2>Always going to the store <small>For crackers</small></h2>
-                <pre>
-&lt;!-- place a "small" tag inside of a heading for a inline subheading --&gt;
-&lt;h2&gt;Heading text &lt;small&gt;Small text&lt;/small&gt;&lt;/h2&gt;
-</pre>
-
-                <h3>Paragraph and Inline Styles</h3>
-
-                <p class="lead">
-                    Furnished ticking hills for likewise, a us, managers, in her, the though, are page are into had I or and aged the receive place in strenuous to for get but sad. Carpeting out in decelerate out what the a going of this how sublime knowing of box thoughts.
-                </p>
-<pre>
-&lt;!-- add a class of "lead" for a large intro paragraph --&gt;
-&lt;p class="lead"&gt;
-    ...
-&lt;/p&gt;
-</pre>
-                <p>
-                    One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a <em> emphasized little he could see his brown belly</em>, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover <strong>strong</strong> it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, <a href="http://google.com">link</a> waved about helplessly as he looked. "What's happened to me?" he thought. It wasn't a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls.
-                </p>
-
-                <h3>Lists</h3>
-                <ol>
-                    <li>Remove the screws</li>
-                    <li>Tighten lug nuts</li>
-                    <li>Do this next</li>
-                    <li>And finally do this thing</li>
-                </ol>
-
-                <ul>
-                    <li>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit. Aenean commodo ligula eget dolor. Aenean
-                        massa.
-                    </li>
-                    <li>
-                        Cum sociis natoque penatibus et magnis dis
-                        parturient montes, nascetur ridiculus mus. Donec quam
-                        felis, ultricies nec, pellentesque eu, pretium quis,
-                        sem.
-                    </li>
-                    <li>
-                        Nulla consequat massa quis enim. Donec pede justo,
-                        fringilla vel, aliquet nec, vulputate eget, arcu.
-                    </li>
-                    <li>
-                        In enim justo, rhoncus ut, imperdiet a, venenatis
-                        vitae, justo. Nullam dictum felis eu pede mollis
-                        pretium. Integer tincidunt.
-                    </li>
-                </ul>
-
-                <ul class="unstyled">
-                    <li>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit. Aenean commodo ligula eget dolor. Aenean
-                        massa.
-                    </li>
-                    <li>
-                        Cum sociis natoque penatibus et magnis dis
-                        parturient montes, nascetur ridiculus mus. Donec quam
-                        felis, ultricies nec, pellentesque eu, pretium quis,
-                        sem.
-                    </li>
-                    <li>
-                        Nulla consequat massa quis enim. Donec pede justo,
-                        fringilla vel, aliquet nec, vulputate eget, arcu.
-                    </li>
-                    <li>
-                        In enim justo, rhoncus ut, imperdiet a, venenatis
-                        vitae, justo. Nullam dictum felis eu pede mollis
-                        pretium. Integer tincidunt.
-                    </li>
-                </ul>
-<pre>
-&lt;!-- add a class of "unstyled" to get rid of layout and bullets --&gt;
-&lt;ul class="unstyled"&gt;
-    &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
-                <ul class="fancy-bullets">
-                    <li>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit. Aenean commodo ligula eget dolor. Aenean
-                        massa.
-                    </li>
-                    <li>
-                        Cum sociis natoque penatibus et magnis dis
-                        parturient montes, nascetur ridiculus mus. Donec quam
-                        felis, ultricies nec, pellentesque eu, pretium quis,
-                        sem.
-                    </li>
-                    <li>
-                        Nulla consequat massa quis enim. Donec pede justo,
-                        fringilla vel, aliquet nec, vulputate eget, arcu.
-                    </li>
-                    <li>
-                        In enim justo, rhoncus ut, imperdiet a, venenatis
-                        vitae, justo. Nullam dictum felis eu pede mollis
-                        pretium. Integer tincidunt.
-                    </li>
-                </ul>
-<pre>
-&lt;!-- add a class of "fancy-bullets" to get branded arrow bullets --&gt;
-&lt;ul class="fancy-bullets"&gt;
-    &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
-</pre>
-
-                <h3>Blockquote</h3>
-                <blockquote>
-                    <p>Gregor then turned to look out the window at the dull weather. Drops of rain could be heard hitting the pane, which made him feel quite sad. "How about if I sleep a little bit longer and forget all this nonsense", he thought, but that was something he was unable to do because he was used to sleeping on his right, and in his present state couldn't get into that position. However hard he threw himself onto his right, he always rolled back to where he was.</p>
-                    <cite>Jordan Little</cite>
-                </blockquote>
-<pre>
-&lt;blockquote&gt;
-    &lt;p&gt;...&lt;/p&gt;
-    &lt;cite&gt;source&lt;/cite&gt;
-&lt;/blockquote&gt;
-</pre>
-            </div>
-            <h1 id="forms">Forms</h1>
-            <hr />
-            <div class="collapse g g--guttered">
-
-                <div class="unit-4">
-                    <form action="#" method="post">
-                        <fieldset>
-                            <label for="name">Name</label>
-                            <input class="input--fit" type="text" id="name" placeholder="Enter your full name" />
-                        </fieldset>
-                        <fieldset>
-                            <label for="message">Message</label>
-                            <textarea class="input--fit" id="message" placeholder="What's on your mind?"></textarea>
-                        </fieldset>
-                        <fieldset>
-                            <label for="select">Select</label>
-                            <select name="" id="select" class="input--fit">
-                                <option selected>Select an option...</option>
-                                <option>Second option</option>
-                                <option>Third option</</option>
-                            </select>
-                        </fieldset>
-                        <fieldset>
-                            <button class="button--main" type="submit">Submit</button>
-                        </fieldset>
-                    </form>
-                </div>
-                <div class="unit-8">
-                    <pre>
-&lt;!-- basic form markup --&gt;
-&lt;form method="post" action="/"&gt;
-    &lt;fieldset&gt;
-        &lt;label for="name"&gt;Name&lt;/label&gt;
-        &lt;input type="text" id="name" placeholder="Enter your full name" /&gt;
-    &lt;/fieldset&gt;
-    &lt;fieldset&gt;
-        &lt;button class="button--main" type="submit"&gt;Submit&lt;button/&gt;
-    &lt;/fieldset&gt;
-&lt;/form&gt;
-</pre>
-                </div>
-
-            </div>
-            <h1 id="tables">Tables</h1>
-            <hr />
-            <div class="collapse">
-                <table class="text-left">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>Category</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Jordan</td>
-                            <td>March 1, 2013</td>
-                            <td>Dev</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Brent</td>
-                            <td>April 2, 2013</td>
-                            <td>Dev</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Brad</td>
-                            <td>May 30, 2014</td>
-                            <td>Dev</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table--zebra  table--borderless  text-left">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Date</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Jordan</td>
-                            <td>test@test.com</td>
-                            <td>June 2, 2013</td>
-                        </tr>
-                        <tr>
-                            <td>Jordan</td>
-                            <td>test@test.com</td>
-                            <td>June 2, 2013</td>
-                        </tr>
-                        <tr>
-                            <td>Jordan</td>
-                            <td>test@test.com</td>
-                            <td>June 2, 2013</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <pre>
-&lt;!-- add a class of "table--zebra" to get zebra striping --&gt;
-&lt;table class="table--zebra"&gt;
-    &lt;tr&gt;...&lt;/tr&gt;
-&lt;/table&gt;
-&lt;!-- add a class of "table--borderless" to get a clean, border-free table --&gt;
-&lt;table class="table--zebra"&gt;
-    &lt;tr&gt;...&lt;/tr&gt;
-&lt;/table&gt;
-</pre>
-            </div>
-
-            <h1 id="buttons">Buttons</h1>
-            <hr />
-            <div class="collapse">
-                <p>
-                    <a href="http://google.com" class="button">.button</a>
-                    <a href="http://google.com" class="button rounded">.button.rounded</a>
-                </p>
-                <pre>
-&lt;!-- add a class of "button" to links, buttons, or inputs --&gt;
-&lt;a class="button"&gt; ... &lt;/a&gt;
-</pre>
-                <p>
-                    <a href="http://google.com" class="button--small">button--small</a>
-                    <a href="http://google.com" class="button">button</a>
-                    <a href="http://google.com" class="button--large">button--large</a>
-                </p>
-                <pre>
-&lt;!-- add a class of "button--small" or "button--large" for different sizes --&gt;
-&lt;a class="button--large"&gt; ... &lt;/a&gt;
-</pre>
-
-                <p>
-                    <a href="http://google.com" class="button">button</a>
-                    <a href="http://google.com" class="button--link">button--link</a>
-                    <a href="http://google.com" class="button--main">button--main</a>
-                    <a href="http://google.com" class="button--secondary">button--secondary</a>
-                    <a href="http://google.com" class="button--warning">button--warning</a>
-                    <a href="http://google.com" class="button--serious">button--serious</a>
-                </p>
-                <pre>
-&lt;!-- add various modifier classes for colors and effects --&gt;
-&lt;a class="button--serious"&gt; ... &lt;/a&gt;
-</pre>
-                <p>
-                    <a href="http://google.com" class="button">button</a>
-                    <a href="http://google.com" class="button--main button--block">button--block</a>
-                </p>
-                <pre>
-&lt;!-- add a class of "button--block" to get block-level, full-width buttons --&gt;
-&lt;a class="button--large"&gt; ... &lt;/a&gt;
-</pre>
-                <div class="g">
-                    <a href="http://google.com" class="button--secondary button--block unit-4">Clicky</a>
-                    <a href="http://google.com" class="button--main button--block unit-4 offset-4">Big Ol' Button</a>
-                </div>
-                <pre>
-&lt;!-- you can also use the grid classes to control block-level buttons --&gt;
-&lt;div class="g"&gt;
-    &lt;a class="button--main button--block unit-3 offset-3"&gt; ... &lt;/a&gt;
-&lt;/div&gt;
-</pre>
-            </div>
-            <h1 id="icons">Icons</h1>
-            <hr />
-            <div class="collapse">
-
-                <p>
-                    Use the &lt;i&nbsp;/&gt; tag with <a href="http://fortawesome.github.io/Font-Awesome/icons/">FontAwesome classes</a> for icons.<br />
-                    <small>Note: use a space between the &lt;i/&gt; tag and the text</small>
-                    <br />
-                    <br />
-                    <a href="http://google.com" class="button"><i class="fa fa-bookmark"></i> Favorite</a>
-                    <a href="http://google.com" class="button button--main"><i class="fa fa-plus-circle"></i> New</a>
-                </p>
-                <pre>
-&lt;a class="button"&gt;
-    &lt;i class="fa fa-bookmark"&gt;&lt;/i&gt; Favorite
-&lt;/a&gt;
-</pre>
-            </div>
-            <h1 id="navigation">Navigation</h1>
-            <hr />
-            <div class="collapse">
+            <div class="u-md-3  sidebar  sidebar--app">
                 <nav class="nav">
-                    <a href="http://google.com">Home</a>
-                    <a href="http://google.com">About</a>
-                    <a href="http://google.com">Contact</a>
-                    <a href="http://google.com">Services</a>
+                    <a href="#basestyles" class="button--link text-left"><i class="icon--md fa fa-fw fa-cog"></i> Base Styles</a>
+                       <a href="#objects" class="button--link text-left"><i class="icon--md fa fa-fw fa-cube"></i> Objects</a>
+                       <a href="#modules" class="button--link text-left"><i class="icon--md fa fa-fw fa-cubes"></i> Modules</a>
+                       <a href="#layouts" class="button--link text-left"><i class="icon--md fa fa-fw fa-columns"></i> Layouts</a>
                 </nav>
-                <pre>
-&lt;!-- markup for basic horizontal nav --&gt;
+            </div>
+
+            <div class="u-md-7 offset-md-4  pad-right no-pad-right-sm">
+
+                <h1>Smoove</h1>
+                <hr />
+                <p>These are the docs and examples of objects and modules in Smoove.</p>
+
+
+
+
+                <div id="basestyles">
+                    <h2>Base Styles</h2>
+                    <hr />
+                    <h1><span class="heading-test">h1</span>Welcome, Player</h1>
+                    <h2><span class="heading-test">h2</span>Organization Info</h2>
+                    <h3><span class="heading-test">h3</span>Player Activity</h3>
+                    <h4><span class="heading-test">h4</span>Other Information</h4>
+                    <div class="g">
+                        <div class="u-md-6 pad-right no-pad-right-sm">
+                            <p>Paragraphs. If you pry it up, so as to <a href="#">get it overhead</a>, and expose its rows of teeth, it seems a terrific portcullis; and such, alas! it proves to many a poor wight in the fishery, upon whom these spikes fall with impaling force.</p>
+                            <p>But far more terrible is it to behold, when fathoms down in the sea, you see some sulky whale, floating there suspended, with his prodigious jaw, some fifteen feet long, hanging straight down at right-angles with his body, for all the world like a ship's jib-boom.</p>
+                        </div>
+                        <div class="u-md-6  pad-left no-pad-left-sm">
+                            <p>If you pry it up, so as to get it overhead, and expose its rows of teeth, it seems a terrific portcullis; and such, alas! it proves to many a poor wight in the fishery, upon whom these spikes fall with impaling force.</p>
+                            <p>But far more terrible is it to behold, when fathoms down in the sea, you see some sulky whale, floating there suspended, with his prodigious jaw, some fifteen feet long, hanging straight down at right-angles with his body, for all the world like a ship's jib-boom.</p>
+                        </div>
+                    </div>
+                    <h3>Small Text</h3>
+                    <pre><code class="language-markup">
+&lt;!-- Use a small tag for small help text --&gt;
+&lt;small&gt;If you pry it up, so as to get it overhead&hellip;&lt;/small&gt;</code></pre>
+                    <small>If you pry it up, so as to get it overhead&hellip;</small>
+
+                    <h3>Stat Stacks</h3>
+                    <div class="g">
+                    	<div class="u-md-3 u-sm-6">
+                    		<div class="stat-stack">
+                    			<span class="stat-stack-data">25</span>
+                    			<span class="stat-stack-label">Players</span>
+                    		</div>
+                    	</div>
+                    	<div class="u-md-3 u-sm-6">
+                    		<div class="stat-stack">
+                    			<span class="stat-stack-data">12</span>
+                    			<span class="stat-stack-label">Teams</span>
+                    		</div>
+                    	</div>
+                    	<div class="u-md-3 u-sm-6">
+                    		<div class="stat-stack">
+                    			<span class="stat-stack-data">7</span>
+                    			<span class="stat-stack-label">Games</span>
+                    		</div>
+                    	</div>
+                    	<div class="u-md-3 u-sm-6">
+                    		<div class="stat-stack">
+                    			<span class="stat-stack-data">2</span>
+                    			<span class="stat-stack-label">Unread Messages</span>
+                    		</div>
+                    	</div>
+                    </div>
+
+                    <h3>Forms</h3>
+                    <div class="g">
+                        <div class="u-md-6">
+                            <form action="#" class="card card-pad-md">
+                                <fieldset>
+                                    <label for="test_name">Name</label>
+                                    <input class="input-fit form-error" type="text" id="test_name" />
+                                    <small>Add classes of <code class="language-markup">form-error, form-warning, form-success</code> to input elements for feedback.</small>
+                                </fieldset>
+                                <fieldset>
+                                    <div class="g">
+                                        <fieldset class="u-md-8">
+                                            <label for="test_email">Email</label>
+                                            <input class="input-fit input-has-icon" type="email" id="test_email" />
+                                            <i class="input-icon icon--md ion-email"></i>
+                                        </fieldset>
+                                        <fieldset class="u-md-4  pad-left no-pad-left-sm">
+                                            <label for="test_select">Model?</label>
+                                            <select class="input-fit" name="" id="test_select">
+                                                <option value="">Accord</option>
+                                                <option value="">Civic</option>
+                                            </select>
+                                        </fieldset>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <label for="test_select2">Select something</label>
+                                    <select class="input-fit" name="" id="test_select2">
+                                        <option value="">Select an option&hellip;</option>
+                                        <option value="">Another option</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset>
+                                    <label for="test_cb_1" class="toggler input-fit">
+                                    	<input type="checkbox" class="toggler-input" id="test_cb_1" />
+                                    	<span class="toggler-label">Need anything else?</span>
+                                    </label>
+                                </fieldset>
+                                <fieldset>
+                                    <button type="submit" class="button--block">Submit</button>
+                                </fieldset>
+                            </form>
+                        </div>
+                        <div class="u-md-4 offset-md-1">
+                            <form action="#" class="">
+                                <fieldset>
+                                    <label for="test_city">Small Input (.input-small)</label>
+                                    <input class="input--sm input-fit" type="text" id="test_city" />
+                                </fieldset>
+                                <fieldset>
+                                    <label for="test_city">Large Input (.input-large)</label>
+                                    <input class="input--lg input-fit" type="text" id="test_city" />
+                                </fieldset>
+                                                    <pre class="push-down"><code class="language-markup">
+&lt;!-- Day Picker --&gt;
+&lt;div class="day-picker"&gt;
+	&lt;div class="day-picker-cell" title="Sunday"&gt;
+		&lt;input name="day[]" type="checkbox" id="sun" class="day-picker-input" /&gt;
+    	&lt;label for="sun" class="day-picker-label"&gt;Su&lt;/label&gt;
+	&lt;/div&gt;
+	&lt;div class="day-picker-cell" title="Monday"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                <fieldset>
+                                    <label>Choose some days</label>
+                                    <div class="day-picker">
+                                        <div class="day-picker-cell" title="Sunday">
+                                            <input name="day[]" type="checkbox" id="sun" class="day-picker-input" />
+                                            <label for="sun" class="day-picker-label">Su</label>
+                                        </div>
+                                        <div class="day-picker-cell" title="Monday">
+                                            <input name="day[]" type="checkbox" id="mon" class="day-picker-input" />
+                                            <label for="mon" class="day-picker-label">M</label>
+                                        </div>
+                                        <div class="day-picker-cell" title="Tuesday">
+                                            <input name="day[]" type="checkbox" id="tue" class="day-picker-input" />
+                                            <label for="tue" class="day-picker-label">T</label>
+                                        </div>
+                                        <div class="day-picker-cell" title="Wednesday">
+                                            <input name="day[]" type="checkbox" id="wed" class="day-picker-input" />
+                                            <label for="wed" class="day-picker-label">W</label>
+                                        </div>
+                                        <div class="day-picker-cell" title="Thursday">
+                                            <input name="day[]" type="checkbox" id="thur" class="day-picker-input" />
+                                            <label for="thur" class="day-picker-label">Th</label>
+                                        </div>
+                                        <div class="day-picker-cell" title="Friday">
+                                            <input name="day[]" type="checkbox" id="fri" class="day-picker-input" />
+                                            <label for="fri" class="day-picker-label">F</label>
+                                        </div>
+                                        <div class="day-picker-cell" title="Saturday">
+                                            <input name="day[]" type="checkbox" id="sat" class="day-picker-input" />
+                                            <label for="sat" class="day-picker-label">S</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <h3>Tables</h3>
+                    <p>In order to retain a truly responsive experience on mobile, tables must be wrapped in a <code class="language-markup">div.table-scroll</code>. This allows mobile browsers to view wider tables by enabling touch-scroll. Using the <code class="language-markup">table</code> class keeps default tables easily selectable.</p>
+                    <p>Use <code class="language-markup">colspan-[1-12]</code> classes to format table cells in a 12 column grid.</p>
+<pre class="push-down"><code class="language-markup">
+&lt;div class="table-scroll"&gt;
+	&lt;table class="table" title="Sunday"&gt;
+		&lt;input name="day[]" type="checkbox" id="sun" class="day-picker-input" /&gt;
+    	&lt;label for="sun" class="day-picker-label"&gt;Su&lt;/label&gt;
+	&lt;/div&gt;
+	&lt;div class="day-picker-cell" title="Monday"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    <div class="table-scroll">
+	                    <table class="table">
+	                    	<thead>
+	                    		<tr>
+	                    			<th>Player</th>
+	                    			<th>Date Joined</th>
+	                    			<th>City</th>
+	                    			<th>State</th>
+	                    			<th>Active?</th>
+	                    		</tr>
+	                    	</thead>
+	                    	<tbody>
+	                    		<tr>
+	                    			<td class="colspan-3">Bruce Wayne</td>
+	                    			<td class="colspan-2">Oct 20, 2014</td>
+	                    			<td class="colspan-3">Texarkana</td>
+	                    			<td class="colspan-2">TX</td>
+	                    			<td class="colspan-2"><label for="table_checkbox_1" class="toggler">
+	                                    	<input type="checkbox" class="toggler-input" id="table_checkbox_1" />
+	                                    	<span class="toggler-label"></span>
+	                                    </label></td>
+	                    		</tr>
+	                    		<tr>
+	                    			<td class="colspan-3">Clark Kent</td>
+	                    			<td class="colspan-2">Nov 1, 2013</td>
+	                    			<td class="colspan-3">New York City</td>
+	                    			<td class="colspan-2">NY</td>
+	                    			<td class="colspan-2"><label for="table_checkbox_2" class="toggler">
+	                                    	<input type="checkbox" class="toggler-input" id="table_checkbox_2" />
+	                                    	<span class="toggler-label"></span>
+	                                    </label></td>
+	                    		</tr>
+	                    		<tr>
+	                    			<td class="colspan-3">Peter Parker</td>
+	                    			<td class="colspan-2">Dec 25, 2014</td>
+	                    			<td class="colspan-3">Philadelphia</td>
+	                    			<td class="colspan-2">PA</td>
+	                    			<td class="colspan-2"><label for="table_checkbox_3" class="toggler">
+	                                    	<input checked type="checkbox" class="toggler-input" id="table_checkbox_3" />
+	                                    	<span class="toggler-label"></span>
+	                                    </label></td>
+	                    		</tr>
+	                    	</tbody>
+	                    </table>
+                    </div>
+
+                    <h3>Icons</h3>
+                    <p>Smoove uses Fontawesome icons [<a href="http://fontawesome.com/">Site</a>]. Use the <code class="language-markup">va-[top,mid,bot]</code> classes to align the icons vertically. You can also use the <code class="language-markup">icon--sm, icon--md, icon--lg</code> classes to control the size of the icon.</p>
+<pre class="push-down"><code class="language-markup">
+&lt;i class="icon fa fa-search"&gt;&lt;i&gt;
+&lt;i class="icon--lg fa fa-search"&gt;&lt;i&gt;
+</code></pre>
+
+                    <p>
+                    	<div class="g">
+                    		<div class="u-md-3  u-sm-6  text-center">
+	                    		<i class="icon--sm fa fa-search"></i>
+	                    		<i class="icon--md fa fa-search"></i>
+	                    		<i class="icon--lg fa fa-search"></i>	
+                    		</div>
+                    		<div class="u-md-3  u-sm-6  text-center">
+	                    		<i class="icon--sm fa fa-gears"></i>
+                    			<i class="icon--md fa fa-gears"></i>
+                    			<i class="icon--lg fa fa-gears"></i>
+                    		</div>
+                    		<div class="u-md-3  u-sm-6  text-center">
+	                    		<i class="icon--sm fa fa-cubes"></i>
+                    			<i class="icon--md fa fa-cubes"></i>
+                    			<i class="icon--lg fa fa-cubes"></i>
+                    		</div>
+                    		<div class="u-md-3  u-sm-6  text-center">
+                    			<i class="icon--sm fa fa-columns"></i>
+                    			<i class="icon--md fa fa-columns"></i>
+                    			<i class="icon--lg fa fa-columns"></i>
+                    		</div>
+                    	</div>
+                    </p>
+                    
+                </div>
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div id="objects">
+                	<h2 class="section-heading">Objects</h2>
+                	<hr />
+                	<h3>Utility Classes</h3>
+                	<p class="text-left">Add a class of <code class="language-markup">text-left</code> for left-aligned text.</p>
+                	<p class="text-center">Add a class of <code class="language-markup">text-center</code> for centered text.</p>
+                	<p class="text-right">Add a class of <code class="language-markup">text-right</code> for right-aligned text.</p>
+                	<p>Use a class of <code class="language-markup">no-layout</code> to kill any padding/margin on elements.</p>
+                	<h3>Pull Floats</h3>
+                	<pre><code class="language-markup">
+&lt;!-- Use a wrapper class of 'cf' to clear floats--&gt;
+&lt;div class="cf"&gt;
+	&lt;div class="pull-right"&gt;Pull Right&lt;/div&gt;
+	&lt;div class="pull-left"&gt;Pull Left&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                	<div class="cf">
+                		<div class="pull-right">Pull Right</div>
+                		<div class="pull-left">Pull Left</div>
+                	</div>
+                	<h3>Nudge, Pad, & Push</h3>
+<pre><code class="language-markup">
+&lt;div class="pad-right"&gt;
+	&lt;div class="nudge-up-2"&gt;Nudged&lt;/div&gt;
+	&lt;div class="push-bottom"&gt;Pushing&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+					<p>Nudge classes are used to position elements relatively for pixel-perfect alignments. They use the following syntax: <code class="language-markup">nudge-[direction]-[px]</code> with [direction] corresponding to up, down, left, or right. Pixel values can be from 1 to 10. Ex. using <code class="language-markup">nudge-up-3</code>: <span class="nudge-up-3">Hey there</span></p>
+					<p>Use pad-top, pad-bottom, pad-left, and pad-right to get a device-responsive amount of padding in the requested direction. This element uses pad-left: <span class="pad-left">Hey there.</span> <small><br />Kill unwanted padding on mobile devices with <code class="language-markup">no-pad-[up,down,left,right]-sm</code> classes.</small></p>
+					<p>Use push-up, push-bottom, push-left, and push-right to use margin to push elements away. <span class="push-right">Hey</span><span> there</span></p>
+
+                	<h3>Buttons</h3>
+                    <pre><code class="language-markup">
+&lt;a class="button"&gt;Button&lt;/a&gt;
+&lt;a class="button--secondary"&gt;Button Secondary&lt;/a&gt;
+&lt;a class="button--success"&gt;Button Success&lt;/a&gt;</code></pre>
+                    <div class="cf pad-bottom">
+                        <a href="#" class="button--main">Button Main</a>
+                        <a href="#" class="button--secondary">Button Secondary</a>
+                        <a href="#" class="button--link">Button Link</a>
+                        <a href="#" class="button--success"><i class="icon ion-ios-checkmark-outline"></i> Button Success</a>
+                        <button class="button" disabled>Button Disabled</button>
+                        <a href="#" class="button--warning"><i class="icon ion-alert-circled"></i> Button Warning</a>
+                        <a href="#" class="button--serious"><i class="icon ion-android-alert"></i> Button Error</a>
+                    </div>
+                    <p>Buttons can be in three sizes.</p>
+                    <pre><code class="language-markup">
+&lt;a class="button--sm"&gt;Small Button&lt;/a&gt;
+&lt;a class="button--lg"&gt;Large Button&lt;/a&gt;</code></pre>
+                    <div class="cf pad-bottom">
+                        <a href="#" class="button--sm">Button Small</a>
+                        <a href="#" class="button">Button</a>
+                        <a href="#" class="button--lg">Button Large</a>
+                    </div>
+
+
+                    <h3>Banners</h3>
+                    <pre><code class="language-markup">
+&lt;a class="button"&gt;Button&lt;/a&gt;
+&lt;a class="button--secondary"&gt;Button Secondary&lt;/a&gt;
+&lt;a class="button--success"&gt;Button Success&lt;/a&gt;</code></pre>
+
+
+                    <h3>Navs</h3>
+<pre><code class="language-markup">
 &lt;nav class="nav"&gt;
-    &lt;a href="#"&gt;...&lt;a&gt;
+	&lt;a href="#" class="button--main"&gt;Batman&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+                    <nav class="nav">
+                    	<a href="#" class="button--main">Batman</a>
+                    	<a href="#" class="button--main">Superman</a>
+                    	<a href="#" class="button--main">The Hulk</a>
+                    </nav>
+<pre><code class="language-markup">
+&lt;nav class="nav--vertical nav--bordered"&gt;
+	&lt;a href="#" class="button--link"&gt;Batman&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+                    <nav class="nav--vertical  nav--bordered">
+                    	<a href="#" class="button--link">Batman</a>
+                    	<a href="#" class="button--link">Superman</a>
+                    	<a href="#" class="button--link">The Hulk</a>
+                    </nav>
+<pre><code class="language-markup">
+&lt;nav class="nav--pagination"&gt;
+	&lt;a href="#" class="button--link current"&gt;1&lt;/a&gt;
+	&lt;a href="#" class="button--link"&gt;2&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+				<nav class="nav--pagination">
+                    	<a href="#" class="button--link"><i class="icon ion-chevron-left"></i></a>
+                    	<a href="#" class="button--link  current">1</a>
+                    	<a href="#" class="button--link">2</a>
+                    	<a href="#" class="button--link">3</a>
+                    	<a href="#" class="button--link"><i class="icon ion-chevron-right"></i></a>
+                    </nav>
+
+                    <h3>UI Messages</h3>
+<pre><code class="language-markup">
+&lt;div class="ui-message-container--[info,warning,error]"&gt;
+	&lt;div class="ui-message-body"&gt;
+		&lt;i class="icon ion-information-circled ui-message-icon"&gt;&lt;/i&gt;
+		&lt;span class"ui-message-text"&gt;Hey there&lt;/span&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    <div class="ui-message-container--info">
+                    	<div class="ui-message-body">
+                    		<i class="icon ion-information-circled ui-message-icon"></i>
+                    		<span class="ui-message-text">
+                    			Search using names or emails.
+                    		</span>
+                    	</div>
+                    </div>
+
+                    <div class="ui-message-container--warning">
+                    	<div class="ui-message-body">
+                    		<i class="icon ion-help-circled ui-message-icon"></i>
+                    		<span class="ui-message-text">
+                    			Don't forget to add your email.
+                    		</span>
+                    	</div>
+                    </div>
+
+                    <div class="ui-message-container--error">
+                    	<div class="ui-message-body">
+                    		<i class="icon ion-alert-circled ui-message-icon"></i>
+                    		<span class="ui-message-text">
+                    			Missing a form field.
+                    		</span>
+                    	</div>
+                    </div>
+
+                    <h3>Dropdowns</h3>
+<pre><code class="language-markup">
+&lt;div class="has-dropdown"&gt;
+	&lt;a href="#" data-dropdown-id="dd_1"&gt;Activate!&lt;/a&gt;
+	&lt;div class="dropdown" id="dd_1"&gt;
+		&lt;!-- ... --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div class="has-dropdown">
+            		<a 
+            		href="#dd_1" 
+            		data-dropdown-id="dd_1" 
+            		class="button--main">Activate! <i class="icon--sm ion-chevron-down dropdown-icon"></i></a>
+            		<div class="dropdown" id="dd_1" data-sb-ui-panel>
+            			<div class="card-pad-sm">
+            				Hey there!
+            			</div>
+            		</div>
+            	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div id="modules">
+                	<h2 class="section-heading">Modules</h2>
+                	<hr />
+                	<div id="grids">
+                		<h3>Grids</h3>
+                		<p>Smoove uses a 12-column grid. Each row begins with a class of "g" and contains units of class "u-[size]-[n]" – md targets larger screens, sm for smaller.</p>
+                    <pre><code class="language-markup">
+&lt;!-- Start a row of grids with class "g" --&gt;
+&lt;div class="g"&gt;
+&lt;!--
+Columns are defined as units starting with a class of "u-".
+The modifier '-md' means 'medium screens and above'.
+The modifier '-sm' means 'small screens only'.
+There are twelve columns in -md and six columns in -sm'.
+If you wanted a 10/12 on desktop and a 6/12 on mobile:
+--&gt;
+	&lt;div class="u-md-10 u-sm-6"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+	                    <div class="g">
+	                        <div class="u-md-10  u-sm-8">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                        <div class="u-md-2 u-sm-4">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                    </div>
+	                    <div class="g">
+	                        <div class="u-md-6  u-sm-6">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                        <div class="u-md-6  u-sm-6">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                    </div>
+	                    <p>Grid units can be nested. Once you're inside a "g" class, start a new row (and thus a new 12-col grid context) by nesting another <code class="language-markup">&lt;div class="g"&gt;...&lt;/div&gt;</code>.</p>
+	                    <div class="g">
+	                        <div class="u-md-2  u-sm-2">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                        <div class="u-md-10  u-sm-10">
+
+	                        	<!-- start nested grids -->
+	                            <div class="g"><div class="test-grid">
+
+	                                <div class="u-md-4 u-sm-6">
+	                                    <div class="test-grid"></div>
+	                                </div>
+
+	                                <div class="u-md-8 u-sm-6">
+	                                    <div class="test-grid"></div>
+	                                </div>
+
+	                            </div>
+	                            <!-- end nested grids -->
+
+	                        </div></div>
+	                    </div>
+	                    <p>You can use <code class="language-markup">offset-[size]-[n]</code> classes to move units to the right in the grid.</p>
+	                    <pre><code class="language-markup">
+&lt;div class="g"&gt;
+&lt;!--
+Use "offset-" classes to move columns horizontally.
+"offset-md-" applies to larger screens.
+"offset-sm-" applies to smaller ones.
+Ensure your units and offsets add up to 12.
+--&gt;
+	&lt;div class="u-md-3  u-sm-3"&gt;
+	&lt;/div&gt;
+	&lt;div class="u-md-3  u-sm-3"&gt;
+	&lt;/div&gt;
+	&lt;div class="u-md-3 offset-md-3  u-sm-3 offset-sm-3"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+	                    <div class="g">
+	                        <div class="u-md-3  u-sm-3">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                        <div class="u-md-3  u-sm-3">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                        <div class="u-md-3 offset-md-3  u-sm-3 offset-sm-3">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                    </div>
+	                    <p>Add a class of <code class="language-markup">g-gutters</code> to get a guttered grid. Guttered grids will lose their gutters on mobile to save space.</p>
+	                    <pre><code class="language-markup">
+&lt;div class="g  g-gutters"&gt;
+&lt;!--
+Add the class "g-gutters" to your .g class for guttered grids.
+The gutters are fixed and are set in _build.scss ($grid-gutter-size).
+--&gt;
+	&lt;div class="u-md-3"&gt;
+	&lt;/div&gt;
+	&lt;div class="u-md-3"&gt;
+	&lt;/div&gt;
+	&lt;div class="u-md-3"&gt;
+	&lt;/div&gt;
+	&lt;div class="u-md-3"&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+	                    <div class="g  g-gutters">
+	                        <div class="u-md-3">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                        <div class="u-md-3">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                        <div class="u-md-3 u-sm-6">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                        <div class="u-md-3 u-sm-6">
+	                            <div class="test-grid"></div>
+	                        </div>
+	                    </div>
+	                </div>
+                    
+                    
+                    
+                    <h3>Smoove Cards & Card Padding</h3>
+					<p>Smoove features the idea of "cards." A very generic class meant to be used for highlighting a certain section with a white background and a subtle box-shadow. Adding a class of <code class="language-markup">card</code> applies the background and shadows. Include a class of <code class="language-markup">card-pad-[size]</code> (using the sizes lg, md, and sm) to add padding of various sizes.</p><p>Avoid mixing the grid classes with these card classes. Use the grid to create a scaffold around cards. </p><p>Card-pad sizes are used on cards to keep a separate scope from the global <code class="language-markup">pad-[direction]</code> classes.</p>
+					<pre><code class="language-markup">
+&lt;div class="u-md-6 u-sm-6"&gt;						
+	&lt;div class="card  card-pad-md"&gt;
+		&lt;!-- ... --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+					<div class="g">
+						<div class="u-md-4  u-sm-3">
+							<div class="card  card-pad-md">
+								<p class="text-center no-layout">I'm a card</p>
+							</div>
+						</div>
+						<div class="u-md-7  offset-md-1  u-sm-8 offset-sm-1">
+							<div class="card  card-pad-sm  push-bottom">
+								<p class="text-center no-layout">I'm a card</p>
+							</div>
+							<div class="g">
+								<div class="u-md-3 u-sm-5">
+									<div class="card card-pad-md  text-center">
+										<i class="icon--lg ion-android-alarm-clock"></i>
+									</div>
+								</div>
+								<div class="u-md-6  offset-md-3  u-sm-5 offset-sm-2">
+									<div class="card card-pad-md  text-center">
+										<i class="icon--lg ion-help-circled"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    
+                    
+                    
+                    <h3>Smoove Tabs</h3>
+					<p>Any range of elements can be used to create tabs. A simple <code class="language-markup">&lt;ul&gt;</code> tag could be used, as long as an <code class="language-markup">&lt;a href="#" /&gt;</code> tag is used for the actual link. A tab group is linked by the data-attribute: <code class="language-markup">data-sb-tab-group</code>. Each tab activator must have an href attribute specifying the ID of the tab to be activated.</p>
+					<p>Tabs resize based on their content and automatically on viewport resize. Pick from three nav sizes (sm,md,lg). Use <code class="language-markup">data-sb-tab-transition</code> for turning on and off transitions.</p>
+<pre><code class="language-markup">
+&lt;nav class="sb-tabs--nav  sb-tabs--nav-[sm,md,lg]" data-sb-tab-group="my_tabs"&gt;						
+	&lt;a class="button--link  sb-tab" href="#tab_1"&gt;Tab 1&lt;/a&gt;
+	&lt;a class="button--link  sb-tab" href="#tab_2"&gt;Tab 2&lt;/a&gt;
 &lt;/nav&gt;
-</pre>
-                <nav class="nav--vertical">
-                    <a href="http://google.com">Home</a>
-                    <a href="http://google.com">About</a>
-                    <a href="http://google.com">Contact</a>
-                    <a href="http://google.com">Services</a>
-                </nav>
-                <pre>
-&lt;!-- add a class of "nav--vertical" for a vertical list --&gt;
-&lt;nav class="nav--vertical"&gt;
-    &lt;a href="#"&gt;...&lt;a&gt;
-&lt;/nav&gt;
-</pre>
-                <nav class="nav--bordered">
-                    <a href="http://google.com">Home</a>
-                    <a href="http://google.com">About</a>
-                    <a href="http://google.com">Contact</a>
-                    <a href="http://google.com">Services</a>
-                </nav>
-                <pre>
-&lt;!-- add a class of "nav--bordered" for a bordered list --&gt;
-&lt;nav class="nav--bordered"&gt;
-    &lt;a href="#"&gt;...&lt;a&gt;
-&lt;/nav&gt;
-</pre>
-                <nav class="nav--bordered  nav--vertical">
-                    <a href="http://google.com">Home</a>
-                    <a href="http://google.com">About</a>
-                    <a href="http://google.com">Contact</a>
-                    <a href="http://google.com">Services</a>
-                </nav>
-                <pre>
-&lt;!-- "nav--bordered" works with "nav--vertical" too --&gt;
-&lt;nav class="nav--bordered  nav--vertical"&gt;
-    &lt;a href="#"&gt;...&lt;a&gt;
-&lt;/nav&gt;
-</pre>
-                <nav class="nav--pagination">
-                    <a href="#"><i class="fa fa-chevron-left"></i></a>
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">...</a>
-                    <a href="#"><i class="fa fa-chevron-right"></i></a>
-                </nav>
-                <pre>
-&lt;!-- use ".nav--pagination" for pagination --&gt;
-&lt;nav class="nav--pagination""&gt;
-    &lt;a href="#"&gt;...&lt;a&gt;
-&lt;/nav&gt;
-</pre>
+&lt;div class="sb-tabs--panels" data-sb-tab-transition="true" data-sb-tab-group="my_tabs"&gt;						
+	&lt;div class="sb-tab--panel" id="tab_1"&gt;
+		&lt;!-- Panel 1 contents --&gt;
+	&lt;/div&gt;
+	&lt;div class="sb-tab--panel" id="tab_2"&gt;
+		&lt;!-- Panel 2 contents --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+					<div class="card card-pad-md">
+    					<nav class="nav  smoove-tabs--nav  smoove-tabs--nav-md" data-sb-tab-group="my_test_group">
+    						<a href="#tab_stats" class="smoove-tab current">Stats</a>
+    						<a href="#tab_history" class="smoove-tab">History</a>
+    						<a href="#tab_settings" class="smoove-tab">Settings</a>
+    					</nav>
+    					<div class="smoove-tabs--panels" data-sb-tab-transition="true" data-sb-tab-group="my_test_group">
+    						<div class="smoove-tabs--panel current" id="tab_stats">
+    							<div class="table-scroll no-layout">
+            	                    <table class="table">
+            	                    	<thead>
+            	                    		<tr>
+            	                    			<th>Player</th>
+            	                    			<th>Date Joined</th>
+            	                    			<th>City</th>
+            	                    			<th>State</th>
+            	                    			<th>Active?</th>
+            	                    		</tr>
+            	                    	</thead>
+            	                    	<tbody>
+            	                    		<tr>
+            	                    			<td class="colspan-3">Bruce Wayne</td>
+            	                    			<td class="colspan-2">Oct 20, 2014</td>
+            	                    			<td class="colspan-3">Texarkana</td>
+            	                    			<td class="colspan-2">TX</td>
+            	                    			<td class="colspan-2 text-center">
+                                                    <label for="table_checkbox_tab" class="toggler">
+            	                                    	<input type="checkbox" class="toggler-input" id="table_checkbox_tab" />
+            	                                    	<span class="toggler-label"></span>
+            	                                    </label>
+                                                </td>
+            	                    		</tr>
+            	                    	</tbody>
+            	                    </table>
+                                </div>
+    						</div>
+    						<div class="smoove-tabs--panel" id="tab_history">
+    							<p>History here.</p>
+    						</div>
+    						<div class="smoove-tabs--panel" id="tab_settings">
+    							<p>Before you can begin to determine what the composition of a particular paragraph will be, you must first decide on an argument and a working thesis statement for your paper. What is the most important idea that you are trying to convey to your reader? The information in each paragraph must be related to that idea. In other words, your paragraphs should remind your reader that there is a recurrent relationship between your thesis and the information in each paragraph. A working thesis functions like a seed from which your paper, and your ideas, will grow. The whole process is an organic one—a natural progression from a seed to a full-blown paper where there are direct, familial relationships between all of the ideas in the paper.</p>
+    						</div>
+    					</div>
+					</div>
+                    
+                    
+                    
+                    <h3>Smoove Modals</h3>
+
+<pre><code class="language-markup">
+&lt;div class="smoove-modal-overlay" id="my_modal"&gt;                       
+    &lt;div class="smoove-modal-container"&gt;
+        &lt;header class="smoove-modal-header"&gt;
+        &lt;/header&gt;
+        &lt;div class="smoove-modal"&gt;
+            &lt;div class="smoove-modal-guts"&gt;
+                &lt;!-- CONTENT, USE THE GRID SYSTEM IF YOU WANT --&gt;
+            &lt;/div&gt;
+            &lt;footer class="smoove-modal-footer"&gt;
+                &lt;!-- CONTENT --&gt;
+            &lt;/footer&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                    <a href="#test_modal" data-modal-id="test_modal" class="button--main">Activate Modal</a>
+
+                    <p>Trigger and link the modals using this markup:</p>
+
+<pre><code class="language-markup">
+&lt;a href="#my_modal" data-modal-id="my_modal" class="button--main"&gt;Activate Modal&lt;/a&gt;
+</code></pre>
+                    
+                    
+                </div>
+
+
+
+
             </div>
         </div>
-    </div>
-
-    <!-- this should only output to Dev or Staging - not Prod -->
-    <ul class="breakpoint-test  unstyled">
-        <li class="bp-hand-only">Hand Only</li>
-        <li class="bp-hand-wide">Hand Wide</li>
-        <li class="bp-hand-wide-only">Hand Wide Only</li>
-        <li class="bp-tablet">Tablet</li>
-        <li class="bp-tablet-only">Tablet Only</li>
-        <li class="bp-monitor">Monitor</li>
-        <li class="bp-monitor-only">Monitor Only</li>
-        <li class="bp-monitor-large">Monitor Large</li>
-        <li class="bp-tv">TV</li>
-        <li class="bp-hidpi">HiDPI</li>
-    </ul>
-
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script></script>
-    <script>
-        $(function () {
-
-            //
-
-        });
-    </script>
-</body>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="js/smoove_ui.js"></script>
+        <script>
+            $(function(){
+            	$('#objects [class*="button"').on('click', function(e){
+            		e.preventDefault();
+            	});
+            	$('form').on('submit', function(e){
+            		e.preventDefault();
+            	});
+            });
+        </script>
+        <!-- Prism syntax highlighter -->
+        <script src="js/prism_syntax_highlighter/prism.js"></script>
+    </body>
 </html>

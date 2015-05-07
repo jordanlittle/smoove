@@ -1,0 +1,33 @@
+/* ---------------------------------------- *\
+    
+    
+    Stats & Data
+
+
+\* ---------------------------------------- */
+
+.stat-stack {
+	display:inline-block;
+	padding: .5em .15em;
+
+	.stat-stack-data,
+	.stat-stack-label {
+		display:block;
+	}
+
+	.stat-stack-data {
+		font-size: 3.5em;
+		line-height: .85em;
+		text-indent: -1px;
+		letter-spacing: -1px;
+		font-weight: 200;
+		color: $color-text-dark;
+		margin-bottom: 5px;
+	}
+
+	.stat-stack-label {
+		font-size: 1em;
+		line-height: 1.1em;
+		color: $color-text;
+	}
+}

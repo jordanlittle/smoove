@@ -1,0 +1,113 @@
+/* ---------------------------------------- *\
+
+
+    Navigation
+
+
+\* ---------------------------------------- */
+
+%nav {
+    @extend %unstyled;
+    font-size:0;
+    cursor:default;
+
+    a {
+        @include overflow-ellipsis();
+        font-size: $base-font-size;
+    }
+
+    .current {
+    	border-bottom-color: $color-brand;
+    	color: $color-text-dark;
+    }
+}
+
+.nav {
+    @extend %nav;
+	@extend %no-layout; // my thinking here is that if someone uses a basic <nav> element it should flow with their content - use the class to kill layout
+
+	[class*="button"] {
+    	margin:0;
+    	margin-bottom: 1px;
+    	margin-right: 1px;
+    	border-radius: 0;
+
+    	&:first-child {
+    		border-top-left-radius: $border-radius;
+    		border-bottom-left-radius: $border-radius;
+    	}
+
+    	&:last-child {
+    		border-top-right-radius: $border-radius;
+    		border-bottom-right-radius: $border-radius;
+    	}
+    }
+    
+    .button--sm {
+        font-size:13px;
+        font-weight: 400;
+        padding:5px 10px 6px;
+        border-radius: $border-radius-sm;
+    }
+    
+    .button--lg {
+        font-size: 18px;
+        padding:15px 20px 16px;
+    }
+}
+
+.nav--bordered {
+	border: 1px solid $color-light-gray;
+	border-radius: $border-radius;
+
+	[class*="button--link"] {
+		border-bottom: 1px solid $color-light-gray;
+
+		&:last-child {
+			border-bottom:none;
+		}
+	}
+}
+
+.nav--vertical {
+    @extend %nav;
+
+    a {
+        display:block;
+        padding:.45em .35em .55em;
+    }
+
+    [class*="button"] {
+    	margin:0;
+    	margin-bottom:1px;
+    	border-radius: 0;
+
+    	&:first-child {
+    		border-top-left-radius: $border-radius;
+    		border-top-right-radius: $border-radius;
+    	}
+
+    	&:last-child {
+    		border-bottom-left-radius: $border-radius;
+    		border-bottom-right-radius: $border-radius;
+    	}
+
+    	&:hover {
+    		transform: translateY(0);
+    	}
+    }
+}
+
+.nav--pagination {
+    @extend %nav;
+    text-align:center;
+
+    .current {
+    	border: 1px solid $color-light-gray;
+
+    	&:hover {
+    		text-decoration: none;
+    		cursor:default;
+    	}
+    }
+}

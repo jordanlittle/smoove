@@ -1,0 +1,31 @@
+/* ---------------------------------------- *\
+
+    
+    Card (White background with soft box-shadow)
+
+
+\* ---------------------------------------- */
+
+%card {
+	background-color: #fff;
+	border-radius: $border-radius-sm;
+	box-shadow: 0 1px 3px rgba(0,0,0,.15);
+}
+
+.card {
+	@extend %card;
+}
+
+.card-pad-sm {
+	padding: $grid-gutter-size/4;
+	@include context(tablet) {
+		padding: $grid-gutter-size/2;
+	}
+}
+
+.card-pad-md {
+	padding: $grid-gutter-size/2;
+	@include context(tablet) {
+		padding: $grid-gutter-size;
+	}
+}

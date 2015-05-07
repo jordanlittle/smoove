@@ -1,0 +1,90 @@
+/* ---------------------------------------- *\
+    
+    
+    Scoreboard Tabs
+
+
+\* ---------------------------------------- */
+
+.smoove-tab {
+	@extend %button;
+
+	background-color: transparent;
+    border-color: transparent;
+    border-bottom: 2px solid transparent;
+    color: $color-brand;
+    padding:10px 3px 11px;
+    margin-right: 8px;
+    border-radius: 0;
+
+    &:last-child {
+    	margin-right:0;
+    }
+
+    &.current {
+    	border-bottom-color: $color-text-dark;
+    }
+
+    &:hover {
+        background-color:transparent;
+        color: $color-brand-dark;
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+    &:focus {
+    	background-color: transparent;
+    	box-shadow: none;
+    	transform: translateY(0);
+    	outline:none;
+    }
+
+    &:active {
+    	transform: translateY(1px);
+    	transition: none;
+    }
+}
+
+.smoove-tabs--nav-sm {
+	.smoove-tab {
+		font-size: $base-font-size*.75;
+		font-weight: 700;
+		padding: 7px 2px 8px;
+		margin-right: 5px;
+	}
+}
+
+.smoove-tabs--nav-md {
+	.smoove-tab {
+		font-size: $base-font-size;
+	}
+}
+
+.smoove-tabs--nav-lg {
+	.smoove-tab {
+		font-size: $base-font-size*1.5;
+		font-weight: 200;
+		padding: 15px 5px 16px;
+		margin-right: 12px;
+	}
+}
+
+.smoove-tabs--panels {
+	@extend %clearfix;
+	position:relative;
+	overflow: hidden;
+}
+
+	.smoove-tabs--panel {
+		display:none;
+		float:left;
+		width:100%;
+		transform: translateZ(0) translateX(-10px);
+		transition: $default-transition;
+	}
+
+		.smoove-tabs--panel.current {
+			transform: translateZ(0) translateX(0);
+			display:block;
+		}
+

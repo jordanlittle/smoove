@@ -1,0 +1,33 @@
+/* ---------------------------------------- *\
+    
+
+    Lists
+
+
+\* ---------------------------------------- */
+
+ul,
+ol {
+    margin-left:1.75em;
+    list-style: disc;
+
+    li {
+        margin-bottom:.3em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+ol {
+    list-style:decimal;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+    margin-top:0;
+    margin-bottom:0;
+}

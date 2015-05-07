@@ -1,44 +1,48 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
+	
+	grunt.initConfig({
+		
+		pkg: grunt.file.readJSON('package.json'),
+		
+		sass: {
+	        dist: {
+	            options: {
+	                style: 'compressed',
+					sourcemap: 'false'
+	            },
+	            files: {
+	                'smoove.min.css': 'scss/*.scss'
+	            }
+	        } 
+	    },
+		
+		autoprefixer: {
+			dist: {
+				files: {
+					'smoove.min.css': 'smoove.min.css' 
+				}
+			}
+		},
+	
+	    watch: {
+	
+	        css: {
+				files: ['scss/**/*.scss'],
+				tasks: ['sass', 'autoprefixer'],
+				options: {
+					spawn: false,
+					livereload: true,
+				}
+			} 
+	    },
+		
+	});
 
-    // tasks
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        scsslint: {
-            files: [
-                'styles/*.scss'
-            ],
-            options: {
-                config: '.scss-lint.yml',
-                reporterOutput: '.sasslintreport.xml',
-                colorizeOutput: false,
-                emitError: true,
-                maxBuffer: 600*1024
-            }
-        },
-        sass: {
-            dist: {
-                options: {
-                    style: 'compressed',
-                    sourcemap: 'none'
-                },
-                files: {
-                    'styles/site.css': 'styles/site.scss'
-                }
-            }
-        },
-        watch: {
-            css: {
-                files: '**/*.scss',
-                tasks: ['sass']
-            }
-        }
-    });
+	
+	grunt.loadNpmTasks('grunt-contrib-sass');
+	grunt.loadNpmTasks('grunt-autoprefixer');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
-    // dependencies
-    grunt.loadNpmTasks('grunt-scss-lint');
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-watch');
 
-    // init tasks
-    grunt.registerTask('default', ['scsslint','watch']);
+	grunt.registerTask('default',['watch']);
 }

@@ -1,32 +1,10 @@
-.css
-.map
 .sass-cache
-.sass-report.xml
-.log
+*.map
+.DS_Store
+.localized
+npm-debug.log
+.thumb
 
 node_modules
-
-# Others
-sql/
-*.Cache
-ClientBin/
-[Ss]tyle[Cc]op.*
-~$*
-*~
-*.dbmdl
-*.[Pp]ublish.xml
-*.pfx
-*.publishsettings
-
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Mac crap
-.DS_Store
+node_modules/*
+scss/*.css

@@ -1,0 +1,56 @@
+/* ---------------------------------------- *\
+
+    
+    Headers
+
+
+\* ---------------------------------------- */
+
+.header {
+	width:100%;
+	min-height: $header-height;
+	z-index: $z-stack-dropdown;
+	background-color: #fff;
+	position:relative;
+	box-shadow: 0 1px 2px rgba(0,0,0,.15);
+}
+	.header-inner {
+		padding-left: $grid-gutter-size/2;
+		padding-right: $grid-gutter-size/2;
+		position:relative;
+
+		@include context(tablet) {
+			padding-left: $grid-gutter-size;
+			padding-right: $grid-gutter-size;
+		}
+	}
+
+	.header-inner--wrap {
+		@extend %wrap;
+	}
+
+	.header-page-info {
+		display:table;
+		width:100%;
+		height: $header-height;
+
+		.sb-header--scoreboard & {
+			padding-left: $header-height/2;
+		}
+	}
+
+	.header-page-title {
+		display: table-cell;
+		vertical-align: middle;
+		font-weight: 700;
+		letter-spacing: -1px;
+	}
+
+	.header--app {
+		@include context(tablet) {
+			position:fixed;
+			top:0;
+			left:0;
+		}
+	}
+	

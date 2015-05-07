@@ -1,0 +1,37 @@
+/* ---------------------------------------- *\
+
+    
+    Sidebars & App Navs
+
+
+\* ---------------------------------------- */
+
+.sidebar {
+	
+	@include context(tablet) {
+		position:fixed;
+		height:100%;
+		top:0;
+		padding: $grid-gutter-size 0;
+	}
+
+}
+	
+	.sidebar--left {
+		left:0;
+	}
+	
+	.sidbar--right {
+		right:0;
+	}
+	
+	.sidebar--app {
+		background-color: $color-light-gray;
+		top: $header-height;
+		
+		[class*="button"] {
+			@include context(tablet) {
+				display:block;
+			}
+		}
+	}
