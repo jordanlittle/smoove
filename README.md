@@ -1,8 +1,4 @@
-# Scoreboard UI
+# Smoove
+A 12-column, BEM-ish CSS framework for use in small to large projects.
 
-* * *
-
-1. cd into scoreboard_ui directory
-2. Run 'npm update'
-3. Run 'grunt'
-4. Load index.html into browser
+"Project Site":https://jordanlittle.github.io/smoove
