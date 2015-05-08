@@ -24,6 +24,10 @@ body {
     }
 }
 
+body.viewing-overlay {
+	overflow:hidden!important;
+}
+
 .page {
 	padding-top: $grid-gutter-size/2;
 	padding-left: $grid-gutter-size/2;

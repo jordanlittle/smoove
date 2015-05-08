@@ -32,6 +32,15 @@
 		[class*="button"] {
 			@include context(tablet) {
 				display:block;
+				
+				&:hover {
+					background-color: darken($color-light-gray, 5%);
+					text-decoration: none;
+				}
+				
+				&.current {
+					color: $color-text-dark;
+				}
 			}
 		}
 	}

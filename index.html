@@ -134,6 +134,13 @@
                         <span class="header-page-title">Smoove</span>
                     </span>
                 </div>
+                <div class="u-sm-6 u-md-6">
+                    <nav class="nav--header text-right">
+                        <a href="#" class="button--link">About</a>
+                        <a href="#" class="button--link">About</a>
+                        <a href="#" class="button--link">About</a>
+                    </nav>
+                </div>
             </div>
         </header>
         
@@ -142,10 +149,10 @@
 
             <div class="u-md-3  sidebar  sidebar--app">
                 <nav class="nav">
-                    <a href="#basestyles" class="button--link text-left"><i class="icon--md fa fa-fw fa-cog"></i> Base Styles</a>
-                       <a href="#objects" class="button--link text-left"><i class="icon--md fa fa-fw fa-cube"></i> Objects</a>
-                       <a href="#modules" class="button--link text-left"><i class="icon--md fa fa-fw fa-cubes"></i> Modules</a>
-                       <a href="#layouts" class="button--link text-left"><i class="icon--md fa fa-fw fa-columns"></i> Layouts</a>
+                    <a href="#basestyles" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-cog"></i> Base Styles</a>
+                       <a href="#objects" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-cube"></i> Objects</a>
+                       <a href="#modules" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-cubes"></i> Modules</a>
+                       <a href="#layouts" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-columns"></i> Layouts</a>
                 </nav>
             </div>
 
@@ -918,9 +925,17 @@ The gutters are fixed and are set in _build.scss ($grid-gutter-size).
         <script src="js/smoove_ui.js"></script>
         <script>
             $(function(){
+                var hash = window.location.hash;
+                $('[href="' + hash + '"]').addClass('current');                
+                
+                $('.sidebar--app [class*="button"]').on('click', function(){
+                    $(this).addClass('current').siblings().removeClass('current');
+                });
+                
             	$('#objects [class*="button"').on('click', function(e){
             		e.preventDefault();
             	});
+                
             	$('form').on('submit', function(e){
             		e.preventDefault();
             	});

@@ -98,7 +98,7 @@ $(function(){
 	// Scoreboard Modals
 	//
 	function resetModals() {
-		$('body').removeClass('smoove-modal--viewing');
+		$('body').removeClass('overflow-hidden');
 		$('.smoove-modal').removeClass(is_visible_class);
 	}
 	
@@ -115,7 +115,7 @@ $(function(){
 			var sb_overlay = $( '#' + clicked.data('modal-id') );
 
 			// add no scroll class to body
-			$('body').addClass('smoove-modal--viewing');
+			$('body').addClass('overflow-hidden');
 
 			// add visible class to the overlay
 			sb_overlay.addClass(is_visible_class);

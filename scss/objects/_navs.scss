@@ -8,12 +8,10 @@
 
 %nav {
     @extend %unstyled;
-    font-size:0;
     cursor:default;
 
     a {
         @include overflow-ellipsis();
-        font-size: $base-font-size;
     }
 
     .current {
@@ -43,17 +41,6 @@
     	}
     }
     
-    .button--sm {
-        font-size:13px;
-        font-weight: 400;
-        padding:5px 10px 6px;
-        border-radius: $border-radius-sm;
-    }
-    
-    .button--lg {
-        font-size: 18px;
-        padding:15px 20px 16px;
-    }
 }
 
 .nav--bordered {
@@ -111,3 +98,23 @@
     	}
     }
 }
+
+.nav--header {
+    @extend %nav;
+    @extend %no-layout;
+    
+    [class*="button"] {
+		height: $header-height;
+		line-height: $header-height;
+		padding-top:0;
+		padding-bottom:0;
+		margin:0;
+		border-radius:0;
+		
+		&:hover,
+		&:focus {
+			transform: none;
+		}
+	}
+}
+
