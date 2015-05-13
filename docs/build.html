@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Smoove - Yet another CSS framework.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    
+    <!-- Google Font -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,300,700" rel="stylesheet" type="text/css" />
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Prism Syntax Highlighter -->
+    <link rel="stylesheet" media="all" href="docs/js/prism_syntax_highlighter/prism.css" />
+
+    <!-- Smoove CSS -->
+    <link rel="stylesheet" media="all" href="smoove.min.css" />
+
+    <style>
+        .test-grid {
+            background-color: rgba(0, 0, 0, .085);
+            font-size: 10px;
+            padding: 20px;
+            line-height: 12px;
+            margin-bottom: 2px;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .intro {
+            padding:200px 0;
+        }
+        
+        .smoove-icon {
+            width:60px;
+            height:43px;
+            position:relative;
+            top:2px;
+        }
+        
+        .demo-chunk {
+            padding-top: 60px;
+            margin-bottom: 400px;
+        }
+            .demo-chunk > h2 {
+                font-weight: 700;
+                text-transform: uppercase;
+                padding-bottom: 40px;
+                margin-bottom: 40px;
+                border-bottom: 5px solid #f2f2f2;
+            }
+        
+        .demo-section {
+            margin-bottom:100px;
+            padding-bottom:100px;
+            border-bottom: 4px solid #f2f2f2;
+        }
+            .demo-section > h2 {
+                margin-top:0;
+            }
+        
+        .test-grid .test-grid {
+            padding: 14px;
+        }
+        
+        .test-grid.cf {
+            padding: 5px;
+        }
+        
+        #grids [class*="u-"] + [class*="u-"] {
+            outline: 2px solid #fff;
+        }
+        
+        #grids [class*="u-"] [class*="u-"] {
+            outline: none;
+            border-left: 2px solid #fff;
+        }
+        
+        #grids [class*="u-"] [class*="u-"]:first-child {
+            outline: none;
+            border-left: none;
+        }
+        
+        #grids [class*="u-"] [class*="u-"] .test-grid {
+            border-bottom: none;
+        }
+        
+        #base .demo-heading {
+            position: relative;
+            padding-left: 20px;
+            
+        }
+        
+        .heading-test {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            font-size: 10px;
+            line-height: 2em;
+            color: #999;
+            font-weight: normal;
+            letter-spacing: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- build:section demo_modal --><!-- /build -->
+
+    <header class="header  header--app">
+        <div class="header-inner g">
+            <div class="u-sm-6 u-md-6">
+                <span class="header-page-info">
+                        <span class="header-page-title">Smoove</span>
+                </span>
+            </div>
+            <div class="u-sm-6 u-md-6">
+                <nav class="nav--header text-right demo-hash-nav">
+                    <a href="#base" class="button--link">Base</a>
+                    <a href="#objects" class="button--link">Objects</a>
+                    <a href="#modules" class="button--link">Modules</a>
+                    <a href="#layouts" class="button--link">Layouts</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="page page--app  g">
+
+        <div class="u-md-3  sidebar  sidebar--app">
+            <nav class="nav  demo-hash-nav">
+                <a href="#base" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-cog"></i> Base</a>
+                <a href="#objects" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-cube"></i> Objects</a>
+                <a href="#modules" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-cubes"></i> Modules</a>
+                <a href="#layouts" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-columns"></i> Layouts</a>
+            </nav>
+        </div>
+
+        <div class="u-md-7 offset-md-4">
+            
+            <div class="intro">
+                <h1><img src="docs/icon.png" alt="Smoove icon" class="smoove-icon" /> Smoove</h1>
+                <p>A 12-column, BEM-ish CSS framework for use in projects small to large.</p>
+            </div>
+
+            <div id="base" class="demo-chunk"> 
+                <h2>Base</h2>          
+                <!-- build:section base_typography --><!-- /build -->
+                <!-- build:section base_forms --><!-- /build -->
+                <!-- build:section base_tables --><!-- /build -->
+                <!-- build:section base_icons --><!-- /build -->
+            </div>
+
+            <div id="objects" class="demo-chunk">
+                <h2>Objects</h2>
+                <!-- build:section object_utilities --><!-- /build -->
+                <!-- build:section object_pull_floats --><!-- /build -->
+                <!-- build:section object_nudge_pad_push --><!-- /build -->
+                <!-- build:section object_buttons --><!-- /build -->
+                <!-- build:section object_cards --><!-- /build -->
+                <!-- build:section object_navs --><!-- /build -->
+                <!-- build:section object_stat_stacks --><!-- /build -->
+                <!-- build:section object_ui_messages --><!-- /build -->
+                <!-- build:section object_dropdowns --><!-- /build -->
+            </div>
+      
+            <div id="modules" class="demo-chunk">
+                <h2>Modules</h2>
+                <!-- build:section modules_grids --><!-- /build -->
+                <!-- build:section modules_tabs --><!-- /build -->
+                <!-- build:section modules_modals --><!-- /build -->
+                <!-- build:section modules_toasts --><!-- /build -->
+            </div>
+
+            <div id="layouts" class="demo-chunk">
+                <h2>Layouts</h2>
+                <!-- build:section layouts_app_frame --><!-- /build -->
+                <!-- build:section layouts_centered_site --><!-- /build -->
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/smoove_ui.js"></script>
+    <script>
+        $(function() {
+
+            var loaded_hash = window.location.hash;
+            $('.demo-hash-nav [href="' + loaded_hash + '"]').addClass('current');
+            
+            $(window).on('hashchange', function(){
+                $('.demo-hash-nav [class*="button"]').removeClass('current');
+                var new_hash = window.location.hash;
+                $('.demo-hash-nav [href="' + new_hash + '"]').addClass('current');
+            });
+
+            $('.demo-buttons [class*="button"]').on('click', function(e) {
+                e.preventDefault();
+            });
+
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+            });
+
+        });
+    </script>
+
+    <!-- Prism syntax highlighter -->
+    <script src="docs/js/prism_syntax_highlighter/prism.js"></script>
+</body>
+
+</html>

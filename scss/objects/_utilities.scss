@@ -43,7 +43,8 @@
 .cf 			{ @extend %clearfix; }
 .cf--sm 	 	{ @extend %clearfix; @include context(tablet) { display:none; } }
 
-.input-fit 		{ display:inline-block;width:100%; }
+.input-fit,
+.input--fit		{ display:inline-block;width:100%; }
 
 
 

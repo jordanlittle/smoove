@@ -10,11 +10,10 @@
 	position:relative;
 
 	.dropdown-icon {
-		transition: $default-transition;
 		transform: translateZ(0) rotate(0);
 	}
 
-	&.is-visible {
+	.is-active {
 		.dropdown-icon {
 			transform: translateZ(0) rotate(-180deg);
 		}
@@ -22,11 +21,13 @@
 }
 
 	.dropdown {
+		@extend %card;
 		position:absolute;
 		top:100%;
 		left:0;
 		z-index: $z-stack-top;
 		display:none;
+		border-radius: $border-radius-sm;
 
 			@include context(tablet) {
 				min-width: 280px;
@@ -39,5 +40,5 @@
 
 	.dropdown.is-visible {
 		display:block;
-		box-shadow: 0 2px 10px rgba(0,0,0,.15), 0 1px 5px rgba(0,0,0,.18);
+		box-shadow: 0 3px 12px rgba(0,0,0,.2), 0 1px 5px rgba(0,0,0,.18);
 	}

@@ -1,127 +1,135 @@
+var smoove = window.smoove || {};
+
+smoove.ui = (function () {
+    
+    var isActiveClass   = "is-active";
+    var isVisibleClass  = "is-visible";
+    var tabActiveClass  = "is-active-tab";
+    var trigger         = "[data-ui-trigger]";
+    var target          = "[data-ui-target]";
+    var triggerReset    = "[data-ui-reset]";
+    var overlayClass    = "viewing-overlay";
+    
+    return {
+        
+        isActiveClass: isActiveClass,
+        isVisibleClass: isVisibleClass,
+        tabActiveClass: tabActiveClass,
+        trigger: trigger,
+        target: target,
+        triggerReset: triggerReset,
+        overlayClass: overlayClass,
+        
+        isOpen: function() {
+            if($('.' + isVisibleClass + '').length) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        
+        dropdown: function(clicked) {
+            var dropdown_target = $('#' + clicked.attr('data-ui-dropdown') + '');
+            if( smoove.ui.isOpen() ) {
+                clicked.removeClass(isActiveClass);
+                dropdown_target.removeClass(isVisibleClass);   
+            } else {
+                clicked.addClass(isActiveClass);
+                dropdown_target.addClass(isVisibleClass); 
+            }
+        },
+                
+        tab: function(clicked) {
+            var tab_target = $('#' + clicked.attr('data-ui-tab') + '');
+            clicked.siblings().removeClass(tabActiveClass);
+            clicked.addClass(tabActiveClass);
+            tab_target.siblings().removeClass(tabActiveClass);
+            tab_target.addClass(tabActiveClass);
+        },
+        
+        modal: function(clicked){
+            smoove.ui.reset();
+            var modal_target = $('#' + clicked.attr('data-ui-modal') + '');
+            clicked.toggleClass(isActiveClass);
+            modal_target.toggleClass(isVisibleClass);
+            $('body').toggleClass(overlayClass);
+        },
+        
+        reset: function() {
+            $('.' + isActiveClass + '').removeClass(isActiveClass);
+            $('.' + isVisibleClass + '').removeClass(isVisibleClass);
+            $('body').removeClass(overlayClass);
+        }
+        
+    };
+})();
+
+
+
 $(function(){
-
-	var is_visible_class = 'is-visible';
-	var resize_event_lag = 500; // polling time for resize events.
-
-
-
-	// watch esc key - hide panels/modals when pressed
-    $(document).keyup(function (e) {
-        if (e.keyCode == 27) {
-            smooveReset();
+    
+    // ready tabs
+    $('.smoove-tabs--nav .smoove-tab:first-child').addClass(smoove.ui.tabActiveClass);
+    $('.smoove-tabs--panels .smoove-tabs--panel:first-child').addClass(smoove.ui.tabActiveClass);  
+    
+       
+    // Esc key
+    $(document).on('keyup', function(e){
+        if(e.keyCode == 27) {
+            smoove.ui.reset();
         }
     });
-
-    // Watching document for clicks to clear 
-    // http://stackoverflow.com/a/7385673
-	$(document, '[data-smoove-reset]').on('mouseup', function (e) {
-	    var ui_panels = $('[data-smoove-ui-panel]');
-	    // if the target of the click isn't a smoove-ui-panel...
-	    // ... nor a descendant
-	    if (!ui_panels.is(e.target) && ui_panels.has(e.target).length === 0) 
-	    {
-	        smooveReset();
-	    }
+    
+    // "clicking off" of UI elements to close them
+    $(document).on('mouseup', function (e) {
+        if( smoove.ui.isOpen() ){
+            var targets = $('' + smoove.ui.target + '');
+            var triggers = $('' + smoove.ui.trigger + '');
+            var clickIsTarget = targets.is(e.target);
+            var clickIsTargetDescendant =  targets.has(e.target).length > 0;
+            var clickIsTrigger = triggers.is(e.target);
+            var clickIsTriggerDescendant = triggers.has(e.target).length > 0;
+            // if the target of the click isn't a data-ui-target
+            // nor a data-ui-trigger
+            // nor a descendant of either
+            if ( !clickIsTarget && !clickIsTrigger && !clickIsTargetDescendant && !clickIsTriggerDescendant ) {
+                smoove.ui.reset();
+            }   
+        }
 	});
-
-
-	// function to reset all modals, dropdowns, etc.
-	function smooveReset() {
-		$('.' + is_visible_class).removeClass(is_visible_class);
-		resetModals();
-		$('[class*="smoove-modal--container').hide();
-	}
-
-
-	
-
-
-
-	//
-	// Scoreboard Tabs
-	//
-	$('.smoove-tabs--nav').on('click', '.smoove-tab', function(e){
-		
-		// cancel default click behavior
-		e.preventDefault();
-
-		// define reusable elements
-		var current_class   = 'current';		
-		var clicked_tab 	= $(this);
-		var tab_siblings	= clicked_tab.siblings();		
-		var target_tab  	= $('' + clicked_tab.attr('href') + '');
-		var target_siblings = target_tab.siblings();
-
-		// reset all 'current' tabs
-		tab_siblings.each(function(){
-			$(this).removeClass(current_class);
-		});
-
-		// reset all 'current' panels
-		target_siblings.each(function(){
-			$(this).removeClass(current_class);
-		});
-
-		// add the 'current' class to the newly clicked tab
-		clicked_tab.addClass(current_class);
-
-		// add the show class to the target panel
-		target_tab.addClass(current_class);
-	});
-
-
-
-
-	//
-	// Scoreboard Dropdowns
-	//
-	if( $('.dropdown').length ) {
-		$('[data-dropdown-id]').on('click', function(e){
-
-			// cancel default click behavior
-			e.preventDefault();
-
-			// define reusable elements
-			var dd_clicked = $(this);
-			var dd_parent = dd_clicked.closest('.has-dropdown');
-			var dd = dd_parent.find('.dropdown');
-
-			dd.toggleClass(is_visible_class);
-			dd_parent.toggleClass(is_visible_class);
-		});
-	}
-
-
-
-
-	//
-	// Scoreboard Modals
-	//
-	function resetModals() {
-		$('body').removeClass('overflow-hidden');
-		$('.smoove-modal').removeClass(is_visible_class);
-	}
-	
-	if( $('.smoove-modal').length ) {
-		//$('[class*="smoove-modal--container').hide();
-
-		$('[data-modal-id]').on('click', function(e){
-
-			// cancel default click behavior
-			e.preventDefault();
-			
-			// define reusable elements
-			var clicked = $(this);
-			var sb_overlay = $( '#' + clicked.data('modal-id') );
-
-			// add no scroll class to body
-			$('body').addClass('overflow-hidden');
-
-			// add visible class to the overlay
-			sb_overlay.addClass(is_visible_class);
-			
-		});
-	}
-
-
+    
+    // attach click handlers to ui activators
+    $('' + smoove.ui.trigger + '').each( function(e) {
+        var trigger = $(this);
+        trigger.on('click', function(e){
+            e.preventDefault();
+            
+            if(trigger.attr('data-ui-dropdown')) {
+                smoove.ui.dropdown(trigger);
+            }
+            
+            if(trigger.attr('data-ui-modal')) {
+                smoove.ui.modal(trigger);
+            }
+            
+            if(trigger.attr('data-ui-tab')) {
+                smoove.ui.tab(trigger);
+            }
+            
+            
+            
+        });
+    });
+    
+    $('' + smoove.ui.triggerReset + '').on('click', function(e){
+        e.preventDefault();
+        smoove.ui.reset();
+    });
+    
+    $('.smoove-modal-overlay').on('click', function(e){
+        if ( !$('.smoove-modal-container').has(e.target).length ) {
+            smoove.ui.reset();
+        }
+    });
+    
 });

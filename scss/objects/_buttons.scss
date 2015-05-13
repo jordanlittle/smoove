@@ -26,13 +26,12 @@
 
     &:hover {
         box-shadow: 0 1px 3px rgba(0,0,0,.25);
-    	transform: translateY(-2px);
+        border-bottom:none;
     }
 
     &:focus {
     	background-color: $color-brand-dark;
     	box-shadow: 0 1px 3px rgba(0,0,0,.25);
-    	transform: translateY(-2px);
     	outline:none;
     }
 
@@ -42,14 +41,18 @@
     }
 }
 
-[class*="button"] {
+[class*="button--"] {
 	@extend %button;
 
 	&:active {
 		transition: none;
 		box-shadow: none;
-		transform: translateY(0);
+		transform: translateY(1px);
 	}
+}
+
+.button {
+    @extend %button;
 }
 
 .button--lg {
@@ -96,6 +99,8 @@
 }
 
 .button--main {
+    text-shadow:none;
+    
     &:hover,
     &:focus {
         background-color: $color-brand-dark;
@@ -116,6 +121,7 @@
 
 .button--disabled,
 .button[disabled] {
+    @extend %button;
     background-color: $color-light-gray;
 	color: $color-text-light;
 	cursor:default;

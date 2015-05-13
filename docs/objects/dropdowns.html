@@ -1,0 +1,38 @@
+<div class="demo-section">
+    
+    <h2>Dropdowns</h2>
+    <p>Dropdowns must be wrapped in a containing element with a class of <code class="language-markup">.has-dropdown</code>. There are two pieces of a dropdown once inside this container: the trigger and the target. The trigger is defined with the data-attribute <code class="language-markup">data-ui-trigger</code>, while the target is defined with <code class="language-markup">data-ui-target</code>. The trigger must also have a <code class="language-markup">data-dropdown</code> attribute which will contain the HTML id of the target element.</p>
+   
+    <pre><code class="language-markup">&lt;div class="has-dropdown"&gt;
+    &lt;a href="#" data-dropdown="dd_1" data-ui-trigger&gt;Activate!&lt;/a&gt;
+    &lt;div class="dropdown" id="dd_1" data-ui-target&gt;
+        &lt;!-- ... --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <div class="g">
+        
+        <div class="has-dropdown u-md-2">
+            <a href="#dd_1" data-ui-dropdown="dd_1" data-ui-trigger class="button--main button--block">Activate! <i class="icon--sm fa-fw fa-chevron-down dropdown-icon"></i></a>
+            <div class="dropdown card-pad-sm" id="dd_1" data-ui-target>
+                <ul class="unstyled">
+                    <li><a class="button--link" href="#">Account</a></li>
+                    <li><a class="button--link" href="#">Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="has-dropdown u-md-2 offset-md-1">
+            <a href="#dd_2" data-ui-dropdown="dd_2" data-ui-trigger class="button--main button--block">Activate! <i class="icon--sm fa-fw fa-chevron-down dropdown-icon"></i></a>
+            <div class="dropdown dropdown--right" id="dd_2" data-ui-target>
+                <div class="card-pad-md">
+                    <h3 class="no-layout pad-bottom">User Info</h3>
+                    <p class="no-layout">A headboard rationale here, escape, its with it goodness. It's the concepts time not. Can first partiality their queen's her that snow never would been rank a text soft parameters and the interaction the cannot for down better the poverty rendering place to my building and to then where muff.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div> 
+                        
+</div>                    
+

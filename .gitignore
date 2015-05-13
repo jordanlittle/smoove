@@ -4,7 +4,7 @@
 .localized
 npm-debug.log
 .thumb
-
+.ini
 node_modules
 node_modules/*
 scss/*.css

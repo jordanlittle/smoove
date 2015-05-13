@@ -1,0 +1,66 @@
+<div class="demo-section">
+    
+    <h2>Tables</h2>
+    
+    <p>In order to retain a truly responsive experience on mobile, tables must be wrapped in a <code class="language-markup">div.table-scroll</code>. This allows mobile browsers to view wider tables by enabling touch-scroll. Using the <code class="language-markup">table</code>                    class keeps default tables easily selectable.</p>
+    <p>Use <code class="language-markup">colspan-[1-12]</code> classes to format table cells in a 12 column grid.</p>
+    <pre class="push-down"><code class="language-markup">&lt;div class="table-scroll"&gt;
+	&lt;table class="table"&gt;
+		&lt;!-- content --&gt;
+	&lt;/table&gt;
+&lt;/div&gt;</code></pre>
+    <div class="table-scroll">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Date Joined</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Active?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="colspan-3">Bruce Wayne</td>
+                    <td class="colspan-2">Oct 20, 2014</td>
+                    <td class="colspan-3">Texarkana</td>
+                    <td class="colspan-2">TX</td>
+                    <td class="colspan-2">
+                        <label for="table_checkbox_1" class="toggler">
+                            <input type="checkbox" class="toggler-input" id="table_checkbox_1" />
+                            <span class="toggler-label"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="colspan-3">Clark Kent</td>
+                    <td class="colspan-2">Nov 1, 2013</td>
+                    <td class="colspan-3">New York City</td>
+                    <td class="colspan-2">NY</td>
+                    <td class="colspan-2">
+                        <label for="table_checkbox_2" class="toggler">
+                            <input type="checkbox" class="toggler-input" id="table_checkbox_2" />
+                            <span class="toggler-label"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="colspan-3">Peter Parker</td>
+                    <td class="colspan-2">Dec 25, 2014</td>
+                    <td class="colspan-3">Philadelphia</td>
+                    <td class="colspan-2">PA</td>
+                    <td class="colspan-2">
+                        <label for="table_checkbox_3" class="toggler">
+                            <input checked type="checkbox" class="toggler-input" id="table_checkbox_3" />
+                            <span class="toggler-label"></span>
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+                
+</div>
+                
+                

@@ -181,6 +181,7 @@
 }
 
 %unstyled {
+    @extend %no-layout;
     list-style:none;
     margin-left:0;
 }
@@ -197,9 +198,7 @@
 }
 
 %no-select {
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
+	user-select:none;
 }
 
 %no-tap-highlight {
