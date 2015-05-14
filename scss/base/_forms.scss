@@ -192,7 +192,7 @@ select {
     	text-decoration: underline;
     }
 
-    .toggler-input + .toggler-label {
+    .toggler-input ~ .toggler-label {
     	@extend %no-tap-highlight;
     	@extend %no-select;
     	display:inline-block;
@@ -242,9 +242,9 @@ select {
     	margin-top:-8px;
     	transform: translateX(-50%);
 
-		&:focus +  .toggler-label,
-		&:hover +  .toggler-label,
-    	&:active + .toggler-label {
+		&:focus ~ .toggler-label,
+		&:hover ~ .toggler-label,
+    	&:active ~ .toggler-label {
     		text-decoration: underline;
 
     		&::before {
@@ -263,7 +263,7 @@ select {
 		visibility: hidden;
 	}
 
-    .toggler-input:checked + .toggler-label {
+    .toggler-input:checked ~ .toggler-label {
     	&::before {
 			background-color: $color-success;
     	}
