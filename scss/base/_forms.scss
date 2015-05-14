@@ -168,7 +168,7 @@ select {
 /* ---------------------------------------- *\
 
     
-    Scoreboard Form Utils
+    Form Utils
 
 
 \* ---------------------------------------- */
@@ -256,6 +256,12 @@ select {
     		}
     	}
     }
+	
+	[type="hidden"] {
+		@extend %no-layout;
+		height:0px;
+		visibility: hidden;
+	}
 
     .toggler-input:checked + .toggler-label {
     	&::before {
