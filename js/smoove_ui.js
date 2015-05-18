@@ -30,13 +30,13 @@ smoove.ui = (function () {
         
         dropdown: function(clicked) {
             var dropdown_target = $('#' + clicked.attr('data-ui-dropdown') + '');
-            console.log(clicked.attr('' + smoove.ui.target + ''));
-            console.log(dropdown_target.attr('href'));
-            // check to see if user is clicking the currently active dropdown trigger
-            
-            
-            clicked.toggleClass(isActiveClass);
-            dropdown_target.toggleClass(isVisibleClass); 
+            var isCurrentDropdown = (clicked.attr('data-ui-dropdown') === dropdown_target.attr('id')) ? true : false;
+            if(smoove.ui.isOpen() && isCurrentDropdown){
+                smoove.ui.reset();
+            } else {
+                clicked.toggleClass(isActiveClass);
+                dropdown_target.toggleClass(isVisibleClass);
+            }
         },
                 
         tab: function(clicked) {

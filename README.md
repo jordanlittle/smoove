@@ -7,6 +7,10 @@ https://jordanlittle.github.io/smoove
 
 ### Changelog
 
+*	0.1.5.1
+
+	Fixed a few JS bugs.
+
 *	0.1.5
 
 	Added breadcrumbs.
@@ -37,4 +41,4 @@ https://jordanlittle.github.io/smoove
 
 ### Known Issues
 
-* Can open multiple dropdowns at once. Need to figure out a better way to handle toggling a dropdown since you can close one by clicking on the activator _again_ *or* clicking off the active dropdown.
+* When a dropdown is open, clicking a _different_ dropdown activator should close the currently opened dropdown and open the newly clicked one. Currently, when a dropdown is open, clicking a different one simply closes the opened one, not activating the newly clicked dropdown.
