@@ -3,13 +3,14 @@ A 12-column, BEM-ish CSS framework for use in small to large projects.
 
 ### Project Site
 
-https://jordanlittle.github.io/smoove
+http://smoovecss.com
 
 ### Changelog
 
 *	0.1.5.1
 
 	Fixed a few JS bugs.
+	Now on Azure with Continuous Deployment. No more gh-pages bs.
 
 *	0.1.5
 
