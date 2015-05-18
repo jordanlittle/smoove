@@ -60,6 +60,7 @@ module.exports = function(grunt) {
 						object_utilities: './docs/objects/utilities.html',
 						object_pull_floats: './docs/objects/pull_floats.html',
 						object_nudge_pad_push: './docs/objects/nudge_pad_push.html',
+						object_breadcrumbs: './docs/objects/breadcrumbs.html',
 						object_buttons: './docs/objects/buttons.html',
 						object_cards: './docs/objects/cards.html',
 						object_navs: './docs/objects/navs.html',

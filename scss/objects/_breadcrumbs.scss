@@ -1,0 +1,43 @@
+/* ---------------------------------------- *\
+
+    
+    Breadcrumbs
+
+
+\* ---------------------------------------- */
+
+.breadcrumbs {
+	@extend %no-layout;
+	@extend %unstyled;
+	margin-bottom: 1em;
+	
+	li {
+		@extend %no-layout;
+		display:inline-block;
+		font-size: .8125em;
+		cursor:default;
+		
+		&:after {
+			content:"\f054";
+			font-family: $font-icon;
+			font-size: 9px;
+			color: darken($color-light-gray, 10%);
+			margin-left: 5px;
+			position:relative;
+			top:-1px;
+		}
+		
+		&:last-child:after {
+			display:none;
+		}
+	}
+	
+	a {
+		margin:0;
+		padding: 2px 0;
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
