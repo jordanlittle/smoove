@@ -1,0 +1,89 @@
+/* ---------------------------------------- *\
+    
+    
+    Scoreboard Tabs
+
+
+\* ---------------------------------------- */
+
+[class*="smoove-tabs--nav"] .smoove-tab {
+	background-color: #fff;
+	float:left;
+	padding: 8px 14px;
+	border: 1px solid $color-light-gray;
+	border-radius: $border-radius-lg $border-radius-lg 0 0;
+	margin:0 5px 0 0;
+	position:relative;
+	top:1px;
+
+    &:last-child {
+    	margin-right:0;
+    }
+
+    &.is-active-tab {
+		color: $color-text-dark;
+		border-bottom-color: #fff;
+		
+		&:hover {
+			border-color: $color-light-gray;
+			border-bottom-color: #fff;
+		}
+    }
+
+    &:hover {
+        border-color: darken($color-light-gray, 5%);
+    }
+
+    &:active {
+    	
+    }
+}
+
+[class*="smoove-tabs--nav"] {
+	@extend %clearfix;
+	border-bottom: 1px solid $color-light-gray;
+}
+
+.smoove-tabs--nav-sm {
+	.smoove-tab {
+		font-size: $base-font-size*.75;
+		font-weight: 700;
+		padding: 5px 8px;
+		margin-right: 5px;
+	}
+}
+
+.smoove-tabs--nav-md {
+	.smoove-tab {
+		font-size: $base-font-size;
+	}
+}
+
+.smoove-tabs--nav-lg {
+	.smoove-tab {
+		font-size: $base-font-size*1.5;
+		font-weight: 200;
+		padding: 15px 25px;
+		margin-right: 12px;
+	}
+}
+
+.smoove-tabs--panels {
+	@extend %clearfix;
+	position:relative;
+	overflow: hidden;
+}
+
+	.smoove-tabs--panel {
+		display:none;
+		float:left;
+		width:100%;
+		transform: translateZ(0) translateX(-10px);
+		transition: $default-transition;
+	}
+
+		.smoove-tabs--panel.is-active-tab {
+			transform: translateZ(0) translateX(0);
+			display:block;
+		}
+

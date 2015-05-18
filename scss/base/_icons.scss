@@ -1,0 +1,32 @@
+/* ---------------------------------------- *\
+    
+    
+    Icons
+
+
+\* ---------------------------------------- */
+
+%icon {
+	display:inline-block;
+	vertical-align:middle;
+	font-family: $font-icon;
+	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+  	transform: translate(0, 0);
+  	font-size: inherit;
+}
+
+i[class*="icon"] {
+	@extend %icon;
+}
+	i.icon--sm {
+		font-size: 11px;
+	}
+
+	i.icon--md {
+		font-size: 22px;
+	}
+
+	i.icon--lg {
+		font-size: 44px;
+	}

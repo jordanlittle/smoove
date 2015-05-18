@@ -1,0 +1,363 @@
+/* ---------------------------------------- *\
+    
+
+    Forms
+
+
+\* ---------------------------------------- */
+
+$form-sm: 25px;
+$form-md: 35px;
+$form-lg: 45px;
+
+fieldset {
+    margin-bottom:1.25em;
+    position:relative; // for positioning icons
+
+    &:last-child {
+    	margin-bottom:0;
+    }
+
+    & fieldset {
+    	margin-bottom:0;
+    	
+    	@include context(small-screens-only) {
+    		margin-bottom: 1.25em;
+    	}
+    }
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  border: 1px solid $color-input-border;
+  vertical-align:middle;
+
+  &:focus {
+      box-shadow: inset 0 1px 2px rgba(0,0,0,.2);
+      outline:0;
+      border-color:darken($color-input-border, 20%);
+  }
+}
+
+label {
+    display:block;
+    font-size:13px;
+    line-height:1em;
+    margin:0 0 .125em;
+}
+
+.form-success.form-success {
+	border-color: $color-success;
+
+	&:focus {
+		box-shadow: 0 0 3px $color-success;
+	}
+}
+
+.form-warning.form-warning {
+	border-color: $color-warning;
+
+	&:focus {
+		box-shadow: 0 0 3px $color-warning;
+	}
+}
+
+.form-error.form-error {
+	border-color: $color-brand;
+
+	&:focus {
+		box-shadow: 0 0 3px $color-brand;
+	}
+}
+
+input[type="text"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+textarea {
+    -webkit-appearance:none;
+    -webkit-border-radius:none;
+    padding:.45em .5em .475em;
+    margin:0;
+    background-color: #fdfdfd;
+    text-indent: 2px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.05);
+    border-radius: $border-radius;
+
+    &:focus {
+    	background-color: #fff;
+    	box-shadow: none;
+    }
+
+    @media (max-height:720px) {
+    	padding: .2em .25em .225em;
+    	font-size: .85em;
+    }
+}
+
+.input--sm.input--sm { // specificity hack
+	height: $form-sm;
+	line-height: $form-sm;
+	font-size: .75em;
+	padding: .225em .35em .25em;
+	font-weight: 700;
+}
+
+.input--lg.input--lg { // specificity hack
+	height: $form-lg;
+	line-height: $form-lg;
+	font-size: 1.35em;
+	padding: .45em .55em .475em;
+	font-weight: 200;
+}
+
+input[type="text"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+textarea,
+select:focus,
+select:hover {
+    color: $color-text-dark;
+}
+
+select {
+	line-height:2.187em;
+    height:2.42em;
+    color: $color-text-light;
+    margin:0;
+    padding:0 0 0 .45em;
+	border-radius: $border-radius;
+
+    @media (max-height:720px) {
+    	font-size: .95em;
+    	height: 2.05em;
+    	line-height: 1.75em;
+    }
+
+    @include context(hidpi) {
+        // hack for Android Browser not displaying down-arrow for select boxes
+        -webkit-appearance: listbox;
+        background-image: url(data:image/png;base64,R0lGODlhDQAEAIAAAAAAAP8A/yH5BAEHAAEALAAAAAANAAQAAAILhA+hG5jMDpxvhgIAOw==); /* simple arrow img */
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-left: .5em;
+    }
+}
+
+
+/* ---------------------------------------- *\
+
+    
+    Form Utils
+
+
+\* ---------------------------------------- */
+
+.toggler {
+	@extend %no-tap-highlight;
+	line-height:2.187em;
+    height:2.42em;
+    position:relative;
+    cursor:pointer;
+    padding-right: 60px;
+    min-width: 60px;
+    display:inline-block;
+
+    @media (max-height: 720px) {
+    	height: 2.05em;
+    	line-height: 2.05em;
+    }
+
+    &:hover .toggler-label {
+    	text-decoration: underline;
+    }
+
+    .toggler-input ~ .toggler-label {
+    	@extend %no-tap-highlight;
+    	@extend %no-select;
+    	display:inline-block;
+    	line-height: 1em;
+
+		&::after,
+    	&::before {
+			content:"";
+			position:absolute;
+			top:50%;
+			right:0;
+			transform: translateY(-50%);
+    	}
+
+    	&::before {
+    		z-index: 1;
+			width: 60px;
+			height: 30px;
+			background-color: #e1e1e1;
+			box-shadow: inset 0 1px 1px rgba(0,0,0,.25);
+			border-radius: 32px;
+			transition: .2s ease-in-out background-color;
+    	}
+    	
+    	&::after {
+    		content:"\f00d";
+    		color: $color-text-light;
+    		font-family: $font-icon;
+    		font-size: 11px;
+    		right:34px;
+    		z-index: 2;
+    		width: 22px;
+    		height: 22px;
+    		text-align:center;
+    		line-height: 22px;
+    		background: #f5f5f5;
+    		box-shadow: 0 1px 1px rgba(0,0,0,.25), inset 0 1px 0 #fff;
+    		border-radius: 27px;
+    		transition: .225s cubic-bezier(.15,.67,.64,1.28) all;
+    	}
+    }
+
+    .toggler-input {
+    	position:absolute;
+    	top:50%;
+    	right:0;
+    	margin-top:-8px;
+    	transform: translateX(-50%);
+
+		&:focus ~ .toggler-label,
+		&:hover ~ .toggler-label,
+    	&:active ~ .toggler-label {
+    		text-decoration: underline;
+
+    		&::before {
+				background-color: #e9e9e9;	
+			}
+    		&::after {
+    			background-color: #fff;
+    			color: $color-text-dark;
+    		}
+    	}
+    }
+	
+	[type="hidden"] {
+		@extend %no-layout;
+		height:0px;
+		visibility: hidden;
+	}
+
+    .toggler-input:checked ~ .toggler-label {
+    	&::before {
+			background-color: $color-success;
+    	}
+    	&::after {
+    		content:"\f00c";
+    		color: darken($color-success,50%);
+    		right: 4px;
+    		background-color: #fff;
+    		box-shadow: 0 1px 2px rgba(0,0,0,.4);
+    	}
+    }
+}
+
+.day-picker {
+	@extend %no-select;
+	font-size:0;
+	padding: 3px 0;
+	background-color: lighten($color-light-gray, 5%);
+	border: 1px solid $color-input-border;
+	border-radius: $border-radius-sm;
+	
+	.day-picker-cell {
+		@extend %no-tap-highlight;
+		display:inline-block;
+		vertical-align: middle;
+		width: percentage(1/7);
+		position:relative;
+		padding:0 2px;
+		border-right: 1px solid darken($color-light-gray, 5%);
+
+		&:last-child {
+			border-right:none;
+		}
+	}
+
+	.day-picker-input {
+		position:absolute;
+		top:0;
+		left:0;
+		z-index:-1;
+	}
+
+	.day-picker-input:checked + .day-picker-label {
+		background-color: #fff;
+		color: $color-text-dark;
+		font-weight:700;
+		border-bottom-color: $color-brand;
+		box-shadow: 0 1px 1px rgba(0,0,0,.15);
+
+		&:active {
+			font-weight: 700;
+		}
+	}
+
+	.day-picker-label {
+		font-size: 14px;
+		color: $color-text-light;
+		font-weight: 400;
+		text-align: center;
+		padding:.7em 0 .525em;
+		cursor:pointer;
+		margin:0;
+		border-bottom: 2px solid transparent;
+
+		&:hover {
+			color: $color-text-dark;
+			background-color: #fff;
+			box-shadow: 0 1px 0 rgba(0,0,0,.15);
+		}
+	}
+}
+
+.input-icon {
+	color: $color-brand-secondary;
+	font-size: 22px;
+	position:absolute;
+	top:50%;
+	margin-top:-4px;
+	left: $grid-gutter-size/4;
+	@include shape_square(22px);
+}
+
+.input-has-icon.input-has-icon {
+	padding-left: 35px;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-moz-placeholder,
+:-ms-input-placeholder {
+   color: $color-text-light;
+}
+
+::-ms-clear { // hides ie10 "x" for clearing search bars
+    display: none;
+}
+

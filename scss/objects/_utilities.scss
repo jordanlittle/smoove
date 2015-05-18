@@ -1,0 +1,137 @@
+/* ---------------------------------------- *\
+
+    
+    Utilities
+
+
+\* ---------------------------------------- */
+
+.no-layout      { @extend %no-layout; }
+
+.hidden         { @extend %hidden; }
+
+.hidden-on-mobile {
+	@include context(small-screens-only) {
+		display:none !important;
+	}
+}
+
+.show-only-on-mobile {
+	@include context(tablet) {
+		display:none;
+	}
+}
+
+.rounded        { @extend %rounded; }
+
+.unstyled 		{ @extend %unstyled; }
+
+.text-left      { text-align:left !important; }
+.text-right     { text-align:right !important; }
+.text-center    { text-align:center !important; }
+
+.pull-right     { float:right; }
+.pull-left      { float:left; }
+.clear-both     { clear:both; }
+
+.inline         { display:inline; }
+
+.va-top 		{vertical-align:top;}
+.va-mid 		{vertical-align:middle;}
+.va-bot 		{vertical-align:bottom;}
+
+.cf 			{ @extend %clearfix; }
+.cf--sm 	 	{ @extend %clearfix; @include context(tablet) { display:none; } }
+
+.input-fit,
+.input--fit		{ display:inline-block;width:100%; }
+
+
+
+
+/* ---------------------------------------- *\
+    
+
+    Nudge & Pad Classes
+
+
+\* ---------------------------------------- */
+
+[class*="nudge-"] {
+	position:relative;
+}
+
+@for $nudge-amount from 1 through 10 {
+    .nudge-up-#{$nudge-amount} {
+        bottom: 0px + $nudge-amount;
+    }
+    .nudge-down-#{$nudge-amount} {
+        top: 0px + $nudge-amount;
+    }
+    .nudge-left-#{$nudge-amount} {
+        left: 0px + $nudge-amount;
+    }
+    .nudge-right-#{$nudge-amount} {
+        right: 0px + $nudge-amount;
+    }
+}
+
+.pad {
+	padding: $grid-gutter-size/2;
+	@include context(tablet) {
+		padding: $grid-gutter-size;
+	}
+}
+
+.pad-sides {
+	padding-left: $grid-gutter-size/2;
+	padding-right: $grid-gutter-size/2;
+	@include context(tablet) {
+		padding-left: $grid-gutter-size;
+		padding-right: $grid-gutter-size;
+	}
+}
+
+	.no-pad-sides-sm {
+		@include context(small-screens-only) {
+			padding-left:0;
+			padding-right:0;
+		}
+	}
+
+.no-pad-sm {
+	@include context(small-screens-only) {
+		padding:0;
+	}
+}
+
+$directions: ('top','right','bottom','left');
+@each $direction in $directions {
+
+	.pad-#{$direction} {
+		padding-#{$direction}: $grid-gutter-size/2;
+		@include context(tablet) {
+			padding-#{$direction}: $grid-gutter-size;
+		}
+	}
+
+	.pad-sm-#{$direction} {
+		@include context(small-screens-only) {
+			padding-#{$direction}: $grid-gutter-size/2;
+		}
+	}
+
+	.no-pad-#{$direction}-sm {
+		@include context(small-screens-only) {
+			padding-#{$direction}: 0;
+		}
+	}
+
+	.push-#{$direction} {
+		margin-#{$direction}: $grid-gutter-size/2;
+		@include context(tablet) {
+			margin-#{$direction}: $grid-gutter-size;
+		}
+	}
+
+}

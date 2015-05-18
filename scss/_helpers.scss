@@ -1,0 +1,370 @@
+/*      
+    
+    CONTENTS
+    ========
+    Mixins
+    Silent Mixins
+    Debug
+
+*/
+
+
+
+
+/* ---------------------------------------- *\
+
+
+    Mixins
+
+
+\* ---------------------------------------- */
+
+@mixin context( $bp ) {
+    @if $bp == hand-only {
+        @media (max-width: 25em )
+        { @content }
+    }
+
+    @else if $bp == hand-wide {
+        @media (min-width: 25em )
+        { @content }
+    }
+    @else if $bp == hand-wide-only {
+        @media (min-width: 25em) and (max-width: 48.0649em)
+        { @content }
+    }
+
+    @else if $bp == small-screens-only {
+        @media (max-width: 48.065em)
+        { @content }
+    }
+
+    @else if $bp == tablet {
+        @media (min-width: 48.065em )
+        { @content }
+    }
+    @else if $bp == tablet-only {
+        @media (min-width: 48.065em) and (max-width: 63em)
+        { @content }
+    }
+
+    @else if $bp == monitor {
+        @media (min-width: 63em)
+        { @content; }
+    }
+    @else if $bp == monitor-only {
+        @media (min-width: 63em) and (max-width: 80em)
+        { @content }
+    }
+
+    @else if $bp == monitor-large {
+        @media (min-width: 80em )
+        { @content; }
+    }
+
+    @else if $bp == tv {
+        @media (min-width: 100em )
+        {@content; }
+    }
+
+    @else if $bp == hidpi {
+        @media only screen and (-webkit-min-device-pixel-ratio: 1.25),
+               only screen and (-o-min-device-pixel-ratio: 5/4),
+               only screen and (min-resolution: 120dpi) { @content }
+    }
+}
+
+@mixin overflow-ellipsis() {
+	// requires a width to be declared
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+@mixin shape_square($arg) {
+    width: $arg;
+    height: $arg;
+    line-height: $arg;
+    text-align: center;
+}
+
+@mixin shape_circle($arg) {
+    width: $arg;
+    height: $arg;
+    line-height: $arg;
+    text-align: center;
+    border-radius: $arg;
+}
+
+@mixin color_with_contrast_check( $bg-color ) {
+    @if lightness( $bg-color ) > lightness( rgba( 140,140,140,1) ) {
+        color: #fff;
+        text-shadow: 0 1px 0 rgba(0,0,0,.25);
+    } @else {
+        color: darken( $bg-color, 50%);
+        text-shadow: 0 1px 0 rgba(255,255,255,.25);
+    }
+}
+
+
+
+
+/* ---------------------------------------- *\
+
+
+    Silent Mixins
+
+    Also known as placeholders or extensions, these rules don't get
+    rendered to the CSS file unless they are extended in a prop later down
+    the stylesheet. Use like this:
+
+    .foo {
+        @extend %bar;
+        // all of %bar's styles will be applied to .test
+    }
+
+
+\* ---------------------------------------- */
+
+%clearfix {
+    zoom:1;
+
+    &:after{
+        content:"";
+        display:table;
+        clear:both;
+    }
+}
+
+%no-layout {
+    margin:0;
+    padding:0;
+}
+
+%hidden {
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+}
+
+%rounded {
+    border-radius: 6px;
+}
+
+%center-block {
+    // element must have explicit width
+    display:block;
+    margin-right:auto;
+    margin-left:auto;
+}
+
+%vertical-rhythm {
+	margin-top:     1.625em;
+    margin-bottom:  1.625em;
+}
+
+%display-inline {
+    display:inline;
+}
+
+%display-block {
+    display:block;
+}
+
+%display-inline-block {
+    display:inline-block;
+}
+
+%unstyled {
+    @extend %no-layout;
+    list-style:none;
+    margin-left:0;
+}
+
+%transition {
+    transition: $default-transition;
+    transform: translate3d(0,0,0);
+}
+
+%overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+%no-select {
+	user-select:none;
+}
+
+%no-tap-highlight {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+%wrap {
+	width: 100%;
+	margin-left:auto;
+	margin-right:auto;
+
+	@include context(tablet) {
+		max-width: $grid-max-width;
+	}
+}
+
+%debug-outline {
+    outline: 5px solid yellow;
+    position:relative;
+}
+
+%debug-tooltip {
+    position:absolute;
+    top:100%;
+    left:0;
+    background:rgba(0,0,0,.7);
+    padding:2px 5px;
+    color:#fff;
+    font-size:11px;
+    font-weight:bold;
+    width:100px;
+    text-align:center;
+}
+
+
+
+
+/* ---------------------------------------- *\
+
+
+    Debug
+
+
+\* ---------------------------------------- */
+
+@if $debug-breakpoints == true {
+	body::before {
+		background-color: rgba(0,0,0,.5);
+		position:fixed;
+		bottom:0;
+		left:0;
+		width:100%;
+		color: #fff;
+		padding: 10px;
+
+		@include context(hand-only) {
+			content: "hand-only";
+		}
+		@include context(hand-wide) {
+			content: "hand-wide";
+		}
+		@include context(tablet) {
+			content: "tablet";
+		}
+		@include context(monitor) {
+			content: "monitor";
+		}
+		@include context(tv) {
+			content: "tv";
+		}
+	}
+}
+
+@if $debug-outlines == true {
+    *,
+    *:before,
+    *:after {
+        outline:1px solid #333;
+    }
+}
+
+@if $debug-no-shadows == true {
+    *,
+    *:before,
+    *:after {
+        box-shadow: none !important;
+    }
+}
+
+@if $debug-show-grid == true {
+    .g {
+        & > [class^="u-"] {
+            background-color:rgba(255,0,0,.25);
+            outline: 1px solid rgba(0,0,0,.5);
+
+            & > [class^="u-"] {
+                background-color:rgba(255,0,0,.25);
+            }
+        }
+    }
+}
+
+@if $debug-link-titles == true {
+    a {
+        @extend %debug-outline;
+
+        &:after {
+            content: "Missing title attr";
+            @extend %debug-tooltip;
+        }
+    }
+    a[title] {
+        outline:none;
+
+        &:after {
+            display:none;
+        }
+    }
+    a[title=""] {
+        @extend %debug-outline;
+        position:relative;
+
+        &:after {
+            content: "Empty title attr";
+            display:block;
+            @extend %debug-tooltip;
+        }
+    }
+}
+
+@if $debug-empty-hrefs == true {
+    [href="#"],
+    [href=""],
+    [href*="javascript"] {
+        @extend %debug-outline;
+
+        &:after {
+            content: "Check HREF";
+            @extend %debug-tooltip;
+        }
+    }
+}
+
+@if $debug-empty-els == true {
+    :empty {
+        @extend %debug-outline;
+
+        &:after {
+            content: "Empty element";
+            @extend %debug-tooltip;
+        }
+    }
+}
+
+@if $debug-img-no-alt == true {
+    img[alt] {
+        outline:none;
+    }
+    img[alt=""] {
+        @extend %debug-outline;
+    }
+}
+
+@if $debug-form-actions == true {
+    form[action^="#"],
+    form[action=""] {
+        @extend %debug-outline;
+    }
+}

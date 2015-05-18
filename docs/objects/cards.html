@@ -1,0 +1,41 @@
+<div class="demo-section">
+    
+    <h2>Cards</h2>
+    
+    <p>A very generic class meant to be used for highlighting a certain section with a white background and a subtle box-shadow. Adding a class of <code class="language-markup">card</code> applies the background and shadows. Include a class of
+    <code class="language-markup">card-pad-[size]</code> (using the sizes lg, md, and sm) to add padding of various sizes.</p>
+    <p>Avoid mixing the grid classes with these card classes. Use the grid to create a scaffold around cards. </p>
+    <p>Card-pad sizes are used on cards to keep a separate scope from the global <code class="language-markup">pad-[direction]</code> classes.</p>
+    <pre><code class="language-markup">&lt;div class="u-md-6 u-sm-6"&gt;						
+	&lt;div class="card  card-pad-md"&gt;
+		&lt;!-- ... --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <div class="g">
+        <div class="u-md-4  u-sm-3">
+            <div class="card  card-pad-md">
+                <p class="text-center no-layout">I'm a card</p>
+            </div>
+        </div>
+        <div class="u-md-7  offset-md-1  u-sm-8 offset-sm-1">
+            <div class="card  card-pad-sm  push-bottom">
+                <p class="text-center no-layout">I'm a card</p>
+            </div>
+            <div class="g">
+                <div class="u-md-3 u-sm-5">
+                    <div class="card card-pad-md  text-center">
+                        <i class="icon--lg ion-android-alarm-clock"></i>
+                    </div>
+                </div>
+                <div class="u-md-6  offset-md-3  u-sm-5 offset-sm-2">
+                    <div class="card card-pad-md  text-center">
+                        <i class="icon--lg ion-help-circled"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                        
+</div>                    
+                    
+                    

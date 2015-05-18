@@ -1,0 +1,94 @@
+/* ---------------------------------------- *\
+    
+    
+    Smoove Modals
+
+
+\* ---------------------------------------- */
+
+.smoove-modal-overlay {
+	position:fixed;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color: rgba(0,0,0,.85);
+	z-index: $z-stack-top;
+	overflow-x:hidden;
+	overflow-y: auto;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+	-webkit-overflow-scrolling: touch;
+	display:none;
+
+	transition: $default-transition;
+
+		&.is-visible {
+			display:block;
+		}
+}
+
+.smoove-modal-container {
+	position:absolute;
+	width: 310px;
+	top: 0;
+	left: 50%;
+	margin-left: -155px;
+	margin-bottom: 40px;
+	transition: .35s cubic-bezier(.53,.33,.3,1.53) all;
+	transform: translateZ(0) translateY(40px);
+
+	@media (min-height: 700px) {
+		top:10%;
+	}
+
+	@include context(tablet) {
+		width: 480px;
+		margin-left: -240px;
+	}
+
+	.smoove-modal-overlay.is-visible & {
+		display:block;
+		transform: translateZ(0) translateY(0);
+	}
+}
+
+	.smoove-modal-header {
+		color: #fff;
+		position: relative;
+		padding: 20px 0;
+	}
+
+		.smoove-modal-title {
+			color: #fff;
+			font-weight: 200;
+			font-size: 22px;
+			text-shadow: 0 1px 5px rgba(0,0,0,.9);
+		}
+
+		.smoove-modal-close {
+			background-color: rgba(0,0,0,.15);
+			border: 2px solid rgba(255,255,255,.25);
+			color: #fff;
+			cursor:pointer;
+			z-index: $z-stack-top;
+			position:absolute;
+			top:8px;
+			right:-3px;
+			@include shape_circle(48px);
+			line-height: 41px;
+			transition: $default-transition;
+
+			&:hover {
+				border-color: #fff;
+			}
+		}
+	
+	.smoove-modal {
+		@extend %card;
+		box-shadow: 0 4px 15px rgba(0,0,0,.75), 0 1px 3px rgba(0,0,0,.25);
+	}
+		.smoove-modal-guts {
+			> * {
+				margin:0;
+			}
+		}

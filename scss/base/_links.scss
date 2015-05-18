@@ -1,0 +1,36 @@
+/* ---------------------------------------- *\
+    
+
+    Links
+
+
+\* ---------------------------------------- */
+
+a {
+    text-decoration: none;
+    color: $color-brand-dark;
+}
+
+h1 a, h2 a, h3 a,
+h4 a, h5 a, h6 a {
+    border-bottom:1px solid;
+    padding:2px;
+}
+
+p a {
+	@extend %transition;
+	text-shadow: 0 1px 0 rgba(255,255,255,.5);
+	border-bottom: 1px solid transparentize($color-brand,.75);
+	padding: 1px 2px;
+    transform: translateZ(0);
+
+    &:hover,
+    &:focus {
+    	border-bottom: 1px solid $color-brand;
+    }
+
+    &:active {
+    	transform: translateY(1px);
+    }
+}
+

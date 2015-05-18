@@ -1,0 +1,171 @@
+/* ---------------------------------------- *\
+    
+    
+    Buttons
+
+
+\* ---------------------------------------- */
+
+%button {
+	@extend %transition;
+	@extend %no-tap-highlight;
+    display:inline-block;
+    vertical-align:middle;
+    border:none;
+    padding:10px 20px 11px;
+    margin:.125em 0;
+    font-weight: 200;
+    background-color: $color-brand;
+    color: #fff;
+    cursor:pointer;
+    font-size:16px;
+    text-align:center;
+    line-height:1em;
+    -webkit-appearance:none;
+    border-radius: $border-radius;
+
+    &:hover {
+        box-shadow: 0 1px 3px rgba(0,0,0,.25);
+        border-bottom:none;
+    }
+
+    &:focus {
+    	background-color: $color-brand-dark;
+    	box-shadow: 0 1px 3px rgba(0,0,0,.25);
+    	outline:none;
+    }
+
+    i {
+        position:relative;
+        top:-2px;
+    }
+}
+
+[class*="button--"] {
+	@extend %button;
+
+	&:active {
+		transition: none;
+		box-shadow: none;
+		transform: translateY(1px);
+	}
+}
+
+.button {
+    @extend %button;
+}
+
+.button--lg {
+    font-size: 1.5em;
+    padding:15px 30px 16px;
+}
+
+.button--sm {
+    font-size:.6875em;
+    font-weight: 400;
+    padding:5px 10px 6px;
+    border-radius: $border-radius-sm;
+}
+
+.button--block {
+	display:block;
+	width: 100%;
+}
+
+.button--link {
+    background-color: transparent;
+    border-color: transparent;
+    color: $color-brand;
+
+    &:hover {
+        background-color:transparent;
+        text-decoration:underline;
+        color: $color-brand-dark;
+        transform: translateY(0);
+        box-shadow: none;
+    }
+
+    &:focus {
+    	background-color: transparent;
+        box-shadow: none;
+    	transform: translateY(0);
+    	outline:none;
+    }
+
+    &:active {
+    	transform: translateY(1px);
+    	transition: none;
+    }
+}
+
+.button--main {
+    text-shadow:none;
+    
+    &:hover,
+    &:focus {
+        background-color: $color-brand-dark;
+        color:#fff;
+    }
+}
+
+.button--secondary {
+    background-color: $color-brand-secondary;
+	color: #fff;
+	text-shadow:0 1px 0 rgba(0,0,0,.25);
+
+    &:hover,
+    &:focus {
+        background-color: $color-brand-secondary-dark;
+    }
+}
+
+.button--disabled,
+.button[disabled] {
+    @extend %button;
+    background-color: $color-light-gray;
+	color: $color-text-light;
+	cursor:default;
+	box-shadow: none;
+
+    &:hover,
+    &:focus {
+        background-color: $color-light-gray;
+        transform: translateY(0);
+    }
+}
+
+.button--success {
+	background-color: $color-success;
+	color: #505d4c;
+
+	&:hover,
+	&:focus {
+		background-color: #83eb5e;
+	}
+}
+
+.button--warning {
+    background-color: $color-warning;
+    color: darken($color-warning, 60%);
+    
+    &:hover,
+    &:focus {
+        background-color: darken($color-warning, 7%);
+    }
+}
+
+.button--serious {
+    background-color: $color-error;
+    color:#fff;
+    text-shadow:0 1px 0 rgba(0,0,0,.25);
+        
+    &:hover,
+    &:focus {
+        background-color: darken($color-error, 15%);
+    }
+
+    i {
+    	color: $color-brand;
+    	text-shadow: 0 1px 0 #000;
+    }
+}

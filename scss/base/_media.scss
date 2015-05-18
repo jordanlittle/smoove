@@ -1,0 +1,23 @@
+/* ---------------------------------------- *\
+    
+
+    Media
+
+
+\* ---------------------------------------- */
+
+img {
+    width:100%;
+    max-width:100%;
+    height:auto;
+    border: 0; // Remove border when inside `a` element in IE 8/9/10.
+
+    @include context(tablet) {
+        width:auto;
+        max-width:100%;
+    }
+}
+
+svg {
+	height: 100%; // fixes bug in certain version of chrome
+}

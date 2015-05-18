@@ -1,0 +1,160 @@
+<div class="demo-section">
+    
+    <h2>Grid System</h2>
+    <p>Smoove uses a 12-column grid. Each row begins with a class of "g" and contains units of class "u-[size]-[n]" – md targets larger screens, sm for smaller.</p>
+    <pre><code class="language-markup">&lt;!-- Start a row of grids with class "g" --&gt;
+&lt;div class="g"&gt;
+&lt;!--
+Columns are defined as units starting with a class of "u-".
+The modifier '-md' means 'medium screens and above'.
+The modifier '-sm' means 'small screens only'.
+There are twelve columns in -md and six columns in -sm'.
+If you wanted a 10/12 on desktop and a 6/12 on mobile:
+--&gt;
+    &lt;div class="u-md-10 u-sm-6"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <div class="g">
+        <div class="u-md-10  u-sm-8">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-2 u-sm-4">
+            <div class="test-grid"></div>
+        </div>
+    </div>
+    <div class="g">
+        <div class="u-md-6  u-sm-6">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-6  u-sm-6">
+            <div class="test-grid"></div>
+        </div>
+    </div>
+    
+    
+    <h3>Nesting</h3>
+    <p>Grid units can be nested. Once you're inside a "g" class, start a new row (and thus a new 12-col grid context) by nesting another <code class="language-markup">&lt;div class="g"&gt;...&lt;/div&gt;</code>.</p>
+    <div class="g">
+        <div class="u-md-2  u-sm-2">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-10  u-sm-10">
+
+            <!-- start nested grids -->
+            <div class="g">
+                <div class="test-grid">
+
+                    <div class="u-md-4 u-sm-6">
+                        <div class="test-grid"></div>
+                    </div>
+
+                    <div class="u-md-8 u-sm-6">
+                        <div class="test-grid"></div>
+                    </div>
+
+                </div>
+                <!-- end nested grids -->
+
+            </div>
+        </div>
+    </div>
+    
+    
+    <h3>Offsets</h3>
+    <p>You can use <code class="language-markup">offset-[size]-[n]</code> classes to move units to the right in the grid.</p>
+    <pre><code class="language-markup">&lt;div class="g"&gt;
+&lt;!--
+    Use "offset-" classes to move columns horizontally.
+    "offset-md-" applies to larger screens.
+    "offset-sm-" applies to smaller ones.
+    Ensure your units and offsets add up to 12.
+--&gt;
+    &lt;div class="u-md-3  u-sm-3"&gt;
+    &lt;/div&gt;
+    &lt;div class="u-md-3  u-sm-3"&gt;
+    &lt;/div&gt;
+    &lt;div class="u-md-3 offset-md-3  u-sm-3 offset-sm-3"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <div class="g">
+        <div class="u-md-3  u-sm-3">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-3  u-sm-3">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-3 offset-md-3  u-sm-3 offset-sm-3">
+            <div class="test-grid"></div>
+        </div>
+    </div>
+    
+    
+    
+    <h3>Push &amp; Pull</h3>
+    <p>You can use <code class="language-markup">push-[size]-[n]</code> and <code class="language-markup">pull-[size]-[n]</code> classes to move units around the grid irrespective of their source order. Push moves a column to the right while Pull moves it to the left.</p>
+    <pre><code class="language-markup">&lt;div class="g"&gt;
+&lt;!--
+    Use "push" classes to move columns right, regardless of source order.
+    Use "pull" classes to move columns left, regardless of source order.
+--&gt;
+    &lt;div class="u-md-3  push-md-9"&gt;
+        &lt;!-- I should be on the far left, but I'm on the far right --&gt;
+    &lt;/div&gt;
+    &lt;div class="u-md-6"&gt;
+        &lt;!-- I'll stay in the center -->
+    &lt;/div&gt;
+    &lt;div class="u-md-3  pull-md-9"&gt;
+        &lt;!-- I should be on the far right, but I'm on the far left --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <div class="g">
+        <div class="u-md-3  push-md-9">
+            <div class="test-grid">First in source, but far right column.</div>
+        </div>
+        <div class="u-md-6">
+            <div class="test-grid">Normal column.</div>
+        </div>
+        <div class="u-md-3 pull-md-9">
+            <div class="test-grid">Last in source, but far left column.</div>
+        </div>
+    </div>
+    
+    
+    
+    <h3>Gutters</h3>
+    <p>Add a class of <code class="language-markup">g-gutters</code> to get a guttered grid. Guttered grids will lose their gutters on mobile to save space.</p>
+    <pre><code class="language-markup">&lt;div class="g  g-gutters"&gt;
+&lt;!--
+    Add the class "g-gutters" to your .g class for guttered grids.
+    The gutters are fixed and are set in _build.scss ($grid-gutter-size).
+--&gt;
+    &lt;div class="u-md-3"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="u-md-3"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="u-md-3"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="u-md-3"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <div class="g  g-gutters">
+        <div class="u-md-3">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-3">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-3 u-sm-6">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-3 u-sm-6">
+            <div class="test-grid"></div>
+        </div>
+    </div>
+                        
+</div>                    
+                    
+                    

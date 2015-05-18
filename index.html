@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Smoove - Yet another CSS framework.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+    
+    <!-- Google Font -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,300,700" rel="stylesheet" type="text/css" />
+
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Prism Syntax Highlighter -->
+    <link rel="stylesheet" media="all" href="docs/js/prism_syntax_highlighter/prism.css" />
+
+    <!-- Smoove CSS -->
+    <link rel="stylesheet" media="all" href="smoove.min.css" />
+
+    <style>
+        .test-grid {
+            background-color: rgba(0, 0, 0, .085);
+            font-size: 10px;
+            padding: 20px;
+            line-height: 12px;
+            margin-bottom: 2px;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .intro {
+            padding:200px 0;
+        }
+        
+        .smoove-icon {
+            width:60px;
+            height:43px;
+            position:relative;
+            top:2px;
+        }
+        
+        .demo-chunk {
+            padding-top: 60px;
+            margin-bottom: 400px;
+        }
+            .demo-chunk > h2 {
+                font-weight: 700;
+                text-transform: uppercase;
+                padding-bottom: 40px;
+                margin-bottom: 40px;
+                border-bottom: 5px solid #f2f2f2;
+            }
+        
+        .demo-section {
+            margin-bottom:100px;
+            padding-bottom:100px;
+            border-bottom: 4px solid #f2f2f2;
+        }
+            .demo-section > h2 {
+                margin-top:0;
+            }
+        
+        .test-grid .test-grid {
+            padding: 14px;
+        }
+        
+        .test-grid.cf {
+            padding: 5px;
+        }
+        
+        #grids [class*="u-"] + [class*="u-"] {
+            outline: 2px solid #fff;
+        }
+        
+        #grids [class*="u-"] [class*="u-"] {
+            outline: none;
+            border-left: 2px solid #fff;
+        }
+        
+        #grids [class*="u-"] [class*="u-"]:first-child {
+            outline: none;
+            border-left: none;
+        }
+        
+        #grids [class*="u-"] [class*="u-"] .test-grid {
+            border-bottom: none;
+        }
+        
+        #base .demo-heading {
+            position: relative;
+            padding-left: 20px;
+            
+        }
+        
+        .heading-test {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            font-size: 10px;
+            line-height: 2em;
+            color: #999;
+            font-weight: normal;
+            letter-spacing: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="smoove-modal-overlay" id="test_modal" data-ui-target>
+    <div class="smoove-modal-container">
+        <header class="smoove-modal-header">
+            <span class="smoove-modal-title">Modal Demo</span>
+            <del class="smoove-modal-close" data-ui-reset><i class="icon--md fa fa-times"></i></del>
+        </header>
+        <div class="smoove-modal" data-sb-ui-panel>
+            <div class="smoove-modal-guts">
+                <form action="#" class="card card-pad-md">
+                    <fieldset>
+                        <label for="test_name">Name</label>
+                        <input class="input-fit" type="text" id="test_name" />
+                    </fieldset>
+                    <fieldset>
+                        <div class="g">
+                            <fieldset class="u-md-8">
+                                <label for="test_email">Email</label>
+                                <input class="input-fit input-has-icon" type="email" id="test_email" />
+                                <i class="input-icon fa-fw fa-envelope-o"></i>
+                            </fieldset>
+                            <fieldset class="u-md-4  pad-left no-pad-left-sm">
+                                <label for="test_select">Model?</label>
+                                <select class="input-fit" name="" id="test_select">
+                                    <option value="">Accord</option>
+                                    <option value="">Civic</option>
+                                </select>
+                            </fieldset>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <label for="test_select2">Select something</label>
+                        <select class="input-fit" name="" id="test_select2">
+                            <option value="">Select an option&hellip;</option>
+                            <option value="">Another option</option>
+                        </select>
+                    </fieldset>
+                    <fieldset>
+                        <label for="test_checkbox" class="toggler input-fit">
+                            <input checked type="checkbox" class="toggler-input" id="test_checkbox" />
+                            <span class="toggler-label">Need something?</span>
+                        </label>
+                    </fieldset>
+                    <fieldset>
+                        <button type="submit" class="button--main button--block">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+            <footer class="smoove-modal-footer">
+
+            </footer>
+        </div>
+    </div>
+</div>
+
+    <header class="header  header--app">
+        <div class="header-inner g">
+            <div class="u-sm-6 u-md-6">
+                <span class="header-page-info">
+                        <span class="header-page-title">Smoove</span>
+                </span>
+            </div>
+            <div class="u-sm-6 u-md-6">
+                <nav class="nav--header text-right demo-hash-nav">
+                    <a href="#base" class="button--link">Base</a>
+                    <a href="#objects" class="button--link">Objects</a>
+                    <a href="#modules" class="button--link">Modules</a>
+                    <a href="#layouts" class="button--link">Layouts</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="page page--app  g">
+
+        <div class="u-md-3  sidebar  sidebar--app">
+            <nav class="nav  demo-hash-nav">
+                <a href="#base" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-cog"></i> Base</a>
+                <a href="#objects" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-cube"></i> Objects</a>
+                <a href="#modules" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-cubes"></i> Modules</a>
+                <a href="#layouts" class="button--link  button--lg text-left"><i class="icon--md fa fa-fw fa-columns"></i> Layouts</a>
+            </nav>
+        </div>
+
+        <div class="u-md-7 offset-md-4">
+            
+            <div class="intro">
+                <h1><img src="docs/icon.png" alt="Smoove icon" class="smoove-icon" /> Smoove</h1>
+                <p>A 12-column, BEM-ish CSS framework for use in projects small to large.</p>
+            </div>
+
+            <div id="base" class="demo-chunk"> 
+                <h2>Base</h2>          
+<div class="demo-section">
+    
+    <h2>Typography</h2>
+    
+    <h1 class="demo-heading"><span class="heading-test">h1</span>Welcome, Player</h1>
+    <h2 class="demo-heading"><span class="heading-test">h2</span>Organization Info</h2>
+    <h3 class="demo-heading"><span class="heading-test">h3</span>Player Activity</h3>
+    <h4 class="demo-heading"><span class="heading-test">h4</span>Other Information</h4>
+        
+    <div class="g">
+        <div class="u-md-6 pad-right no-pad-right-sm">
+            <p>Paragraphs. If you pry it up, so as to <a href="#">get it overhead</a>, and expose its rows of teeth, it seems a terrific portcullis; and such, alas! it proves to many a poor wight in the fishery, upon whom these spikes fall with impaling force.</p>
+        </div>
+        <div class="u-md-6  pad-left no-pad-left-sm">
+            <p>If you pry it up, so as to get it overhead, and expose its rows of teeth, it seems a terrific portcullis; and such, alas! it proves to many a poor wight in the fishery, upon whom these spikes fall with impaling force.</p>
+        </div>
+    </div>
+    
+    
+    <pre><code class="language-markup">&lt;!-- Use a small tag for small help text --&gt;
+&lt;small&gt;If you pry it up, so as to get it overhead&hellip;&lt;/small&gt;</code></pre>
+    <small>If you pry it up, so as to get it overhead&hellip;</small>
+    
+</div>
+
+
+<div class="demo-section">
+    
+    <h2>Forms</h2>
+    
+    <div class="g">
+        <div class="u-md-6">
+            <form action="#" class="card card-pad-md">
+                <fieldset>
+                    <label for="test_name">Name</label>
+                    <input class="input-fit form-error" type="text" id="test_name" />
+                    <small>Add classes of <code class="language-markup">form-error, form-warning, form-success</code> to input elements for feedback.</small>
+                </fieldset>
+                <fieldset>
+                    <div class="g">
+                        <fieldset class="u-md-8">
+                            <label for="test_email">Email</label>
+                            <input class="input-fit input-has-icon" type="email" id="test_email" />
+                            <i class="input-icon icon--md fa fa-envelope-o"></i>
+                        </fieldset>
+                        <fieldset class="u-md-4  pad-left no-pad-left-sm">
+                            <label for="test_select">Model?</label>
+                            <select class="input-fit" name="" id="test_select">
+                                <option value="">Accord</option>
+                                <option value="">Civic</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <label for="test_select2">Select something</label>
+                    <select class="input-fit" name="" id="test_select2">
+                        <option value="">Select an option&hellip;</option>
+                        <option value="">Another option</option>
+                    </select>
+                </fieldset>
+                <fieldset>
+                    <label for="test_cb_1" class="toggler input-fit">
+                        <input type="checkbox" class="toggler-input" id="test_cb_1" />
+                        <span class="toggler-label">Need anything else?</span>
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <button type="submit" class="button--block">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="u-md-4 offset-md-1">
+            <form action="#" class="">
+                <fieldset>
+                    <label for="test_city">Small Input (.input-small)</label>
+                    <input class="input--sm input-fit" type="text" id="test_city" />
+                </fieldset>
+                <fieldset>
+                    <label for="test_city">Large Input (.input-large)</label>
+                    <input class="input--lg input-fit" type="text" id="test_city" />
+                </fieldset>
+                <pre class="push-down"><code class="language-markup">&lt;!-- Day Picker --&gt;
+&lt;div class="day-picker"&gt;
+    &lt;div class="day-picker-cell" title="Sunday"&gt;
+        &lt;input name="day[]" type="checkbox" id="sun" class="day-picker-input" /&gt;
+        &lt;label for="sun" class="day-picker-label"&gt;Su&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="day-picker-cell" title="Monday"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <fieldset>
+                    <label>Choose some days</label>
+                    <div class="day-picker">
+                        <div class="day-picker-cell" title="Sunday">
+                            <input name="day[]" type="checkbox" id="sun" class="day-picker-input" />
+                            <label for="sun" class="day-picker-label">Su</label>
+                        </div>
+                        <div class="day-picker-cell" title="Monday">
+                            <input name="day[]" type="checkbox" id="mon" class="day-picker-input" />
+                            <label for="mon" class="day-picker-label">M</label>
+                        </div>
+                        <div class="day-picker-cell" title="Tuesday">
+                            <input name="day[]" type="checkbox" id="tue" class="day-picker-input" />
+                            <label for="tue" class="day-picker-label">T</label>
+                        </div>
+                        <div class="day-picker-cell" title="Wednesday">
+                            <input name="day[]" type="checkbox" id="wed" class="day-picker-input" />
+                            <label for="wed" class="day-picker-label">W</label>
+                        </div>
+                        <div class="day-picker-cell" title="Thursday">
+                            <input name="day[]" type="checkbox" id="thur" class="day-picker-input" />
+                            <label for="thur" class="day-picker-label">Th</label>
+                        </div>
+                        <div class="day-picker-cell" title="Friday">
+                            <input name="day[]" type="checkbox" id="fri" class="day-picker-input" />
+                            <label for="fri" class="day-picker-label">F</label>
+                        </div>
+                        <div class="day-picker-cell" title="Saturday">
+                            <input name="day[]" type="checkbox" id="sat" class="day-picker-input" />
+                            <label for="sat" class="day-picker-label">S</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="demo-section">
+    
+    <h2>Tables</h2>
+    
+    <p>In order to retain a truly responsive experience on mobile, tables must be wrapped in a <code class="language-markup">div.table-scroll</code>. This allows mobile browsers to view wider tables by enabling touch-scroll. Using the <code class="language-markup">table</code>                    class keeps default tables easily selectable.</p>
+    <p>Use <code class="language-markup">colspan-[1-12]</code> classes to format table cells in a 12 column grid.</p>
+    <pre class="push-down"><code class="language-markup">&lt;div class="table-scroll"&gt;
+	&lt;table class="table"&gt;
+		&lt;!-- content --&gt;
+	&lt;/table&gt;
+&lt;/div&gt;</code></pre>
+    <div class="table-scroll">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Date Joined</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Active?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="colspan-3">Bruce Wayne</td>
+                    <td class="colspan-2">Oct 20, 2014</td>
+                    <td class="colspan-3">Texarkana</td>
+                    <td class="colspan-2">TX</td>
+                    <td class="colspan-2">
+                        <label for="table_checkbox_1" class="toggler">
+                            <input type="checkbox" class="toggler-input" id="table_checkbox_1" />
+                            <span class="toggler-label"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="colspan-3">Clark Kent</td>
+                    <td class="colspan-2">Nov 1, 2013</td>
+                    <td class="colspan-3">New York City</td>
+                    <td class="colspan-2">NY</td>
+                    <td class="colspan-2">
+                        <label for="table_checkbox_2" class="toggler">
+                            <input type="checkbox" class="toggler-input" id="table_checkbox_2" />
+                            <span class="toggler-label"></span>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="colspan-3">Peter Parker</td>
+                    <td class="colspan-2">Dec 25, 2014</td>
+                    <td class="colspan-3">Philadelphia</td>
+                    <td class="colspan-2">PA</td>
+                    <td class="colspan-2">
+                        <label for="table_checkbox_3" class="toggler">
+                            <input checked type="checkbox" class="toggler-input" id="table_checkbox_3" />
+                            <span class="toggler-label"></span>
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+                
+</div>
+                
+                
+<div class="demo-section">
+
+    <h2>Icons</h2>
+    
+    <p>Smoove uses Fontawesome icons [<a href="http://fortawesome.github.io/Font-Awesome/icons/">Documentation</a>]. Use the <code class="language-markup">va-[top,mid,bot]</code> classes to align the icons vertically. You can also use the
+        <code class="language-markup">icon--sm, icon--md, icon--lg</code> classes to control the size of the icon.</p>
+    <pre class="push-down"><code class="language-markup">&lt;i class="icon fa fa-search"&gt;&lt;i&gt;
+&lt;i class="icon--lg fa fa-search"&gt;&lt;i&gt;
+</code></pre>
+
+    <p>
+        <div class="g">
+            <div class="u-md-3  u-sm-6  text-center">
+                <i class="icon--sm fa fa-search"></i>
+                <i class="icon--md fa fa-search"></i>
+                <i class="icon--lg fa fa-search"></i>
+            </div>
+            <div class="u-md-3  u-sm-6  text-center">
+                <i class="icon--sm fa fa-gears"></i>
+                <i class="icon--md fa fa-gears"></i>
+                <i class="icon--lg fa fa-gears"></i>
+            </div>
+            <div class="u-md-3  u-sm-6  text-center">
+                <i class="icon--sm fa fa-cubes"></i>
+                <i class="icon--md fa fa-cubes"></i>
+                <i class="icon--lg fa fa-cubes"></i>
+            </div>
+            <div class="u-md-3  u-sm-6  text-center">
+                <i class="icon--sm fa fa-columns"></i>
+                <i class="icon--md fa fa-columns"></i>
+                <i class="icon--lg fa fa-columns"></i>
+            </div>
+        </div>
+    </p>
+                
+</div>
+                
+                
+            </div>
+
+            <div id="objects" class="demo-chunk">
+                <h2>Objects</h2>
+<div class="demo-section">
+    
+    <h2>Utilities</h2>
+    <p>These are small helper classes that usually only do one thing.</p>
+    
+    <p class="text-left">Add a class of <code class="language-markup">text-left</code> for left-aligned text.</p>
+    <p class="text-center">Add a class of <code class="language-markup">text-center</code> for centered text.</p>
+    <p class="text-right">Add a class of <code class="language-markup">text-right</code> for right-aligned text.</p>
+    <p>Use a class of <code class="language-markup">no-layout</code> to kill any padding/margin on elements.</p>
+    <p>To hide an element on all screens, add a class of <code class="language-markup">hidden</code>.</p>
+    <p>To hide an element only on smaller screens, a class of <code class="language-markup">hidden-on-mobile</code> does the trick.</p>
+    <p>In order to <em>only</em> show an element on smaller screens, apply a class of <code class="language-markup">show-only-on-mobile</code>.</p>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <h2>Pull Floats</h2>
+    <p>Sometimes it's handy to float elements left or right without worrying about the grid.</p>
+        
+<pre><code class="language-markup">&lt;!-- Use a wrapper class of 'g' to clear floats--&gt;
+&lt;div class="g"&gt;
+	&lt;div class="pull-right"&gt;Pull Right&lt;/div&gt;
+	&lt;div class="pull-left"&gt;Pull Left&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <div class="g">
+        <div class="pull-right">Pull Right</div>
+        <div class="pull-left">Pull Left</div>
+    </div>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <h2>Nudge, Pad, and Push</h2>
+    
+    
+
+<pre><code class="language-markup">&lt;div class="pad-right"&gt;
+	&lt;div class="nudge-up-2"&gt;Nudged&lt;/div&gt;
+	&lt;div class="push-bottom"&gt;Pushing&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                
+    <p>Nudge classes are used to position elements relatively for pixel-perfect alignments. They use the following syntax: <code class="language-markup">nudge-[direction]-[px]</code> with [direction] corresponding to up, down, left, or right. Pixel values can be from 1 to 10. Ex. using <code class="language-markup">nudge-up-3</code>: <span class="nudge-up-3">Hey there</span></p>
+    <p>Use pad-top, pad-bottom, pad-left, and pad-right to get a device-responsive amount of padding in the requested direction. This element uses pad-left: <span class="pad-left">Hey there.</span> <small><br />Kill unwanted padding on mobile devices with <code class="language-markup">no-pad-[up,down,left,right]-sm</code> classes.</small></p>
+    <p>Use push-up, push-bottom, push-left, and push-right to use margin to push elements away. <span class="push-right">Hey</span><span> there</span></p>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <h2>Buttons</h2>
+                <pre><code class="language-markup">&lt;a class="button"&gt;Button&lt;/a&gt;
+&lt;a class="button--secondary"&gt;Button Secondary&lt;/a&gt;
+&lt;a class="button--success"&gt;Button Success&lt;/a&gt;</code></pre>
+    
+    
+    <div class="cf pad-bottom demo-buttons">
+        <a href="#" class="button--main">Button Main</a>
+        <a href="#" class="button--secondary">Button Secondary</a>
+        <a href="#" class="button--link">Button Link</a>
+        <a href="#" class="button--success"><i class="icon fa fa-thumbs-o-up"></i> Button Success</a>
+        <button class="button" disabled>Button Disabled</button>
+        <a href="#" class="button--warning"><i class="icon fa fa-exclamation-triangle"></i> Button Warning</a>
+        <a href="#" class="button--serious"><i class="icon fa fa-exclamation-circle"></i> Button Error</a>
+    </div>
+    <p>Buttons can be in three sizes.</p>
+    <pre><code class="language-markup">&lt;a class="button--sm"&gt;Small Button&lt;/a&gt;
+&lt;a class="button--lg"&gt;Large Button&lt;/a&gt;</code></pre>
+    <div class="cf pad-bottom demo-buttons">
+        <a href="#" class="button--sm">Button Small</a>
+        <a href="#" class="button">Button</a>
+        <a href="#" class="button--lg">Button Large</a>
+    </div>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <h2>Breadcrumbs</h2>
+    
+        
+<pre><code class="language-markup">&lt;ol class="breadcrumbs"&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href="#"&gt;Pages&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;New Page&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+
+    <ol class="breadcrumbs">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Pages</a></li>
+        <li>New Page</li>
+    </ol>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <h2>Cards</h2>
+    
+    <p>A very generic class meant to be used for highlighting a certain section with a white background and a subtle box-shadow. Adding a class of <code class="language-markup">card</code> applies the background and shadows. Include a class of
+    <code class="language-markup">card-pad-[size]</code> (using the sizes lg, md, and sm) to add padding of various sizes.</p>
+    <p>Avoid mixing the grid classes with these card classes. Use the grid to create a scaffold around cards. </p>
+    <p>Card-pad sizes are used on cards to keep a separate scope from the global <code class="language-markup">pad-[direction]</code> classes.</p>
+    <pre><code class="language-markup">&lt;div class="u-md-6 u-sm-6"&gt;						
+	&lt;div class="card  card-pad-md"&gt;
+		&lt;!-- ... --&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <div class="g">
+        <div class="u-md-4  u-sm-3">
+            <div class="card  card-pad-md">
+                <p class="text-center no-layout">I'm a card</p>
+            </div>
+        </div>
+        <div class="u-md-7  offset-md-1  u-sm-8 offset-sm-1">
+            <div class="card  card-pad-sm  push-bottom">
+                <p class="text-center no-layout">I'm a card</p>
+            </div>
+            <div class="g">
+                <div class="u-md-3 u-sm-5">
+                    <div class="card card-pad-md  text-center">
+                        <i class="icon--lg ion-android-alarm-clock"></i>
+                    </div>
+                </div>
+                <div class="u-md-6  offset-md-3  u-sm-5 offset-sm-2">
+                    <div class="card card-pad-md  text-center">
+                        <i class="icon--lg ion-help-circled"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <h2>Navs</h2>
+    
+    <pre><code class="language-markup">&lt;nav class="nav"&gt;
+    &lt;a href="#" class="button--main"&gt;Batman&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+    <nav class="nav">
+        <a href="#" class="button--main">Batman</a>
+        <a href="#" class="button--main">Superman</a>
+        <a href="#" class="button--main">The Hulk</a>
+    </nav>
+    <pre><code class="language-markup">&lt;nav class="nav--vertical nav--bordered"&gt;
+    &lt;a href="#" class="button--link"&gt;Batman&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+    <nav class="nav--vertical  nav--bordered">
+        <a href="#" class="button--link">Batman</a>
+        <a href="#" class="button--link">Superman</a>
+        <a href="#" class="button--link">The Hulk</a>
+    </nav>
+    <pre><code class="language-markup">&lt;nav class="nav--pagination"&gt;
+    &lt;a href="#" class="button--link current"&gt;1&lt;/a&gt;
+    &lt;a href="#" class="button--link"&gt;2&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+    <nav class="nav--pagination">
+        <a href="#" class="button--link"><i class="icon fa fa-chevron-left"></i></a>
+        <a href="#" class="button--link  current">1</a>
+        <a href="#" class="button--link">2</a>
+        <a href="#" class="button--link">3</a>
+        <a href="#" class="button--link"><i class="icon fa fa-chevron-right"></i></a>
+    </nav>
+                        
+</div>                    
+                    
+                    
+
+<div class="demo-section">
+    
+    <h2>UI Messages</h2>
+    
+    <pre><code class="language-markup">&lt;div class="ui-message-container--[info,warning,error]"&gt;
+        &lt;div class="ui-message-body"&gt;    
+        &lt;i class="icon ion-information-circled ui-message-icon"&gt;&lt;/i&gt;    
+        &lt;span class"ui-message-text"&gt;Hey there&lt;/span&gt;    
+    &lt;/div&gt;    
+&lt;/div&gt;</code></pre>
+    <div class="ui-message-container--info">
+        <div class="ui-message-body">
+            <i class="icon fa-fw fa-info-circle ui-message-icon"></i>
+            <span class="ui-message-text">Search using names or emails.</span>
+        </div>
+    </div>
+    
+    <div class="ui-message-container--warning">
+        <div class="ui-message-body">
+            <i class="icon fa-fw fa-exclamation-triangle ui-message-icon"></i>
+            <span class="ui-message-text">Don't forget to add your email.</span>
+        </div>
+    </div>
+    
+    <div class="ui-message-container--error">
+        <div class="ui-message-body">
+            <i class="icon fa-fw fa-exclamation-circle ui-message-icon"></i>
+            <span class="ui-message-text">Missing a form field.</span>
+        </div>
+    </div>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <h2>Dropdowns</h2>
+    <p>Dropdowns must be wrapped in a containing element with a class of <code class="language-markup">.has-dropdown</code>. There are two pieces of a dropdown once inside this container: the trigger and the target. The trigger is defined with the data-attribute <code class="language-markup">data-ui-trigger</code>, while the target is defined with <code class="language-markup">data-ui-target</code>. The trigger must also have a <code class="language-markup">data-dropdown</code> attribute which will contain the HTML id of the target element.</p>
+   
+    <pre><code class="language-markup">&lt;div class="has-dropdown"&gt;
+    &lt;a href="#" data-dropdown="dd_1" data-ui-trigger&gt;Activate!&lt;/a&gt;
+    &lt;div class="dropdown" id="dd_1" data-ui-target&gt;
+        &lt;!-- ... --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <div class="g">
+        
+        <div class="has-dropdown u-md-2">
+            <a href="#dd_1" data-ui-dropdown="dd_1" data-ui-trigger class="button--main button--block">Activate! <i class="icon--sm fa-fw fa-chevron-down dropdown-icon"></i></a>
+            <div class="dropdown card-pad-sm" id="dd_1" data-ui-target>
+                <ul class="unstyled">
+                    <li><a class="button--link" href="#">Account</a></li>
+                    <li><a class="button--link" href="#">Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="has-dropdown u-md-2 offset-md-1">
+            <a href="#dd_2" data-ui-dropdown="dd_2" data-ui-trigger class="button--main button--block">Activate! <i class="icon--sm fa-fw fa-chevron-down dropdown-icon"></i></a>
+            <div class="dropdown dropdown--right" id="dd_2" data-ui-target>
+                <div class="card-pad-md">
+                    <h3 class="no-layout pad-bottom">User Info</h3>
+                    <p class="no-layout">A headboard rationale here, escape, its with it goodness. It's the concepts time not. Can first partiality their queen's her that snow never would been rank a text soft parameters and the interaction the cannot for down better the poverty rendering place to my building and to then where muff.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div> 
+                        
+</div>                    
+
+
+            </div>
+      
+            <div id="modules" class="demo-chunk">
+                <h2>Modules</h2>
+<div class="demo-section">
+    
+    <h2>Grid System</h2>
+    <p>Smoove uses a 12-column grid. Each row begins with a class of "g" and contains units of class "u-[size]-[n]" – md targets larger screens, sm for smaller.</p>
+    <pre><code class="language-markup">&lt;!-- Start a row of grids with class "g" --&gt;
+&lt;div class="g"&gt;
+&lt;!--
+Columns are defined as units starting with a class of "u-".
+The modifier '-md' means 'medium screens and above'.
+The modifier '-sm' means 'small screens only'.
+There are twelve columns in -md and six columns in -sm'.
+If you wanted a 10/12 on desktop and a 6/12 on mobile:
+--&gt;
+    &lt;div class="u-md-10 u-sm-6"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <div class="g">
+        <div class="u-md-10  u-sm-8">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-2 u-sm-4">
+            <div class="test-grid"></div>
+        </div>
+    </div>
+    <div class="g">
+        <div class="u-md-6  u-sm-6">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-6  u-sm-6">
+            <div class="test-grid"></div>
+        </div>
+    </div>
+    
+    
+    <h3>Nesting</h3>
+    <p>Grid units can be nested. Once you're inside a "g" class, start a new row (and thus a new 12-col grid context) by nesting another <code class="language-markup">&lt;div class="g"&gt;...&lt;/div&gt;</code>.</p>
+    <div class="g">
+        <div class="u-md-2  u-sm-2">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-10  u-sm-10">
+
+            <!-- start nested grids -->
+            <div class="g">
+                <div class="test-grid">
+
+                    <div class="u-md-4 u-sm-6">
+                        <div class="test-grid"></div>
+                    </div>
+
+                    <div class="u-md-8 u-sm-6">
+                        <div class="test-grid"></div>
+                    </div>
+
+                </div>
+                <!-- end nested grids -->
+
+            </div>
+        </div>
+    </div>
+    
+    
+    <h3>Offsets</h3>
+    <p>You can use <code class="language-markup">offset-[size]-[n]</code> classes to move units to the right in the grid.</p>
+    <pre><code class="language-markup">&lt;div class="g"&gt;
+&lt;!--
+    Use "offset-" classes to move columns horizontally.
+    "offset-md-" applies to larger screens.
+    "offset-sm-" applies to smaller ones.
+    Ensure your units and offsets add up to 12.
+--&gt;
+    &lt;div class="u-md-3  u-sm-3"&gt;
+    &lt;/div&gt;
+    &lt;div class="u-md-3  u-sm-3"&gt;
+    &lt;/div&gt;
+    &lt;div class="u-md-3 offset-md-3  u-sm-3 offset-sm-3"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <div class="g">
+        <div class="u-md-3  u-sm-3">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-3  u-sm-3">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-3 offset-md-3  u-sm-3 offset-sm-3">
+            <div class="test-grid"></div>
+        </div>
+    </div>
+    
+    
+    
+    <h3>Push &amp; Pull</h3>
+    <p>You can use <code class="language-markup">push-[size]-[n]</code> and <code class="language-markup">pull-[size]-[n]</code> classes to move units around the grid irrespective of their source order. Push moves a column to the right while Pull moves it to the left.</p>
+    <pre><code class="language-markup">&lt;div class="g"&gt;
+&lt;!--
+    Use "push" classes to move columns right, regardless of source order.
+    Use "pull" classes to move columns left, regardless of source order.
+--&gt;
+    &lt;div class="u-md-3  push-md-9"&gt;
+        &lt;!-- I should be on the far left, but I'm on the far right --&gt;
+    &lt;/div&gt;
+    &lt;div class="u-md-6"&gt;
+        &lt;!-- I'll stay in the center -->
+    &lt;/div&gt;
+    &lt;div class="u-md-3  pull-md-9"&gt;
+        &lt;!-- I should be on the far right, but I'm on the far left --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <div class="g">
+        <div class="u-md-3  push-md-9">
+            <div class="test-grid">First in source, but far right column.</div>
+        </div>
+        <div class="u-md-6">
+            <div class="test-grid">Normal column.</div>
+        </div>
+        <div class="u-md-3 pull-md-9">
+            <div class="test-grid">Last in source, but far left column.</div>
+        </div>
+    </div>
+    
+    
+    
+    <h3>Gutters</h3>
+    <p>Add a class of <code class="language-markup">g-gutters</code> to get a guttered grid. Guttered grids will lose their gutters on mobile to save space.</p>
+    <pre><code class="language-markup">&lt;div class="g  g-gutters"&gt;
+&lt;!--
+    Add the class "g-gutters" to your .g class for guttered grids.
+    The gutters are fixed and are set in _build.scss ($grid-gutter-size).
+--&gt;
+    &lt;div class="u-md-3"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="u-md-3"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="u-md-3"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="u-md-3"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <div class="g  g-gutters">
+        <div class="u-md-3">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-3">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-3 u-sm-6">
+            <div class="test-grid"></div>
+        </div>
+        <div class="u-md-3 u-sm-6">
+            <div class="test-grid"></div>
+        </div>
+    </div>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <h2>Tabs</h2>
+    
+    <p></p>
+        
+    <pre><code class="language-markup">&lt;nav class="sb-tabs--nav  sb-tabs--nav-[sm,md,lg]"&gt;						
+    &lt;a class="button--link  sb-tab" href="#tab_1"&gt;Tab 1&lt;/a&gt;
+    &lt;a class="button--link  sb-tab" href="#tab_2"&gt;Tab 2&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;div class="sb-tabs--panels" data-sb-tab-transition="true" data-sb-tab-group="my_tabs"&gt;						
+    &lt;div class="sb-tab--panel" id="tab_1"&gt;
+        &lt;!-- Panel 1 contents --&gt;
+    &lt;/div&gt;
+    &lt;div class="sb-tab--panel" id="tab_2"&gt;
+        &lt;!-- Panel 2 contents --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+    <div class="card card-pad-md push-bottom">
+        <nav class="nav  smoove-tabs--nav  smoove-tabs--nav-md">
+            <a href="#tab_stats" class="smoove-tab" data-ui-tab="tab_stats" data-ui-trigger>Stats</a>
+            <a href="#tab_history" class="smoove-tab" data-ui-tab="tab_history" data-ui-trigger>History</a>
+            <a href="#tab_settings" class="smoove-tab" data-ui-tab="tab_settings" data-ui-trigger>Settings</a>
+        </nav>
+        <div class="smoove-tabs--panels">
+            <div class="smoove-tabs--panel" id="tab_stats" data-ui-target>
+                <div class="table-scroll no-layout">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>Date Joined</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Active?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="colspan-3">Bruce Wayne</td>
+                                <td class="colspan-2">Oct 20, 2014</td>
+                                <td class="colspan-3">Texarkana</td>
+                                <td class="colspan-2">TX</td>
+                                <td class="colspan-2 text-center">
+                                    <label for="table_checkbox_tab" class="toggler">
+                                        <input type="checkbox" class="toggler-input" id="table_checkbox_tab" />
+                                        <span class="toggler-label"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="smoove-tabs--panel" id="tab_history" data-ui-target>
+                <p>History here.</p>
+            </div>
+            <div class="smoove-tabs--panel" id="tab_settings" data-ui-target>
+                <p>Before you can begin to determine what the composition of a particular paragraph will be, you must first decide on an argument and a working thesis statement for your paper. What is the most important idea that you are trying to convey to your reader? The information in each paragraph must be related to that idea.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card card-pad-md">
+        <nav class="nav  smoove-tabs--nav  smoove-tabs--nav-sm">
+            <a href="#tab_stats1" class="smoove-tab" data-ui-tab="tab_stats1" data-ui-trigger><i class="icon--md fa-fw fa-user"></i> Users</a>
+            <a href="#tab_history1" class="smoove-tab" data-ui-tab="tab_history1" data-ui-trigger><i class="icon--md fa-fw fa-cog"></i> Account</a>
+            <a href="#tab_settings1" class="smoove-tab" data-ui-tab="tab_settings1" data-ui-trigger><i class="icon--md fa-fw fa-search"></i> Search</a>
+        </nav>
+        <div class="smoove-tabs--panels">
+            <div class="smoove-tabs--panel" id="tab_stats1" data-ui-target>
+                <div class="table-scroll no-layout">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>Date Joined</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Active?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="colspan-3">Bruce Wayne</td>
+                                <td class="colspan-2">Oct 20, 2014</td>
+                                <td class="colspan-3">Texarkana</td>
+                                <td class="colspan-2">TX</td>
+                                <td class="colspan-2 text-center">
+                                    <label for="table_checkbox_tab" class="toggler">
+                                        <input type="checkbox" class="toggler-input" id="table_checkbox_tab" />
+                                        <span class="toggler-label"></span>
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="smoove-tabs--panel" id="tab_history1" data-ui-target>
+                <p>History here.</p>
+            </div>
+            <div class="smoove-tabs--panel" id="tab_settings1" data-ui-target>
+                <p>Before you can begin to determine what the composition of a particular paragraph will be, you must first decide on an argument and a working thesis statement for your paper. What is the most important idea that you are trying to convey to your reader?</p>
+            </div>
+        </div>
+    </div>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <h2>Modals</h2>
+    
+    <pre><code class="language-markup">&lt;div class="smoove-modal-overlay" id="test_modal" data-ui-target&gt;  
+    &lt;div class="smoove-modal-container"&gt;
+        &lt;header class="smoove-modal-header"&gt;
+        &lt;/header&gt;
+        &lt;div class="smoove-modal"&gt;
+            &lt;div class="smoove-modal-guts"&gt;
+                &lt;!-- CONTENT, USE THE GRID SYSTEM IF YOU WANT --&gt;
+            &lt;/div&gt;
+            &lt;footer class="smoove-modal-footer"&gt;
+                &lt;!-- CONTENT --&gt;
+            &lt;/footer&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                <p>Trigger and link the modals using the following markup. The href is a fallback. You can activate one <a href="#test_modal" data-ui-modal="test_modal" data-ui-trigger>inline</a> as well.</p>
+
+                <pre><code class="language-markup">&lt;a href="test_modal" data-ui-modal="test_modal" data-ui-trigger class="button--main"&gt;Activate Modal&lt;/a&gt;
+</code></pre>
+
+    <p><a href="#test_modal" data-ui-modal="test_modal" data-ui-trigger class="button--main">Activate Modal</a></p>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <h2>Toasts</h2>
+    
+    <p>Coming soon...</p>
+                        
+</div>                    
+                    
+                    
+            </div>
+
+            <div id="layouts" class="demo-chunk">
+                <h2>Layouts</h2>
+<div class="demo-section">
+    
+    <div class="g">
+        <div class="u-md-4 pad-right no-pad-right-sm">
+            <h3>App Frame</h3>
+            <p>Fixed header, fixed left sidebar, scrolling main section.</p>
+        </div>
+        <div class="u-md-8">
+            <pre><code class="language-markup">&lt;body&gt;
+    &lt;header class="header  header--app"&gt;
+        &lt;div class="header-inner g"&gt;
+            &lt;span class="header-page-info"&gt;
+                &lt;span class="header-page-title"&gt;My App&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div class="page page--app  g"&gt;
+        &lt;div class="u-md-3  sidebar  sidebar--app"&gt;
+            &lt;nav&gt;
+                &lt;a href="" class="button--link text-left"&gt;&lt;i class="icon fa-fw fa-cube"&gt;&lt/i&gt; My App Nav&lt;/a&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+        &lt;div class="u-md-7 offset-md-4"&gt;    
+            &lt;h1&gt;My App Name&lt/h1&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+    
+    </code></pre>
+    
+        </div>
+    </div>
+                        
+</div>                    
+                    
+                    
+<div class="demo-section">
+    
+    <div class="g">
+        <div class="u-md-4 pad-right no-pad-right-sm">
+            <h3>Centered Website</h3>
+            <p>Static header, two-column layout.</p>
+        </div>
+        <div class="u-md-8">
+            <pre><code class="language-markup">&lt;body&gt;
+    &lt;header class="header"&gt;    
+        &lt;div class="header-inner header-inner--wrap g"&gt;        
+            &lt;span class="header-page-info"&gt;            
+                &lt;span class="header-page-title"&gt;My Site&lt;/span&gt;            
+            &lt;/span&gt;        
+        &lt;/div&gt;    
+    &lt;/header&gt;
+    &lt;div class="page page--wrap  g"&gt;    
+        &lt;div class="u-md-2"&gt;        
+            &lt;nav class="nav--bordered nav--vertical"&gt;            
+                &lt;a href="" class="button--link text-left"&gt;About&lt;/a&gt;            
+                &lt;a href="" class="button--link text-left"&gt;Contact&lt;/a&gt;            
+                &lt;a href="" class="button--link text-left"&gt;Information&lt;/a&gt;            
+                &lt;a href="" class="button--link text-left"&gt;Cheap Taxidermy&lt;/a&gt;            
+            &lt;/nav&gt;        
+        &lt;/div&gt;    
+        &lt;div class="u-md-9 offset-md-1"&gt;        
+            &lt;h1>My Site&lt;/h1&gt;        
+        &lt;/div&gt;    
+    &lt;/div&gt;
+&lt;/body&gt;
+</code></pre>
+        </div>
+    </div>
+                        
+</div>                    
+                    
+                    
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/smoove_ui.js"></script>
+    <script>
+        $(function() {
+
+            var loaded_hash = window.location.hash;
+            $('.demo-hash-nav [href="' + loaded_hash + '"]').addClass('current');
+            
+            $(window).on('hashchange', function(){
+                $('.demo-hash-nav [class*="button"]').removeClass('current');
+                var new_hash = window.location.hash;
+                $('.demo-hash-nav [href="' + new_hash + '"]').addClass('current');
+            });
+
+            $('.demo-buttons [class*="button"]').on('click', function(e) {
+                e.preventDefault();
+            });
+
+            $('form').on('submit', function(e) {
+                e.preventDefault();
+            });
+
+        });
+    </script>
+
+    <!-- Prism syntax highlighter -->
+    <script src="docs/js/prism_syntax_highlighter/prism.js"></script>
+</body>
+
+</html>
