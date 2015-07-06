@@ -42,4 +42,4 @@ http://smoovecss.com
 
 ### Known Issues
 
-* When a dropdown is open, clicking a _different_ dropdown activator should close the currently opened dropdown and open the newly clicked one. Currently, when a dropdown is open, clicking a different one simply closes the opened one, not activating the newly clicked dropdown.
+*	When a dropdown is open, clicking a _different_ dropdown activator should close the currently opened dropdown and open the newly clicked one. Currently, when a dropdown is open, clicking a different one simply closes the opened one, not activating the newly clicked dropdown.
